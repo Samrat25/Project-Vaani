@@ -1,0 +1,4010 @@
+[
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0010_0000.wav",
+    "clean_path": "clean_speech/val/spk_0010_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0086_h104.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_07_0002.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_07_0002.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0012_0000.wav",
+    "clean_path": "clean_speech/val/spk_0012_0000.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_WasherDryer_1_0009.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0011.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0011.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0027_0000.wav",
+    "clean_path": "clean_speech/val/spk_0027_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0084_h59.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/mortar_rockets/val/war_mort_0007.wav",
+    "primary_artillery_type": "mortar_rockets",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/mortar_rockets/val/war_mort_0007.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0034_0000.wav",
+    "clean_path": "clean_speech/val/spk_0034_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0087_h84.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_03_0010.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_03_0010.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0053_0000.wav",
+    "clean_path": "clean_speech/val/spk_0053_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0085_h79.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0015.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0015.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0050_0000.wav",
+    "clean_path": "clean_speech/val/spk_0050_0000.wav",
+    "static_background_source": "noise/platform_interior/tank_hull_reverb/val/synth_tank_hull_0017.wav",
+    "static_background_category": "platform_interior/tank_hull_reverb",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0009.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0009.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0061_0000.wav",
+    "clean_path": "clean_speech/val/spk_0061_0000.wav",
+    "static_background_source": "noise/static_and_hum/generator_50hz_mains/val/synth_hum_59_0003.wav",
+    "static_background_category": "static_and_hum/generator_50hz_mains",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0027.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0027.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0025_0000.wav",
+    "clean_path": "clean_speech/val/spk_0025_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0086_h32.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_04_0011.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_04_0011.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_14_0018.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0077_0000.wav",
+    "clean_path": "clean_speech/val/spk_0077_0000.wav",
+    "static_background_source": "noise/environmental/rain_precipitation/val/esc_rain_2-8236_0002.wav",
+    "static_background_category": "environmental/rain_precipitation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_18_0021.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_18_0021.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0092_0000.wav",
+    "clean_path": "clean_speech/val/spk_0092_0000.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_CopyMachine_6_0013.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/machine_gun/val/war_mach_0001.wav",
+    "primary_artillery_type": "machine_gun",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/machine_gun/val/war_mach_0001.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0064_0000.wav",
+    "clean_path": "clean_speech/val/spk_0064_0000.wav",
+    "static_background_source": "noise/static_and_hum/hvac_ventilation/val/ind_indust_AirConditioner_4_0008.wav",
+    "static_background_category": "static_and_hum/hvac_ventilation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0013.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0013.wav",
+      "noise/artillery/howitzer_artillery/val/war_arti_0013.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0067_0000.wav",
+    "clean_path": "clean_speech/val/spk_0067_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0085_h66.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_00_0011.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_00_0011.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_19_0004.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0072_0000.wav",
+    "clean_path": "clean_speech/val/spk_0072_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0086_h108.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0002.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0002.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_07_0023.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0098_0000.wav",
+    "clean_path": "clean_speech/val/spk_0098_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0084_h31.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0018.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0018.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_06_0001.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0086_0000.wav",
+    "clean_path": "clean_speech/val/spk_0086_0000.wav",
+    "static_background_source": "noise/industrial/factory_transport/val/ind_indust_Metro_1_0005.wav",
+    "static_background_category": "industrial/factory_transport",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0026.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0026.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_20_0008.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0100_0000.wav",
+    "clean_path": "clean_speech/val/spk_0100_0000.wav",
+    "static_background_source": "noise/comms_channel/vhf_uhf_static/val/synth_vhf_0240.wav",
+    "static_background_category": "comms_channel/vhf_uhf_static",
+    "primary_artillery_source": "noise/artillery/mortar_rockets/val/war_mort_0002.wav",
+    "primary_artillery_type": "mortar_rockets",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/mortar_rockets/val/war_mort_0002.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_18_0007.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0121_0000.wav",
+    "clean_path": "clean_speech/val/spk_0121_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0090_h107.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_14_0014.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_14_0014.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0123_0000.wav",
+    "clean_path": "clean_speech/val/spk_0123_0000.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_engine_3-115382-A-44_0001.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0001.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0001.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0157_0000.wav",
+    "clean_path": "clean_speech/val/spk_0157_0000.wav",
+    "static_background_source": "noise/environmental/mic_wind_buffeting/val/synth_wind_0183.wav",
+    "static_background_category": "environmental/mic_wind_buffeting",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_12_0000.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_12_0000.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0124_0000.wav",
+    "clean_path": "clean_speech/val/spk_0124_0000.wav",
+    "static_background_source": "noise/platform_interior/bunker_trench_echo/val/synth_bunker_0044.wav",
+    "static_background_category": "platform_interior/bunker_trench_echo",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_07_0018.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_07_0018.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_13_0006.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0127_0000.wav",
+    "clean_path": "clean_speech/val/spk_0127_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0088_h121.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0012.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0012.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0032.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0147_0000.wav",
+    "clean_path": "clean_speech/val/spk_0147_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0090.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_07_0011.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_07_0011.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_22_0013.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0158_0000.wav",
+    "clean_path": "clean_speech/val/spk_0158_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/esc_airc_4-1611_0002.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0001.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0001.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_12_0000.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0191_0000.wav",
+    "clean_path": "clean_speech/val/spk_0191_0000.wav",
+    "static_background_source": "noise/environmental/rain_precipitation/val/esc_rain_1-5631_0001.wav",
+    "static_background_category": "environmental/rain_precipitation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_30_0003.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_30_0003.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0167_0000.wav",
+    "clean_path": "clean_speech/val/spk_0167_0000.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_CopyMachine_5_0004.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_02_0018.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_02_0018.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_21_0022.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0170_0000.wav",
+    "clean_path": "clean_speech/val/spk_0170_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0082_h147.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_01_0007.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_01_0007.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_23_0002.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0178_0000.wav",
+    "clean_path": "clean_speech/val/spk_0178_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Restau_0201.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_25_0034.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_25_0034.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_19_0001.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0192_0000.wav",
+    "clean_path": "clean_speech/val/spk_0192_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0081_h141.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_13_0002.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_13_0002.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0179_0000.wav",
+    "clean_path": "clean_speech/val/spk_0179_0000.wav",
+    "static_background_source": "noise/static_and_hum/hvac_ventilation/val/ind_indust_AirConditioner_5_0000.wav",
+    "static_background_category": "static_and_hum/hvac_ventilation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_17_0022.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_17_0022.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_14_0020.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0198_0000.wav",
+    "clean_path": "clean_speech/val/spk_0198_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0086_h128.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0000.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0000.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0184_0000.wav",
+    "clean_path": "clean_speech/val/spk_0184_0000.wav",
+    "static_background_source": "noise/environmental/rain_precipitation/val/ind_train_5-197121-A-45_0000.wav",
+    "static_background_category": "environmental/rain_precipitation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_20_0013.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_20_0013.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_01_0021.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0193_0000.wav",
+    "clean_path": "clean_speech/val/spk_0193_0000.wav",
+    "static_background_source": "noise/static_and_hum/hvac_ventilation/val/ind_indust_AirConditioner_10_0011.wav",
+    "static_background_category": "static_and_hum/hvac_ventilation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_17_0002.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_17_0002.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_02_0018.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0221_0000.wav",
+    "clean_path": "clean_speech/val/spk_0221_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0085_h135.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_21_0013.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_21_0013.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0206_0000.wav",
+    "clean_path": "clean_speech/val/spk_0206_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0082_h71.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0021.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0021.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_05_0007.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0211_0000.wav",
+    "clean_path": "clean_speech/val/spk_0211_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0089_h111.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_17_0006.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_17_0006.wav",
+      "noise/artillery/howitzer_artillery/val/war_arti_0014.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0246_0000.wav",
+    "clean_path": "clean_speech/val/spk_0246_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0090_h132.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_16_0004.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_16_0004.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0243_0000.wav",
+    "clean_path": "clean_speech/val/spk_0243_0000.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_CopyMachine_10_0007.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_05_0033.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_05_0033.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0222_0000.wav",
+    "clean_path": "clean_speech/val/spk_0222_0000.wav",
+    "static_background_source": "noise/platform_interior/tank_hull_reverb/val/snsd_tank_0001.wav",
+    "static_background_category": "platform_interior/tank_hull_reverb",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_18_0026.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_18_0026.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_19_0001.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0267_0000.wav",
+    "clean_path": "clean_speech/val/spk_0267_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0002.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_00_0003.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_00_0003.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0224_0000.wav",
+    "clean_path": "clean_speech/val/spk_0224_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Cafe_1_0258.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0003.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0003.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_01_0018.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0228_0000.wav",
+    "clean_path": "clean_speech/val/spk_0228_0000.wav",
+    "static_background_source": "noise/environmental/rain_precipitation/val/ind_train_3-159445-B-45_0001.wav",
+    "static_background_category": "environmental/rain_precipitation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_08_0028.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_08_0028.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0035.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0286_0000.wav",
+    "clean_path": "clean_speech/val/spk_0286_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Restau_0099.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0010.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0010.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0282_0000.wav",
+    "clean_path": "clean_speech/val/spk_0282_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0062_h02.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_23_0005.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_23_0005.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0259_0000.wav",
+    "clean_path": "clean_speech/val/spk_0259_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0074_h02.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_05_0004.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_05_0004.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_21_0013.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0231_0000.wav",
+    "clean_path": "clean_speech/val/spk_0231_0000.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_VacuumCleaner_3_0000.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_09_0010.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_09_0010.wav",
+      "noise/artillery/machine_gun/val/war_mach_0001.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0263_0000.wav",
+    "clean_path": "clean_speech/val/spk_0263_0000.wav",
+    "static_background_source": "noise/platform_interior/tank_hull_reverb/val/snsd_tank_0012.wav",
+    "static_background_category": "platform_interior/tank_hull_reverb",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_22_0030.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_22_0030.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_29_0012.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0274_0000.wav",
+    "clean_path": "clean_speech/val/spk_0274_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0089_h76.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_16_0001.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_16_0001.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_23_0003.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0289_0000.wav",
+    "clean_path": "clean_speech/val/spk_0289_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0151.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_18_0004.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_18_0004.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0313_0000.wav",
+    "clean_path": "clean_speech/val/spk_0313_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Cafe_1_0267.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_20_0004.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_20_0004.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0295_0000.wav",
+    "clean_path": "clean_speech/val/spk_0295_0000.wav",
+    "static_background_source": "noise/environmental/mic_wind_buffeting/val/synth_wind_0224.wav",
+    "static_background_category": "environmental/mic_wind_buffeting",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_23_0002.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_23_0002.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_17_0023.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0294_0000.wav",
+    "clean_path": "clean_speech/val/spk_0294_0000.wav",
+    "static_background_source": "noise/platform_interior/bunker_trench_echo/val/synth_bunker_0048.wav",
+    "static_background_category": "platform_interior/bunker_trench_echo",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_20_0002.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_20_0002.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_15_0008.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0296_0000.wav",
+    "clean_path": "clean_speech/val/spk_0296_0000.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_VacuumCleaner_1_0001.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_19_0001.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_19_0001.wav",
+      "noise/artillery/bomb_blasts/val/war_hatc_0004.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0353_0000.wav",
+    "clean_path": "clean_speech/val/spk_0353_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0089_h26.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_13_0006.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_13_0006.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0301_0000.wav",
+    "clean_path": "clean_speech/val/spk_0301_0000.wav",
+    "static_background_source": "noise/static_and_hum/generator_50hz_mains/val/synth_hum_50_0043.wav",
+    "static_background_category": "static_and_hum/generator_50hz_mains",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0009.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0009.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_06_0001.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0356_0000.wav",
+    "clean_path": "clean_speech/val/spk_0356_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0082_h46.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_05_0007.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_05_0007.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0361_0000.wav",
+    "clean_path": "clean_speech/val/spk_0361_0000.wav",
+    "static_background_source": "noise/aviation/helicopters/val/esc_roto_1-1726_0000.wav",
+    "static_background_category": "aviation/helicopters",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_15_0005.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_15_0005.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_04_0011.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0332_0000.wav",
+    "clean_path": "clean_speech/val/spk_0332_0000.wav",
+    "static_background_source": "noise/environmental/mic_wind_buffeting/val/synth_wind_0135.wav",
+    "static_background_category": "environmental/mic_wind_buffeting",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_06_0001.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_06_0001.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_25_0034.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0331_0000.wav",
+    "clean_path": "clean_speech/val/spk_0331_0000.wav",
+    "static_background_source": "noise/comms_channel/vhf_uhf_static/val/synth_vhf_0052.wav",
+    "static_background_category": "comms_channel/vhf_uhf_static",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_21_0005.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_21_0005.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_19_0013.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0378_0000.wav",
+    "clean_path": "clean_speech/val/spk_0378_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0084_h147.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_08_0025.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_08_0025.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0375_0000.wav",
+    "clean_path": "clean_speech/val/spk_0375_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0081_h96.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0038.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0038.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0346_0000.wav",
+    "clean_path": "clean_speech/val/spk_0346_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0084.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_02_0001.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_02_0001.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_18_0000.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0379_0000.wav",
+    "clean_path": "clean_speech/val/spk_0379_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0084_h102.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_17_0009.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_17_0009.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0362_0000.wav",
+    "clean_path": "clean_speech/val/spk_0362_0000.wav",
+    "static_background_source": "noise/aviation/helicopters/val/esc_roto_1-1726_0001.wav",
+    "static_background_category": "aviation/helicopters",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_02_0005.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_02_0005.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_14_0013.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0363_0000.wav",
+    "clean_path": "clean_speech/val/spk_0363_0000.wav",
+    "static_background_source": "noise/environmental/mic_wind_buffeting/val/esc_mic__3-1346_0000.wav",
+    "static_background_category": "environmental/mic_wind_buffeting",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_08_0008.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_08_0008.wav",
+      "noise/artillery/howitzer_artillery/val/war_arti_0022.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0394_0000.wav",
+    "clean_path": "clean_speech/val/spk_0394_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0019_h02.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_08_0019.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_08_0019.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0399_0000.wav",
+    "clean_path": "clean_speech/val/spk_0399_0000.wav",
+    "static_background_source": "noise/environmental/mic_wind_buffeting/val/synth_wind_0135.wav",
+    "static_background_category": "environmental/mic_wind_buffeting",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_14_0010.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_14_0010.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0389_0000.wav",
+    "clean_path": "clean_speech/val/spk_0389_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0086_h133.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_07_0017.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_07_0017.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_18_0023.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0433_0000.wav",
+    "clean_path": "clean_speech/val/spk_0433_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0085_h69.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/mortar_rockets/val/war_mort_0006.wav",
+    "primary_artillery_type": "mortar_rockets",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/mortar_rockets/val/war_mort_0006.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0434_0000.wav",
+    "clean_path": "clean_speech/val/spk_0434_0000.wav",
+    "static_background_source": "noise/environmental/rain_precipitation/val/ind_train_2-135649-B-45_0001.wav",
+    "static_background_category": "environmental/rain_precipitation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_09_0012.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_09_0012.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0390_0000.wav",
+    "clean_path": "clean_speech/val/spk_0390_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0087_h81.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0031.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0031.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_01_0007.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0436_0000.wav",
+    "clean_path": "clean_speech/val/spk_0436_0000.wav",
+    "static_background_source": "noise/environmental/rain_precipitation/val/esc_rain_4-1642_0002.wav",
+    "static_background_category": "environmental/rain_precipitation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_13_0011.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_13_0011.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0450_0000.wav",
+    "clean_path": "clean_speech/val/spk_0450_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0007.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_01_0024.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_01_0024.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0405_0000.wav",
+    "clean_path": "clean_speech/val/spk_0405_0000.wav",
+    "static_background_source": "noise/static_and_hum/rfi_emi_buzz/val/synth_rfi_0094.wav",
+    "static_background_category": "static_and_hum/rfi_emi_buzz",
+    "primary_artillery_source": "noise/artillery/machine_gun/val/war_mach_0010.wav",
+    "primary_artillery_type": "machine_gun",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/machine_gun/val/war_mach_0010.wav",
+      "noise/artillery/bomb_blasts/val/war_hatc_0018.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0432_0000.wav",
+    "clean_path": "clean_speech/val/spk_0432_0000.wav",
+    "static_background_source": "noise/comms_channel/vhf_uhf_static/val/synth_vhf_0221.wav",
+    "static_background_category": "comms_channel/vhf_uhf_static",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0014.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0014.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0003.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0426_0000.wav",
+    "clean_path": "clean_speech/val/spk_0426_0000.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_WasherDryer_2_0004.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_29_0006.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_29_0006.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_13_0025.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0445_0000.wav",
+    "clean_path": "clean_speech/val/spk_0445_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Restau_0262.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_21_0004.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_21_0004.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_11_0036.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0448_0000.wav",
+    "clean_path": "clean_speech/val/spk_0448_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0088_h80.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0023.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0023.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_07_0014.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0456_0000.wav",
+    "clean_path": "clean_speech/val/spk_0456_0000.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_CopyMachine_5_0011.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0023.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0023.wav",
+      "noise/artillery/bomb_blasts/val/war_hatc_0002.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0462_0000.wav",
+    "clean_path": "clean_speech/val/spk_0462_0000.wav",
+    "static_background_source": "noise/industrial/factory_transport/val/ind_indust_Metro_1_0003.wav",
+    "static_background_category": "industrial/factory_transport",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_15_0001.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_15_0001.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_03_0018.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0463_0000.wav",
+    "clean_path": "clean_speech/val/spk_0463_0000.wav",
+    "static_background_source": "noise/environmental/mic_wind_buffeting/val/synth_wind_0183.wav",
+    "static_background_category": "environmental/mic_wind_buffeting",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_16_0000.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_16_0000.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_05_0007.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0476_0000.wav",
+    "clean_path": "clean_speech/val/spk_0476_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Cafe_1_0128.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_21_0001.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_21_0001.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0477_0000.wav",
+    "clean_path": "clean_speech/val/spk_0477_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0085_h75.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_17_0017.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_17_0017.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0479_0000.wav",
+    "clean_path": "clean_speech/val/spk_0479_0000.wav",
+    "static_background_source": "noise/comms_channel/vhf_uhf_static/val/synth_vhf_0208.wav",
+    "static_background_category": "comms_channel/vhf_uhf_static",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_04_0005.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_04_0005.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0464_0000.wav",
+    "clean_path": "clean_speech/val/spk_0464_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0088_h148.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_21_0031.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_21_0031.wav",
+      "noise/artillery/machine_gun/val/war_mach_0001.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0470_0000.wav",
+    "clean_path": "clean_speech/val/spk_0470_0000.wav",
+    "static_background_source": "noise/comms_channel/vhf_uhf_static/val/synth_vhf_0259.wav",
+    "static_background_category": "comms_channel/vhf_uhf_static",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0004.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0004.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_08_0009.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0501_0000.wav",
+    "clean_path": "clean_speech/val/spk_0501_0000.wav",
+    "static_background_source": "noise/platform_interior/tank_hull_reverb/val/synth_tank_hull_0038.wav",
+    "static_background_category": "platform_interior/tank_hull_reverb",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_20_0008.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_20_0008.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0505_0000.wav",
+    "clean_path": "clean_speech/val/spk_0505_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Restau_0021.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_24_0008.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_24_0008.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0483_0000.wav",
+    "clean_path": "clean_speech/val/spk_0483_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/esc_airc_1-1168_0000.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_00_0000.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_00_0000.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_13_0011.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0532_0000.wav",
+    "clean_path": "clean_speech/val/spk_0532_0000.wav",
+    "static_background_source": "noise/static_and_hum/generator_50hz_mains/val/synth_hum_49_0057.wav",
+    "static_background_category": "static_and_hum/generator_50hz_mains",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_14_0014.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_14_0014.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0492_0000.wav",
+    "clean_path": "clean_speech/val/spk_0492_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0088_h85.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_11_0000.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_11_0000.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_08_0008.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0495_0000.wav",
+    "clean_path": "clean_speech/val/spk_0495_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0087_h117.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_22_0012.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_22_0012.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_02_0024.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0534_0000.wav",
+    "clean_path": "clean_speech/val/spk_0534_0000.wav",
+    "static_background_source": "noise/comms_channel/vhf_uhf_static/val/synth_vhf_0255.wav",
+    "static_background_category": "comms_channel/vhf_uhf_static",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_15_0009.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_15_0009.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0503_0000.wav",
+    "clean_path": "clean_speech/val/spk_0503_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0087_h34.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_05_0007.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_05_0007.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_10_0000.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0514_0000.wav",
+    "clean_path": "clean_speech/val/spk_0514_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0082_h65.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/mortar_rockets/val/war_mort_0009.wav",
+    "primary_artillery_type": "mortar_rockets",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/mortar_rockets/val/war_mort_0009.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_17_0016.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0537_0000.wav",
+    "clean_path": "clean_speech/val/spk_0537_0000.wav",
+    "static_background_source": "noise/static_and_hum/rfi_emi_buzz/val/synth_rfi_0224.wav",
+    "static_background_category": "static_and_hum/rfi_emi_buzz",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_07_0001.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_07_0001.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_13_0006.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0539_0000.wav",
+    "clean_path": "clean_speech/val/spk_0539_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0087_h06.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_14_0000.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_14_0000.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_29_0006.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0565_0000.wav",
+    "clean_path": "clean_speech/val/spk_0565_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0082_h04.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_21_0022.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_21_0022.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0582_0000.wav",
+    "clean_path": "clean_speech/val/spk_0582_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/esc_airc_5-2359_0002.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0023.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0023.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0596_0000.wav",
+    "clean_path": "clean_speech/val/spk_0596_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0085_h124.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0032.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0032.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0556_0000.wav",
+    "clean_path": "clean_speech/val/spk_0556_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0086_h108.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_19_0004.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_19_0004.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_01_0017.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0562_0000.wav",
+    "clean_path": "clean_speech/val/spk_0562_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Restau_0109.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_18_0023.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_18_0023.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_09_0010.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0597_0000.wav",
+    "clean_path": "clean_speech/val/spk_0597_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_CafeTe_0191.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_21_0017.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_21_0017.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0584_0000.wav",
+    "clean_path": "clean_speech/val/spk_0584_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/esc_airc_1-4380_0000.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_10_0023.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_10_0023.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_10_0014.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0612_0000.wav",
+    "clean_path": "clean_speech/val/spk_0612_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0087_h89.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_13_0028.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_13_0028.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0600_0000.wav",
+    "clean_path": "clean_speech/val/spk_0600_0000.wav",
+    "static_background_source": "noise/environmental/rain_precipitation/val/esc_rain_4-1611_0001.wav",
+    "static_background_category": "environmental/rain_precipitation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_17_0001.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_17_0001.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_18_0023.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0603_0000.wav",
+    "clean_path": "clean_speech/val/spk_0603_0000.wav",
+    "static_background_source": "noise/static_and_hum/hvac_ventilation/val/ind_indust_AirConditioner_7_0005.wav",
+    "static_background_category": "static_and_hum/hvac_ventilation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_23_0003.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_23_0003.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_04_0011.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0608_0000.wav",
+    "clean_path": "clean_speech/val/spk_0608_0000.wav",
+    "static_background_source": "noise/platform_interior/tank_hull_reverb/val/synth_tank_hull_0170.wav",
+    "static_background_category": "platform_interior/tank_hull_reverb",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_20_0012.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_20_0012.wav",
+      "noise/artillery/bomb_blasts/val/war_hatc_0019.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0610_0000.wav",
+    "clean_path": "clean_speech/val/spk_0610_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0089_h96.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_14_0020.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_14_0020.wav",
+      "noise/artillery/mortar_rockets/val/war_mort_0011.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0609_0000.wav",
+    "clean_path": "clean_speech/val/spk_0609_0000.wav",
+    "static_background_source": "noise/platform_interior/tank_hull_reverb/val/snsd_tank_0007.wav",
+    "static_background_category": "platform_interior/tank_hull_reverb",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_31_0005.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_31_0005.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_00_0011.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0631_0000.wav",
+    "clean_path": "clean_speech/val/spk_0631_0000.wav",
+    "static_background_source": "noise/static_and_hum/rfi_emi_buzz/val/synth_rfi_0110.wav",
+    "static_background_category": "static_and_hum/rfi_emi_buzz",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_00_0006.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_00_0006.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0615_0000.wav",
+    "clean_path": "clean_speech/val/spk_0615_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0080_h05.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_19_0008.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_19_0008.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_07_0020.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0632_0000.wav",
+    "clean_path": "clean_speech/val/spk_0632_0000.wav",
+    "static_background_source": "noise/environmental/rain_precipitation/val/ind_train_3-135650-B-45_0000.wav",
+    "static_background_category": "environmental/rain_precipitation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0003.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0003.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0636_0000.wav",
+    "clean_path": "clean_speech/val/spk_0636_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/esc_airc_5-2154_0002.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_00_0000.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_00_0000.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0664_0000.wav",
+    "clean_path": "clean_speech/val/spk_0664_0000.wav",
+    "static_background_source": "noise/environmental/mic_wind_buffeting/val/synth_wind_0240.wav",
+    "static_background_category": "environmental/mic_wind_buffeting",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_10_0011.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_10_0011.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0683_0000.wav",
+    "clean_path": "clean_speech/val/spk_0683_0000.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0024.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_26_0013.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_26_0013.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0644_0000.wav",
+    "clean_path": "clean_speech/val/spk_0644_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0090_h144.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0008.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0008.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_09_0003.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0656_0000.wav",
+    "clean_path": "clean_speech/val/spk_0656_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0088_h121.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_07_0031.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_07_0031.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_22_0009.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0000_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0000_pad.wav",
+    "static_background_source": "noise/static_and_hum/hvac_ventilation/val/snsd_hvac_0002.wav",
+    "static_background_category": "static_and_hum/hvac_ventilation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_11_0024.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_11_0024.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_0673_0000.wav",
+    "clean_path": "clean_speech/val/spk_0673_0000.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0083_h58.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_30_0009.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_30_0009.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_19_0013.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0005_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0005_h00.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_engine_1-61261-A-44_0001.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_10_0024.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_10_0024.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0002_h02.wav",
+    "clean_path": "clean_speech/val/spk_aug_0002_h02.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0087_h136.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_18_0007.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_18_0007.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_02_0018.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0019_h03.wav",
+    "clean_path": "clean_speech/val/spk_aug_0019_h03.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0089_h96.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_26_0003.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_26_0003.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0004_h01.wav",
+    "clean_path": "clean_speech/val/spk_aug_0004_h01.wav",
+    "static_background_source": "noise/static_and_hum/hvac_ventilation/val/ind_indust_AirConditioner_10_0002.wav",
+    "static_background_category": "static_and_hum/hvac_ventilation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_29_0022.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_29_0022.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_12_0006.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0016_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0016_h00.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_chains_3-118657-B-41_0001.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_02_0004.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_02_0004.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_13_0011.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0013_h01.wav",
+    "clean_path": "clean_speech/val/spk_aug_0013_h01.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Restau_0000.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_13_0025.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_13_0025.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_28_0012.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0021_h02.wav",
+    "clean_path": "clean_speech/val/spk_aug_0021_h02.wav",
+    "static_background_source": "noise/aviation/helicopters/val/av_helico_4-125929-A-40_0001.wav",
+    "static_background_category": "aviation/helicopters",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_19_0003.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_19_0003.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0017_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0017_h00.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_VacuumCleaner_1_0020.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_14_0018.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_14_0018.wav",
+      "noise/artillery/bomb_blasts/val/war_hatc_0018.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0020_h02.wav",
+    "clean_path": "clean_speech/val/spk_aug_0020_h02.wav",
+    "static_background_source": "noise/static_and_hum/rfi_emi_buzz/val/synth_rfi_0118.wav",
+    "static_background_category": "static_and_hum/rfi_emi_buzz",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0008.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0008.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_14_0018.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0031_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0031_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0087_h34.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_10_0000.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_10_0000.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0034_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0034_pad.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_CopyMachine_10_0007.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_11_0029.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_11_0029.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0037_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0037_h00.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_VacuumCleaner_5_0005.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_24_0011.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_24_0011.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0090_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0090_pad.wav",
+    "static_background_source": "noise/static_and_hum/generator_50hz_mains/val/synth_hum_59_0029.wav",
+    "static_background_category": "static_and_hum/generator_50hz_mains",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_16_0018.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_16_0018.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0096_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0096_pad.wav",
+    "static_background_source": "noise/comms_channel/vhf_uhf_static/val/synth_vhf_0042.wav",
+    "static_background_category": "comms_channel/vhf_uhf_static",
+    "primary_artillery_source": "noise/artillery/mortar_rockets/val/war_mort_0013.wav",
+    "primary_artillery_type": "mortar_rockets",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/mortar_rockets/val/war_mort_0013.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0107_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0107_pad.wav",
+    "static_background_source": "noise/environmental/mic_wind_buffeting/val/synth_wind_0073.wav",
+    "static_background_category": "environmental/mic_wind_buffeting",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_25_0011.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_25_0011.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0074_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0074_pad.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_VacuumCleaner_1_0002.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_13_0002.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_13_0002.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0031.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0082_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0082_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/esc_airc_1-4380_0000.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_07_0008.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_07_0008.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_29_0034.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0134_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0134_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0018.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_20_0004.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_20_0004.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0148_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0148_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0033.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0003.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0003.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0150_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0150_h00.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0087_h122.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_01_0017.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_01_0017.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0188_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0188_pad.wav",
+    "static_background_source": "noise/environmental/mic_wind_buffeting/val/synth_wind_0199.wav",
+    "static_background_category": "environmental/mic_wind_buffeting",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_31_0017.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_31_0017.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0200_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0200_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0010_h02.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_05_0025.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_05_0025.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0113_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0113_h00.wav",
+    "static_background_source": "noise/aviation/helicopters/val/av_helico_5-177957-E-40_0001.wav",
+    "static_background_category": "aviation/helicopters",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_20_0021.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_20_0021.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_07_0005.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0140_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0140_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0045.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0006.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0006.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_17_0009.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0144_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0144_pad.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_VacuumCleaner_3_0017.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_18_0007.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_18_0007.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0036.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0204_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0204_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0082_h41.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_03_0011.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_03_0011.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0210_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0210_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0026_h01.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/mortar_rockets/val/war_mort_0022.wav",
+    "primary_artillery_type": "mortar_rockets",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/mortar_rockets/val/war_mort_0022.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0217_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0217_h00.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_CafeTe_0104.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/mortar_rockets/val/war_mort_0021.wav",
+    "primary_artillery_type": "mortar_rockets",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/mortar_rockets/val/war_mort_0021.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0218_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0218_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_CafeTe_0192.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0014.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0014.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0242_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0242_pad.wav",
+    "static_background_source": "noise/static_and_hum/rfi_emi_buzz/val/synth_rfi_0203.wav",
+    "static_background_category": "static_and_hum/rfi_emi_buzz",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_21_0003.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_21_0003.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0219_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0219_pad.wav",
+    "static_background_source": "noise/platform_interior/bunker_trench_echo/val/synth_bunker_0153.wav",
+    "static_background_category": "platform_interior/bunker_trench_echo",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_13_0006.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_13_0006.wav",
+      "noise/artillery/mortar_rockets/val/war_mort_0007.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0253_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0253_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0080_h38.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_07_0005.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_07_0005.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0254_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0254_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Restau_0134.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_08_0007.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_08_0007.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0230_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0230_pad.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_VacuumCleaner_3_0020.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_01_0029.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_01_0029.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_17_0006.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0258_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0258_h00.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0090_h103.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_31_0001.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_31_0001.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0267_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0267_pad.wav",
+    "static_background_source": "noise/static_and_hum/hvac_ventilation/val/ind_indust_AirConditioner_6_0000.wav",
+    "static_background_category": "static_and_hum/hvac_ventilation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_17_0016.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_17_0016.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0245_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0245_h00.wav",
+    "static_background_source": "noise/static_and_hum/generator_50hz_mains/val/synth_hum_59_0127.wav",
+    "static_background_category": "static_and_hum/generator_50hz_mains",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_07_0016.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_07_0016.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_13_0006.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0236_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0236_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Cafe_1_0212.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/mortar_rockets/val/war_mort_0000.wav",
+    "primary_artillery_type": "mortar_rockets",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/mortar_rockets/val/war_mort_0000.wav",
+      "noise/artillery/bomb_blasts/val/war_hatc_0017.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0284_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0284_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Restau_0224.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/machine_gun/val/war_mach_0021.wav",
+    "primary_artillery_type": "machine_gun",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/machine_gun/val/war_mach_0021.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0274_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0274_h00.wav",
+    "static_background_source": "noise/aviation/helicopters/val/esc_roto_3-6863_0001.wav",
+    "static_background_category": "aviation/helicopters",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_25_0014.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_25_0014.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_02_0005.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0287_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0287_pad.wav",
+    "static_background_source": "noise/platform_interior/bunker_trench_echo/val/synth_bunker_0153.wav",
+    "static_background_category": "platform_interior/bunker_trench_echo",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_22_0008.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_22_0008.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0279_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0279_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0070.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_17_0004.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_17_0004.wav",
+      "noise/artillery/mortar_rockets/val/war_mort_0021.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0303_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0303_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0008.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_30_0000.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_30_0000.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0281_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0281_pad.wav",
+    "static_background_source": "noise/environmental/rain_precipitation/val/ind_train_5-197121-A-45_0000.wav",
+    "static_background_category": "environmental/rain_precipitation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_03_0018.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_03_0018.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_17_0015.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0320_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0320_pad.wav",
+    "static_background_source": "noise/static_and_hum/hvac_ventilation/val/snsd_hvac_0013.wav",
+    "static_background_category": "static_and_hum/hvac_ventilation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_22_0009.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_22_0009.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0329_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0329_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0088_h80.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/mortar_rockets/val/war_mort_0011.wav",
+    "primary_artillery_type": "mortar_rockets",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/mortar_rockets/val/war_mort_0011.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_20_0004.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0361_h01.wav",
+    "clean_path": "clean_speech/val/spk_aug_0361_h01.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_VacuumCleaner_8_0024.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_14_0013.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_14_0013.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0362_h01.wav",
+    "clean_path": "clean_speech/val/spk_aug_0362_h01.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/esc_airc_2-9886_0002.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_09_0003.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_09_0003.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0343_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0343_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Restau_0207.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_01_0018.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_01_0018.wav",
+      "noise/artillery/bomb_blasts/val/war_hatc_0018.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0363_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0363_h00.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/esc_airc_1-1168_0000.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0022.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0022.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0348_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0348_pad.wav",
+    "static_background_source": "noise/platform_interior/tank_hull_reverb/val/snsd_tank_0012.wav",
+    "static_background_category": "platform_interior/tank_hull_reverb",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_09_0001.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_09_0001.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_19_0003.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0365_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0365_h00.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_VacuumCleaner_2_0014.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_11_0005.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_11_0005.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0375_h01.wav",
+    "clean_path": "clean_speech/val/spk_aug_0375_h01.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0006.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_29_0013.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_29_0013.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0356_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0356_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_CafeTe_0025.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0019.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0019.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_07_0016.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0345_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0345_h00.wav",
+    "static_background_source": "noise/static_and_hum/hvac_ventilation/val/snsd_hvac_0012.wav",
+    "static_background_category": "static_and_hum/hvac_ventilation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_10_0005.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_10_0005.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_07_0016.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0364_h02.wav",
+    "clean_path": "clean_speech/val/spk_aug_0364_h02.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0086_h32.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0019.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0019.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_25_0034.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0375_h02.wav",
+    "clean_path": "clean_speech/val/spk_aug_0375_h02.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0089_h154.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0036.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0036.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0374_h01.wav",
+    "clean_path": "clean_speech/val/spk_aug_0374_h01.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0090_h108.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_22_0004.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_22_0004.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_25_0014.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0377_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0377_h00.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_WasherDryer_6_0006.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0011.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0011.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0378_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0378_h00.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0050_h01.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_15_0008.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_15_0008.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_07_0025.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0378_h01.wav",
+    "clean_path": "clean_speech/val/spk_aug_0378_h01.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_CafeTe_0147.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_29_0012.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_29_0012.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_16_0003.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0378_h03.wav",
+    "clean_path": "clean_speech/val/spk_aug_0378_h03.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0086_h11.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_15_0002.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_15_0002.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0378_h05.wav",
+    "clean_path": "clean_speech/val/spk_aug_0378_h05.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0085_h42.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0018.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0018.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0378_h02.wav",
+    "clean_path": "clean_speech/val/spk_aug_0378_h02.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0083_h32.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_05_0002.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_05_0002.wav",
+      "noise/artillery/machine_gun/val/war_mach_0012.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0387_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0387_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Restau_0183.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_26_0006.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_26_0006.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0393_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0393_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0026.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0005.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0005.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0397_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0397_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Restau_0064.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0006.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0006.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0406_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0406_pad.wav",
+    "static_background_source": "noise/platform_interior/bunker_trench_echo/val/synth_bunker_0064.wav",
+    "static_background_category": "platform_interior/bunker_trench_echo",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0007.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0007.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0409_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0409_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Restau_0014.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0022.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0022.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0407_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0407_h00.wav",
+    "static_background_source": "noise/platform_interior/tank_hull_reverb/val/synth_tank_hull_0118.wav",
+    "static_background_category": "platform_interior/tank_hull_reverb",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0021.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0021.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0429_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0429_pad.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_CopyMachine_5_0004.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_20_0000.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_20_0000.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0395_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0395_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0085_h113.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_08_0014.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_08_0014.wav",
+      "noise/artillery/bomb_blasts/val/war_hatc_0002.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0456_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0456_h00.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0109.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_18_0000.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_18_0000.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0457_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0457_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_airpla_4-251959-A-47_0000.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_14_0010.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_14_0010.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0433_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0433_pad.wav",
+    "static_background_source": "noise/static_and_hum/rfi_emi_buzz/val/synth_rfi_0110.wav",
+    "static_background_category": "static_and_hum/rfi_emi_buzz",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_16_0010.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_16_0010.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_07_0012.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0461_h01.wav",
+    "clean_path": "clean_speech/val/spk_aug_0461_h01.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0034.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_08_0008.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_08_0008.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0461_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0461_h00.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0081_h155.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/machine_gun/val/war_mach_0017.wav",
+    "primary_artillery_type": "machine_gun",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/machine_gun/val/war_mach_0017.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_17_0015.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0481_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0481_pad.wav",
+    "static_background_source": "noise/static_and_hum/rfi_emi_buzz/val/synth_rfi_0118.wav",
+    "static_background_category": "static_and_hum/rfi_emi_buzz",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_00_0008.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_00_0008.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0526_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0526_h00.wav",
+    "static_background_source": "noise/environmental/rain_precipitation/val/esc_rain_5-1886_0001.wav",
+    "static_background_category": "environmental/rain_precipitation",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0000.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0000.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0466_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0466_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0090_h00.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_07_0012.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_07_0012.wav",
+      "noise/artillery/small_arms_gunfire/val/war_smal_0002.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0462_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0462_pad.wav",
+    "static_background_source": "noise/platform_interior/tank_hull_reverb/val/snsd_tank_0002.wav",
+    "static_background_category": "platform_interior/tank_hull_reverb",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_08_0021.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_08_0021.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_05_0002.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0472_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0472_h00.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0081_h84.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0015.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0015.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_10_0011.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0528_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0528_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0096.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_10_0022.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_10_0022.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0489_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0489_pad.wav",
+    "static_background_source": "noise/static_and_hum/generator_50hz_mains/val/synth_hum_60_0026.wav",
+    "static_background_category": "static_and_hum/generator_50hz_mains",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_03_0009.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_03_0009.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_29_0013.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0535_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0535_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0082_h71.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_07_0014.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_07_0014.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0495_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0495_pad.wav",
+    "static_background_source": "noise/platform_interior/bunker_trench_echo/val/synth_bunker_0153.wav",
+    "static_background_category": "platform_interior/bunker_trench_echo",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_21_0023.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_21_0023.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_07_0008.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0540_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0540_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Cafe_1_0032.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_01_0021.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_01_0021.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0519_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0519_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0083_h45.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_07_0023.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_07_0023.wav",
+      "noise/artillery/howitzer_artillery/val/war_arti_0023.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0546_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0546_pad.wav",
+    "static_background_source": "noise/comms_channel/vhf_uhf_static/val/synth_vhf_0208.wav",
+    "static_background_category": "comms_channel/vhf_uhf_static",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_19_0013.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_19_0013.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0524_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0524_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0083_h96.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_04_0003.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_04_0003.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_23_0003.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0505_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0505_pad.wav",
+    "static_background_source": "noise/platform_interior/tank_hull_reverb/val/synth_tank_hull_0077.wav",
+    "static_background_category": "platform_interior/tank_hull_reverb",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_07_0003.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_07_0003.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_08_0025.wav"
+    ],
+    "snr_db": -6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0572_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0572_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0086_h60.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_18_0003.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_18_0003.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0589_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0589_pad.wav",
+    "static_background_source": "noise/static_and_hum/hvac_ventilation/val/ind_indust_AirConditioner_3_0004.wav",
+    "static_background_category": "static_and_hum/hvac_ventilation",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0014.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0014.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0575_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0575_h00.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0085_h111.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_07_0020.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_07_0020.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_04_0005.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0590_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0590_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_CafeTe_0265.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_12_0011.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_12_0011.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0596_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0596_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_CafeTe_0147.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_10_0014.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_10_0014.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0611_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0611_pad.wav",
+    "static_background_source": "noise/platform_interior/tank_hull_reverb/val/synth_tank_hull_0196.wav",
+    "static_background_category": "platform_interior/tank_hull_reverb",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_08_0038.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_08_0038.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0618_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0618_h00.wav",
+    "static_background_source": "noise/static_and_hum/rfi_emi_buzz/val/synth_rfi_0045.wav",
+    "static_background_category": "static_and_hum/rfi_emi_buzz",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0017.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0017.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0630_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0630_h00.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0085_h83.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_16_0003.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_16_0003.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0636_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0636_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0093.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0035.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_27_0035.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0595_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0595_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Babble_0049.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/Red_Libr_09_0003.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/Red_Libr_09_0003.wav",
+      "noise/artillery/howitzer_artillery/val/war_arti_0003.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0628_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0628_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0082_h24.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_17_0015.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_17_0015.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_02_0001.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0649_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0649_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Restau_0244.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_30_0010.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_30_0010.wav"
+    ],
+    "snr_db": 9.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0629_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0629_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0085_h75.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/war_arti_0017.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/war_arti_0017.wav",
+      "noise/artillery/small_arms_gunfire/val/war_smal_0002.wav"
+    ],
+    "snr_db": 12.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0633_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0633_h00.wav",
+    "static_background_source": "noise/industrial/heavy_machinery/val/ind_indust_VacuumCleaner_1_0001.wav",
+    "static_background_category": "industrial/heavy_machinery",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0012.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_06_0012.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_16_0003.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0631_h00.wav",
+    "clean_path": "clean_speech/val/spk_aug_0631_h00.wav",
+    "static_background_source": "noise/comms_channel/vhf_uhf_static/val/synth_vhf_0245.wav",
+    "static_background_category": "comms_channel/vhf_uhf_static",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_20_0001.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_20_0001.wav",
+      "noise/artillery/howitzer_artillery/val/Red_Libr_12_0000.wav"
+    ],
+    "snr_db": 15.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0674_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0674_pad.wav",
+    "static_background_source": "noise/aviation/fighter_jets/val/av_aug_0087_h78.wav",
+    "static_background_category": "aviation/fighter_jets",
+    "primary_artillery_source": "noise/artillery/bomb_blasts/val/war_hatc_0011.wav",
+    "primary_artillery_type": "bomb_blasts",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/bomb_blasts/val/war_hatc_0011.wav",
+      "noise/artillery/small_arms_gunfire/val/war_smal_0007.wav"
+    ],
+    "snr_db": 3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0683_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0683_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_CafeTe_0208.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_25_0007.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 1,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_25_0007.wav"
+    ],
+    "snr_db": 6.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0688_pad.wav",
+    "clean_path": "clean_speech/val/spk_aug_0688_pad.wav",
+    "static_background_source": "noise/speech_babble/troop_crowd_babble/val/esc_troo_Cafe_1_0282.wav",
+    "static_background_category": "speech_babble/troop_crowd_babble",
+    "primary_artillery_source": "noise/artillery/machine_gun/val/war_mach_0012.wav",
+    "primary_artillery_type": "machine_gun",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/machine_gun/val/war_mach_0012.wav",
+      "noise/artillery/howitzer_artillery/val/war_arti_0012.wav"
+    ],
+    "snr_db": 0.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  },
+  {
+    "noisy_path": "noisy_speech_low/val/spk_aug_0698_h01.wav",
+    "clean_path": "clean_speech/val/spk_aug_0698_h01.wav",
+    "static_background_source": "noise/comms_channel/vhf_uhf_static/val/synth_vhf_0116.wav",
+    "static_background_category": "comms_channel/vhf_uhf_static",
+    "primary_artillery_source": "noise/artillery/howitzer_artillery/val/GOLD_TAP_22_0005.wav",
+    "primary_artillery_type": "howitzer_artillery",
+    "artillery_sources_count": 2,
+    "all_artillery_sources": [
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_22_0005.wav",
+      "noise/artillery/howitzer_artillery/val/GOLD_TAP_13_0004.wav"
+    ],
+    "snr_db": -3.0,
+    "mix_type": "tactical_simple_mix",
+    "duration": 3.0,
+    "sample_rate": 16000,
+    "split": "val"
+  }
+]

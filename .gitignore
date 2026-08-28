@@ -1,0 +1,8 @@
+.agent
+scratch/
+scripts/
+dataset/noise/
+noise/
+dataset/.cache_raw/
+*.zip
+*.log
