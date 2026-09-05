@@ -11,6 +11,13 @@ export type ConnectionStatus =
   | "error"
   | "disconnected";
 
+export type ReviewTrack = "raw" | "proc" | null;
+
+export interface AudioDevice {
+  deviceId: string;
+  label: string;
+}
+
 export interface TelemetryData {
   signalLevel: number; // dBFS (e.g. -24.5)
   rawLevel: number; // dBFS (e.g. -18.2)
@@ -26,16 +33,19 @@ export interface TelemetryData {
 
 export interface EngineState {
   isStreaming: boolean;
-  isIsolationOn: boolean; // true: AI enhanced speech; false: raw bypass
+  isBypassActive: boolean; // true: listening to raw mic; false: DPDFNet-8 enhanced speech
   isMicMuted: boolean;
   isSpeakerMuted: boolean;
+  speakerVolume: number; // 0 to 100
+  availableMics: AudioDevice[];
+  selectedMicId: string;
   connectionStatus: ConnectionStatus;
   errorMessage: string | null;
-  activeMicLabel: string;
   activeModelName: string;
-  streamDuration: number; // seconds
-  viewMode: ViewMode;
   telemetry: TelemetryData;
+  isReviewPlaying: boolean;
+  activeReviewTrack: ReviewTrack;
+  hasRecordedAudio: boolean;
 }
 
 export interface AnalyserData {

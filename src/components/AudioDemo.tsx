@@ -2,51 +2,84 @@
 
 import React from "react";
 import { useAudioEngine } from "@/hooks/useAudioEngine";
-import Playlist from "./audio/Playlist";
-import WaveformVisualizer from "./audio/WaveformVisualizer";
-import PlayerControls from "./audio/PlayerControls";
+import AudacityWaveformTrack from "./audio/AudacityWaveformTrack";
 import Telemetry from "./audio/Telemetry";
 
 export default function AudioDemo(): React.JSX.Element {
   const {
     state,
+    engineRef,
+    selectMic,
     toggleStream,
-    toggleIsolation,
+    toggleBypass,
     toggleMuteMic,
     toggleMuteSpeaker,
-    setViewMode,
+    setVolume,
+    toggleReviewPlayback,
+    startReviewPlaybackAt,
     clearError,
-    getRawData,
-    getProcData,
   } = useAudioEngine();
+
+  // Status Badge Helper
+  const renderStatusBadge = () => {
+    switch (state.connectionStatus) {
+      case "connected":
+        return (
+          <div className="flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="font-bold">Streaming (ws://localhost:8000)</span>
+          </div>
+        );
+      case "connecting":
+        return (
+          <div className="flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-mono bg-amber-500/10 border border-amber-500/30 text-amber-400">
+            <span className="h-2 w-2 rounded-full bg-amber-400 animate-spin" />
+            <span className="font-bold">Connecting...</span>
+          </div>
+        );
+      case "error":
+        return (
+          <div className="flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-mono bg-rose-500/10 border border-rose-500/30 text-rose-400">
+            <span className="h-2 w-2 rounded-full bg-rose-400" />
+            <span className="font-bold">Server Offline</span>
+          </div>
+        );
+      default:
+        return (
+          <div className="flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-mono bg-slate-500/10 border border-slate-500/30 text-slate-400">
+            <span className="h-2 w-2 rounded-full bg-slate-400" />
+            <span className="font-bold">Ready</span>
+          </div>
+        );
+    }
+  };
+
+  const rawSnrSign = state.telemetry.rawSnr && state.telemetry.rawSnr > 0 ? "+" : "";
+  const procSnrSign = state.telemetry.enhancedSnr && state.telemetry.enhancedSnr > 0 ? "+" : "";
 
   return (
     <section
       id="player"
-      className="w-full py-20 border-b border-vaani-border bg-vaani-bg transition-colors duration-200"
+      className="w-full py-16 border-b border-vaani-border bg-vaani-bg transition-colors duration-200"
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-8 flex flex-col items-center">
-        {/* Tagline */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded border border-vaani-accent/40 bg-vaani-accent/10 text-vaani-accent text-[0.7rem] font-bold tracking-widest uppercase shadow-glow-sm">
-          <span>REAL-TIME NEURAL STREAMING SUITE</span>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col space-y-6">
+        
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-vaani-accent/40 bg-vaani-accent/10 text-vaani-accent text-[0.7rem] font-bold tracking-widest uppercase shadow-glow-sm">
+            <span>FULL-DUPLEX WEBSOCKET NEURAL STREAMING SUITE</span>
+          </div>
+          <h2 className="text-2xl md:text-4xl font-extrabold uppercase tracking-tight text-vaani-text">
+            LIVE COMBAT SPEECH ENHANCEMENT DEMO
+          </h2>
+          <p className="text-xs md:text-sm text-vaani-text-muted max-w-2xl">
+            Stream microphone audio over WebSockets to <code className="text-vaani-accent">DPDFNet-8 ONNX</code>. Inspect the continuous 30-second rolling waveforms in real time, compare with Raw Bypass, and click any waveform to play back review segments.
+          </p>
         </div>
 
-        {/* Section Heading */}
-        <h2 className="text-2xl md:text-4xl font-extrabold uppercase tracking-tight text-center text-vaani-text mb-4">
-          LIVE COMBAT SPEECH ENHANCEMENT DEMO
-        </h2>
-
-        <p className="text-xs md:text-sm text-vaani-text-muted text-center max-w-2xl mb-12">
-          Click &quot;Start Live Mic Stream&quot; to capture your microphone and stream full-duplex PCM16 frames to the local DPDFNet-8 neural engine at{" "}
-          <code className="px-1 py-0.5 rounded bg-vaani-card border border-vaani-border text-vaani-cyan font-mono text-[0.8rem]">
-            ws://localhost:8000
-          </code>
-          . Toggle &quot;Voice Isolation&quot; for instant A/B raw bypass comparison.
-        </p>
-
-        {/* Connection / Permission Error Banner */}
+        {/* Connection / Permission Error Alert */}
         {state.errorMessage && (
-          <div className="w-full max-w-4xl mb-6 p-4 rounded-xl border border-rose-500/50 bg-rose-950/30 text-rose-200 flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-xs shadow-lg animate-fadeIn">
+          <div className="p-4 rounded-xl border border-rose-500/50 bg-rose-950/30 text-rose-200 flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-xs shadow-lg animate-fadeIn">
             <div className="flex items-start gap-3">
               <span className="text-rose-400 text-lg">⚠️</span>
               <div>
@@ -57,11 +90,7 @@ export default function AudioDemo(): React.JSX.Element {
                   {state.errorMessage}
                 </div>
                 <div className="text-[0.7rem] text-rose-300/60 mt-1">
-                  Ensure the backend is running:{" "}
-                  <code className="px-1 bg-black/40 rounded text-rose-300">
-                    python -m server.main
-                  </code>{" "}
-                  and browser microphone permission is granted.
+                  Ensure the backend is running: <code className="px-1 bg-black/40 rounded text-rose-300">python -m server.main</code> and browser microphone permission is granted.
                 </div>
               </div>
             </div>
@@ -85,69 +114,186 @@ export default function AudioDemo(): React.JSX.Element {
           </div>
         )}
 
-        {/* Main Audio Player Suite Container */}
-        <div className="w-full rounded-2xl border border-vaani-border bg-vaani-surface shadow-2xl overflow-hidden flex flex-col lg:flex-row transition-all hover:border-vaani-accent/40">
-          {/* Left: Hardware & Session HUD (Repurposed from Playlist) */}
-          <div className="w-full lg:w-[280px] lg:shrink-0 border-b lg:border-b-0 lg:border-r border-vaani-border bg-vaani-card/50">
-            <Playlist
-              connectionStatus={state.connectionStatus}
-              isStreaming={state.isStreaming}
-              activeMicLabel={state.activeMicLabel}
-              activeModelName={state.activeModelName}
-              isMicMuted={state.isMicMuted}
-              isSpeakerMuted={state.isSpeakerMuted}
-              onToggleMuteMic={toggleMuteMic}
-              onToggleMuteSpeaker={toggleMuteSpeaker}
-            />
+        {/* CONTROLS BAR */}
+        <div className="bg-white dark:bg-[#161b22] border border-slate-200 dark:border-slate-800 rounded-xl p-3 flex flex-wrap items-center justify-between gap-3 shadow-xs font-mono transition-colors">
+          {/* Left: Mic Select & Stream Start / Stop */}
+          <div className="flex items-center flex-wrap gap-2.5">
+            {/* Microphone Dropdown */}
+            <div className="relative min-w-[200px] sm:min-w-[250px]">
+              <select
+                value={state.selectedMicId}
+                onChange={(e) => selectMic(e.target.value)}
+                disabled={state.isStreaming}
+                className="w-full bg-slate-50 dark:bg-[#0d1117] border border-slate-200 dark:border-slate-700 hover:border-slate-300 text-slate-800 dark:text-slate-200 text-xs rounded-lg px-3 py-2 pr-8 appearance-none focus:outline-none focus:ring-1 focus:ring-slate-400 transition-colors disabled:opacity-60"
+              >
+                {state.availableMics.length === 0 ? (
+                  <option value="">Default Microphone</option>
+                ) : (
+                  state.availableMics.map((mic) => (
+                    <option key={mic.deviceId} value={mic.deviceId}>
+                      {mic.label}
+                    </option>
+                  ))
+                )}
+              </select>
+              <span className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 text-xs">
+                ▼
+              </span>
+            </div>
+
+            {/* Stream Toggle Button */}
+            <button
+              onClick={toggleStream}
+              disabled={state.connectionStatus === "connecting"}
+              className={`px-4 py-2 rounded-lg text-xs font-bold flex items-center space-x-2 transition-all shadow-xs active:scale-[0.98] ${
+                state.isStreaming
+                  ? "bg-rose-600 hover:bg-rose-500 text-white shadow-rose-900/40"
+                  : "bg-slate-900 dark:bg-vaani-accent text-white dark:text-black hover:bg-slate-800 dark:hover:bg-vaani-accent-light"
+              } disabled:opacity-50`}
+            >
+              <span>{state.isStreaming ? "⏹" : "▶"}</span>
+              <span>{state.isStreaming ? "Stop" : "Start"}</span>
+            </button>
           </div>
 
-          {/* Right: Main Visualizer & Controls */}
-          <div className="flex-1 flex flex-col min-w-0 bg-vaani-bg">
-            {/* Visualizer Canvas Area */}
-            <div className="flex-1 relative min-h-[260px] md:min-h-[340px]">
-              <WaveformVisualizer
-                getRawData={getRawData}
-                getProcData={getProcData}
-                viewMode={state.viewMode}
-                isActive={state.isStreaming}
+          {/* Right: Bypass Filter, Mute Mic, Mute Speaker, Volume Slider, Status */}
+          <div className="flex items-center flex-wrap gap-2">
+            {/* Bypass Filtering Button */}
+            <button
+              onClick={toggleBypass}
+              title="Toggle filter bypass (listen to raw mic instead of filtered audio)"
+              className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center space-x-1.5 border transition-colors ${
+                state.isBypassActive
+                  ? "bg-amber-500/15 border-amber-500/50 text-amber-500"
+                  : "bg-slate-50 dark:bg-[#0d1117] border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
+              }`}
+            >
+              <span>⚙</span>
+              <span>{state.isBypassActive ? "Bypass: Active" : "Bypass Filter"}</span>
+            </button>
+
+            {/* Mute Mic Button */}
+            <button
+              onClick={toggleMuteMic}
+              className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center space-x-1.5 border transition-colors ${
+                state.isMicMuted
+                  ? "bg-rose-500/15 border-rose-500/50 text-rose-400"
+                  : "bg-slate-50 dark:bg-[#0d1117] border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
+              }`}
+            >
+              <span>🎤</span>
+              <span>{state.isMicMuted ? "Mic Muted" : "Mute Mic"}</span>
+            </button>
+
+            {/* Mute Speaker Button */}
+            <button
+              onClick={toggleMuteSpeaker}
+              className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center space-x-1.5 border transition-colors ${
+                state.isSpeakerMuted
+                  ? "bg-rose-500/15 border-rose-500/50 text-rose-400"
+                  : "bg-slate-50 dark:bg-[#0d1117] border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
+              }`}
+            >
+              <span>🔊</span>
+              <span>{state.isSpeakerMuted ? "Speaker Muted" : "Mute Speaker"}</span>
+            </button>
+
+            {/* Speaker Volume Slider */}
+            <div className="hidden sm:flex items-center space-x-2 pl-2 border-l border-slate-200 dark:border-slate-800">
+              <span className="text-slate-400 text-xs">🔈</span>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={state.speakerVolume}
+                onChange={(e) => setVolume(parseInt(e.target.value, 10))}
+                className="w-20 accent-slate-700 dark:accent-vaani-accent h-1 bg-slate-200 dark:bg-slate-700 rounded-lg cursor-pointer"
+                title="Speaker volume"
               />
             </div>
 
-            {/* Playback Controls Bar */}
-            <PlayerControls
-              isStreaming={state.isStreaming}
-              connectionStatus={state.connectionStatus}
-              streamDuration={state.streamDuration}
-              isIsolationOn={state.isIsolationOn}
-              viewMode={state.viewMode}
-              onToggleStream={toggleStream}
-              onToggleIsolation={() => toggleIsolation()}
-              onSetViewMode={setViewMode}
-            />
-
-            {/* Live Telemetry Row */}
-            <Telemetry telemetry={state.telemetry} />
+            {/* Status Badge */}
+            <div className="pl-2 border-l border-slate-200 dark:border-slate-800">
+              {renderStatusBadge()}
+            </div>
           </div>
         </div>
 
-        {/* Bottom Technical CTA Box */}
-        <div className="mt-12 p-6 rounded-xl border border-vaani-border bg-vaani-surface flex flex-col sm:flex-row items-center justify-between w-full max-w-3xl shadow-lg gap-4">
-          <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-vaani-text">
-              WANT TO BENCHMARK WITH CUSTOM ON-TARGET EMBEDDED HARNESS?
-            </div>
-            <div className="text-[0.75rem] text-vaani-text-muted mt-0.5">
-              Run automated streaming benchmarks with simulated combat noise via{" "}
-              <code className="text-vaani-accent">python server/client/test_client.py</code>.
-            </div>
-          </div>
-          <a
-            href="#specs"
-            className="px-5 py-2.5 rounded border border-vaani-border bg-vaani-card hover:border-vaani-accent text-vaani-text hover:text-vaani-accent text-xs font-extrabold uppercase tracking-wider transition-all whitespace-nowrap"
-          >
-            Technical Specs &gt;&gt;
-          </a>
+        {/* AUDACITY-STYLE 30-SECOND CONTINUOUS ROLLING WAVEFORMS */}
+        <div className="space-y-4">
+          {/* TRACK 1: RAW INPUT WAVEFORM */}
+          <AudacityWaveformTrack
+            trackType="raw"
+            title="Raw Input"
+            badgeDotClass="bg-blue-500"
+            strokeColor="#2563eb"
+            fillColor="rgba(59, 130, 246, 0.22)"
+            isStreaming={state.isStreaming}
+            hasRecordedAudio={state.hasRecordedAudio}
+            isReviewPlaying={state.isReviewPlaying}
+            activeReviewTrack={state.activeReviewTrack}
+            engineRef={engineRef}
+            onToggleReview={toggleReviewPlayback}
+            onSeekReview={startReviewPlaybackAt}
+            snrText={
+              state.telemetry.rawSnr !== undefined
+                ? `SNR: ${rawSnrSign}${state.telemetry.rawSnr.toFixed(1)} dB`
+                : "SNR: -- dB"
+            }
+            levelText={
+              state.telemetry.rawLevel > -90
+                ? `${state.telemetry.rawLevel.toFixed(1)} dB`
+                : "-inf dB"
+            }
+          />
+
+          {/* TRACK 2: ENHANCED SAMPLE WAVEFORM */}
+          <AudacityWaveformTrack
+            trackType="proc"
+            title="Enhanced Sample (DPDFNet-8)"
+            badgeDotClass="bg-teal-500"
+            strokeColor="#0d9488"
+            fillColor="rgba(13, 148, 136, 0.22)"
+            isStreaming={state.isStreaming}
+            hasRecordedAudio={state.hasRecordedAudio}
+            isReviewPlaying={state.isReviewPlaying}
+            activeReviewTrack={state.activeReviewTrack}
+            engineRef={engineRef}
+            onToggleReview={toggleReviewPlayback}
+            onSeekReview={startReviewPlaybackAt}
+            snrText={
+              state.telemetry.enhancedSnr !== undefined
+                ? `SNR: ${procSnrSign}${state.telemetry.enhancedSnr.toFixed(1)} dB`
+                : "SNR: -- dB"
+            }
+            pesqText={
+              state.telemetry.pesq !== undefined
+                ? `PESQ: ${state.telemetry.pesq.toFixed(2)}`
+                : undefined
+            }
+            stoiText={
+              state.telemetry.stoi !== undefined
+                ? `STOI: ${state.telemetry.stoi.toFixed(2)}`
+                : undefined
+            }
+            levelText={
+              state.telemetry.signalLevel > -90
+                ? `${state.telemetry.signalLevel.toFixed(1)} dB`
+                : "-inf dB"
+            }
+          />
         </div>
+
+        {/* Real-time Telemetry HUD */}
+        <div className="rounded-xl border border-vaani-border overflow-hidden shadow-lg">
+          <Telemetry telemetry={state.telemetry} />
+        </div>
+
+        {/* Footer Technical Note */}
+        <div className="text-center text-xs font-mono text-vaani-text-dim">
+          <span>Continuous 30.0s Rolling Window Buffer &bull; Click Waveform to Playback &bull; ONNX Recurrent STFT</span>
+        </div>
+
       </div>
     </section>
   );

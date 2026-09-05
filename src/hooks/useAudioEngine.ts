@@ -1,21 +1,27 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { EngineState, ViewMode, ConnectionStatus, TelemetryData } from "@/lib/types";
+import {
+  EngineState,
+  ConnectionStatus,
+  TelemetryData,
+  AudioDevice,
+  ReviewTrack,
+} from "@/lib/types";
 import { VaaniAudioEngine } from "@/lib/audioEngine";
 
 export function useAudioEngine() {
   const [state, setState] = useState<EngineState>({
     isStreaming: false,
-    isIsolationOn: true,
+    isBypassActive: false,
     isMicMuted: false,
     isSpeakerMuted: false,
+    speakerVolume: 100,
+    availableMics: [],
+    selectedMicId: "",
     connectionStatus: "idle",
     errorMessage: null,
-    activeMicLabel: "Default Microphone",
     activeModelName: "DPDFNet-8 HR (48kHz)",
-    streamDuration: 0,
-    viewMode: "waveform",
     telemetry: {
       signalLevel: 0,
       rawLevel: -100,
@@ -26,12 +32,13 @@ export function useAudioEngine() {
       pesq: 2.5,
       stoi: 0.85,
     },
+    isReviewPlaying: false,
+    activeReviewTrack: null,
+    hasRecordedAudio: false,
   });
 
   const engineRef = useRef<VaaniAudioEngine | null>(null);
-  const streamTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Initialize engine instance
   useEffect(() => {
     const engine = new VaaniAudioEngine({
       onStatusChange: (status: ConnectionStatus) => {
@@ -61,45 +68,48 @@ export function useAudioEngine() {
           telemetry,
         }));
       },
+      onReviewPlaybackEnded: () => {
+        setState((prev) => ({
+          ...prev,
+          isReviewPlaying: false,
+          activeReviewTrack: null,
+        }));
+      },
     });
 
     engineRef.current = engine;
 
+    // Enumerate microphones
+    engine.enumerateMics().then((mics: AudioDevice[]) => {
+      setState((prev) => ({
+        ...prev,
+        availableMics: mics,
+        selectedMicId: mics.length > 0 ? mics[0].deviceId : "",
+      }));
+    });
+
     return () => {
-      if (streamTimerRef.current) {
-        clearInterval(streamTimerRef.current);
-      }
       engine.destroy();
     };
   }, []);
 
-  // Stream duration counter
-  useEffect(() => {
-    if (state.isStreaming) {
-      const startTime = Date.now() - state.streamDuration * 1000;
-      streamTimerRef.current = setInterval(() => {
-        const elapsedSec = Math.floor((Date.now() - startTime) / 1000);
-        setState((prev) => ({ ...prev, streamDuration: elapsedSec }));
-      }, 1000);
-    } else {
-      if (streamTimerRef.current) {
-        clearInterval(streamTimerRef.current);
-        streamTimerRef.current = null;
-      }
+  const selectMic = useCallback(async (deviceId: string) => {
+    if (!engineRef.current) return;
+    engineRef.current.setDeviceId(deviceId);
+    setState((prev) => ({ ...prev, selectedMicId: deviceId }));
+
+    // If currently streaming, restart audio stream with new mic
+    if (engineRef.current.getIsStreaming()) {
+      engineRef.current.stopStream();
+      await engineRef.current.startStream();
     }
-    return () => {
-      if (streamTimerRef.current) {
-        clearInterval(streamTimerRef.current);
-      }
-    };
-  }, [state.isStreaming]);
+  }, []);
 
   const startStream = useCallback(async () => {
     if (!engineRef.current) return;
     setState((prev) => ({
       ...prev,
       errorMessage: null,
-      streamDuration: 0,
       connectionStatus: "connecting",
     }));
 
@@ -109,8 +119,9 @@ export function useAudioEngine() {
         ...prev,
         isStreaming: true,
         connectionStatus: "connected",
-        activeMicLabel: engineRef.current?.getActiveMicLabel() || prev.activeMicLabel,
-        activeModelName: engineRef.current?.getActiveModelName() || prev.activeModelName,
+        hasRecordedAudio: false,
+        isReviewPlaying: false,
+        activeReviewTrack: null,
       }));
     } catch (err: unknown) {
       const message =
@@ -131,6 +142,8 @@ export function useAudioEngine() {
       ...prev,
       isStreaming: false,
       connectionStatus: "idle",
+      hasRecordedAudio:
+        (engineRef.current?.frozenRawAudio && engineRef.current.frozenRawAudio.length > 0) || false,
     }));
   }, []);
 
@@ -142,54 +155,76 @@ export function useAudioEngine() {
     }
   }, [state.isStreaming, startStream, stopStream]);
 
-  const toggleIsolation = useCallback((on?: boolean) => {
+  const toggleBypass = useCallback(() => {
     if (!engineRef.current) return;
-    const target = on !== undefined ? on : !engineRef.current.getIsIsolationOn();
-    engineRef.current.toggleIsolation(target);
-    setState((prev) => ({ ...prev, isIsolationOn: target }));
+    const nextBypass = engineRef.current.toggleBypass();
+    setState((prev) => ({ ...prev, isBypassActive: nextBypass }));
   }, []);
 
   const toggleMuteMic = useCallback(() => {
     if (!engineRef.current) return;
-    const nextMuted = !state.isMicMuted;
-    engineRef.current.toggleMuteMic(nextMuted);
+    const nextMuted = engineRef.current.toggleMuteMic();
     setState((prev) => ({ ...prev, isMicMuted: nextMuted }));
-  }, [state.isMicMuted]);
+  }, []);
 
   const toggleMuteSpeaker = useCallback(() => {
     if (!engineRef.current) return;
-    const nextMuted = !state.isSpeakerMuted;
-    engineRef.current.toggleMuteSpeaker(nextMuted);
+    const nextMuted = engineRef.current.toggleMuteSpeaker();
     setState((prev) => ({ ...prev, isSpeakerMuted: nextMuted }));
-  }, [state.isSpeakerMuted]);
+  }, []);
 
-  const setViewMode = useCallback((mode: ViewMode) => {
-    setState((prev) => ({ ...prev, viewMode: mode }));
+  const setVolume = useCallback((volumePercent: number) => {
+    if (!engineRef.current) return;
+    engineRef.current.setVolume(volumePercent / 100.0);
+    setState((prev) => ({ ...prev, speakerVolume: volumePercent }));
+  }, []);
+
+  const toggleReviewPlayback = useCallback((trackType: "raw" | "proc") => {
+    if (!engineRef.current) return;
+    engineRef.current.toggleReviewPlayback(trackType);
+    setState((prev) => ({
+      ...prev,
+      isReviewPlaying: engineRef.current?.getIsReviewPlaying() || false,
+      activeReviewTrack: engineRef.current?.getActiveReviewTrack() || null,
+    }));
+  }, []);
+
+  const startReviewPlaybackAt = useCallback((trackType: "raw" | "proc", fraction: number) => {
+    if (!engineRef.current) return;
+    engineRef.current.startReviewPlayback(trackType, fraction);
+    setState((prev) => ({
+      ...prev,
+      isReviewPlaying: true,
+      activeReviewTrack: trackType,
+    }));
+  }, []);
+
+  const stopReviewPlayback = useCallback(() => {
+    if (!engineRef.current) return;
+    engineRef.current.stopReviewPlayback();
+    setState((prev) => ({
+      ...prev,
+      isReviewPlaying: false,
+      activeReviewTrack: null,
+    }));
   }, []);
 
   const clearError = useCallback(() => {
     setState((prev) => ({ ...prev, errorMessage: null }));
   }, []);
 
-  const getRawData = useCallback(() => {
-    return engineRef.current?.getRawAnalyserData();
-  }, []);
-
-  const getProcData = useCallback(() => {
-    return engineRef.current?.getProcessedAnalyserData();
-  }, []);
-
   return {
     state,
-    startStream,
-    stopStream,
+    engineRef,
+    selectMic,
     toggleStream,
-    toggleIsolation,
+    toggleBypass,
     toggleMuteMic,
     toggleMuteSpeaker,
-    setViewMode,
+    setVolume,
+    toggleReviewPlayback,
+    startReviewPlaybackAt,
+    stopReviewPlayback,
     clearError,
-    getRawData,
-    getProcData,
   };
 }

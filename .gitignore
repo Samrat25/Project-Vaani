@@ -27,3 +27,7 @@ env/
 # Environment
 .env
 
+# Generated audio samples
+samples/
+*.wav
+

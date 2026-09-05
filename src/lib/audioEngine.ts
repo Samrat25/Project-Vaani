@@ -4,6 +4,8 @@ import {
   ServerHandshake,
   ServerTelemetryMessage,
   ConnectionStatus,
+  AudioDevice,
+  ReviewTrack,
 } from "./types";
 import { VaaniSocket } from "./vaaniSocket";
 
@@ -12,6 +14,7 @@ export interface AudioEngineCallbacks {
   onError?: (error: string) => void;
   onTelemetry?: (telemetry: TelemetryData) => void;
   onHandshake?: (handshake: ServerHandshake) => void;
+  onReviewPlaybackEnded?: () => void;
 }
 
 export class VaaniAudioEngine {
@@ -33,18 +36,39 @@ export class VaaniAudioEngine {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private procFreqData: any = null;
 
+  // 30-Second Continuous Rolling Buffer
+  public windowDurationSec: number = 30.0;
+  public bufferCapacity: number = Math.round(30.0 * 16000);
+  public rawRing: Float32Array = new Float32Array(this.bufferCapacity);
+  public procRing: Float32Array = new Float32Array(this.bufferCapacity);
+  public rawWritePos: number = 0;
+  public procWritePos: number = 0;
+  public rawTotalWritten: number = 0;
+  public procTotalWritten: number = 0;
+
+  // Post-Stop Review Playback State
+  public frozenRawAudio: Float32Array | null = null;
+  public frozenProcAudio: Float32Array | null = null;
+  private reviewSourceNode: AudioBufferSourceNode | null = null;
+  private activeReviewTrack: ReviewTrack = null;
+  private reviewStartTimeCtx: number = 0;
+  private reviewStartOffsetSec: number = 0;
+  private reviewDurationSec: number = 0;
+  private isReviewPlaying: boolean = false;
+
   // Real-time streaming & playback state
   private socket: VaaniSocket | null = null;
   private _isStreaming: boolean = false;
-  private _isIsolationOn: boolean = true; // true = AI Enhanced; false = Raw Bypass
+  private _isBypassActive: boolean = false; // true = Raw Mic Bypass; false = DPDFNet-8 AI Filter
   private _isMicMuted: boolean = false;
   private _isSpeakerMuted: boolean = false;
   private _speakerVolume: number = 1.0;
   private nextPlayTime: number = 0;
   private callbacks: AudioEngineCallbacks;
 
-  // Device & session metadata
-  private activeMicLabel: string = "Default Microphone";
+  // Hardware & Session Metadata
+  private selectedDeviceId: string = "";
+  private availableMics: AudioDevice[] = [];
   private activeModelName: string = "DPDFNet-8 HR (48kHz)";
 
   // Live telemetry store
@@ -65,6 +89,32 @@ export class VaaniAudioEngine {
     this.callbacks = callbacks;
   }
 
+  public async enumerateMics(): Promise<AudioDevice[]> {
+    if (typeof navigator === "undefined" || !navigator.mediaDevices?.enumerateDevices) {
+      return [];
+    }
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const audioInputs = devices
+        .filter((d) => d.kind === "audioinput")
+        .map((d, index) => ({
+          deviceId: d.deviceId,
+          label: d.label || `Microphone ${index + 1}`,
+        }));
+      this.availableMics = audioInputs;
+      if (audioInputs.length > 0 && !this.selectedDeviceId) {
+        this.selectedDeviceId = audioInputs[0].deviceId;
+      }
+      return audioInputs;
+    } catch {
+      return [];
+    }
+  }
+
+  public setDeviceId(deviceId: string): void {
+    this.selectedDeviceId = deviceId;
+  }
+
   public async initAudioContext(): Promise<AudioContext> {
     if (!this.ctx || this.ctx.state === "closed") {
       const AudioCtxClass =
@@ -75,6 +125,18 @@ export class VaaniAudioEngine {
     }
     if (this.ctx.state === "suspended") {
       await this.ctx.resume();
+    }
+
+    const sampleRate = this.ctx.sampleRate;
+    const neededCapacity = Math.round(this.windowDurationSec * sampleRate);
+    if (this.bufferCapacity !== neededCapacity) {
+      this.bufferCapacity = neededCapacity;
+      this.rawRing = new Float32Array(this.bufferCapacity);
+      this.procRing = new Float32Array(this.bufferCapacity);
+      this.rawWritePos = 0;
+      this.procWritePos = 0;
+      this.rawTotalWritten = 0;
+      this.procTotalWritten = 0;
     }
 
     // Initialize Analysers if not already initialized
@@ -94,12 +156,11 @@ export class VaaniAudioEngine {
       this.procFreqData = new Uint8Array(this.procAnalyser.frequencyBinCount);
     }
 
-    // Output Speaker Node
+    // Output Speaker Gain Node
     if (!this.outputGainNode) {
       this.outputGainNode = this.ctx.createGain();
       const vol = this._isSpeakerMuted ? 0 : this._speakerVolume;
       this.outputGainNode.gain.setValueAtTime(vol, this.ctx.currentTime);
-      this.procAnalyser.connect(this.outputGainNode);
       this.outputGainNode.connect(this.ctx.destination);
     }
 
@@ -108,12 +169,13 @@ export class VaaniAudioEngine {
 
   public async startStream(): Promise<void> {
     if (this._isStreaming) return;
+    this.stopReviewPlayback(); // Stop any active playback review
 
     try {
       const ctx = await this.initAudioContext();
       this.callbacks.onStatusChange?.("connecting");
 
-      // 1. Initialize WebSocket
+      // 1. Connect WebSocket
       this.socket = new VaaniSocket({
         onStatusChange: (status) => this.callbacks.onStatusChange?.(status),
         onError: (err) => this.callbacks.onError?.(err),
@@ -129,12 +191,12 @@ export class VaaniAudioEngine {
         },
       });
 
-      // Connect to WebSocket using the browser's exact sample rate
       await this.socket.connect(ctx.sampleRate);
 
-      // 2. Request user microphone (raw input, no browser AEC/NS/AGC)
+      // 2. Request microphone input
       const constraints: MediaStreamConstraints = {
         audio: {
+          deviceId: this.selectedDeviceId ? { exact: this.selectedDeviceId } : undefined,
           echoCancellation: false,
           noiseSuppression: false,
           autoGainControl: false,
@@ -143,6 +205,7 @@ export class VaaniAudioEngine {
 
       try {
         this.micStream = await navigator.mediaDevices.getUserMedia(constraints);
+        await this.enumerateMics();
       } catch (err: unknown) {
         const msg =
           err instanceof Error
@@ -153,20 +216,14 @@ export class VaaniAudioEngine {
         throw new Error(msg);
       }
 
-      // Read active microphone label
-      const audioTracks = this.micStream.getAudioTracks();
-      if (audioTracks.length > 0 && audioTracks[0].label) {
-        this.activeMicLabel = audioTracks[0].label;
-      }
-
       this.micSourceNode = ctx.createMediaStreamSource(this.micStream);
 
-      // Connect mic to rawAnalyser for real-time visualizer
+      // Connect mic to rawAnalyser
       if (this.rawAnalyser) {
         this.micSourceNode.connect(this.rawAnalyser);
       }
 
-      // 3. Setup ScriptProcessor for streaming audio chunks
+      // 3. Audio Processor (1024 buffer size)
       const bufferSize = 1024;
       this.processorNode = ctx.createScriptProcessor(bufferSize, 1, 1);
 
@@ -175,7 +232,10 @@ export class VaaniAudioEngine {
 
         const inputChannel = e.inputBuffer.getChannelData(0);
 
-        // Calculate input RMS dB level
+        // Push raw samples into continuous 30-second rolling ring buffer
+        this.pushToRing(this.rawRing, inputChannel, "raw");
+
+        // Calculate raw input RMS dB level
         let sumSq = 0;
         for (let i = 0; i < inputChannel.length; i++) {
           sumSq += inputChannel[i] * inputChannel[i];
@@ -184,29 +244,29 @@ export class VaaniAudioEngine {
         const rawDb = rms > 0.0001 ? 20 * Math.log10(rms) : -100;
         this.currentTelemetry.rawLevel = Math.round(rawDb * 10) / 10;
 
-        // If mic is muted, zero out buffer
+        // If mic is muted, send silence
         const sendAudio = new Float32Array(inputChannel.length);
         if (!this._isMicMuted) {
           sendAudio.set(inputChannel);
         }
 
-        // Convert Float32 to Int16 PCM
+        // Convert Float32 to Int16 PCM (clamp to [-1, 1], scale by 0x8000/0x7fff)
         const pcm16 = new Int16Array(sendAudio.length);
         for (let i = 0; i < sendAudio.length; i++) {
           const s = Math.max(-1.0, Math.min(1.0, sendAudio[i]));
           pcm16[i] = s < 0 ? s * 0x8000 : s * 0x7fff;
         }
 
-        // Stream binary PCM16 to WebSocket
+        // Stream binary chunk to WebSocket
         if (this.socket && this.socket.isOpen) {
           this.socket.sendAudioChunk(pcm16);
         }
 
-        // Handle Audio Bypass (when Voice Isolation is OFF)
-        if (!this._isIsolationOn && !this._isSpeakerMuted && this.outputGainNode) {
+        // Handle Bypass Audio: output raw mic directly to speaker if bypass is active
+        if (this._isBypassActive && !this._isSpeakerMuted && this.outputGainNode) {
           e.outputBuffer.getChannelData(0).set(sendAudio);
         } else {
-          // Silence direct processor output so enhanced WebSocket stream handles speaker
+          // Silence direct processor output so filtered WebSocket stream handles speaker
           e.outputBuffer.getChannelData(0).fill(0);
         }
       };
@@ -228,6 +288,9 @@ export class VaaniAudioEngine {
   private handleEnhancedAudioChunk(float32Array: Float32Array) {
     if (!this._isStreaming || !this.ctx) return;
 
+    // Push into 30-second continuous rolling ring buffer
+    this.pushToRing(this.procRing, float32Array, "proc");
+
     // Calculate processed RMS dB
     let sumSq = 0;
     for (let i = 0; i < float32Array.length; i++) {
@@ -237,8 +300,8 @@ export class VaaniAudioEngine {
     const procDb = rms > 0.0001 ? 20 * Math.log10(rms) : -100;
     this.currentTelemetry.signalLevel = Math.round(procDb * 10) / 10;
 
-    // Play enhanced audio through speakers ONLY if Isolation is ON and Speaker not muted
-    if (this._isIsolationOn && !this._isSpeakerMuted && this.outputGainNode) {
+    // Play enhanced audio through speakers ONLY if not in bypass mode and speaker not muted
+    if (!this._isBypassActive && !this._isSpeakerMuted && this.outputGainNode) {
       const audioBuf = this.ctx.createBuffer(
         1,
         float32Array.length,
@@ -249,9 +312,10 @@ export class VaaniAudioEngine {
       const source = this.ctx.createBufferSource();
       source.buffer = audioBuf;
 
-      // Connect source through procAnalyser so enhanced waveform visualizer animates
+      // Connect source through procAnalyser
       if (this.procAnalyser) {
         source.connect(this.procAnalyser);
+        this.procAnalyser.connect(this.outputGainNode);
       } else {
         source.connect(this.outputGainNode);
       }
@@ -295,10 +359,47 @@ export class VaaniAudioEngine {
     this.callbacks.onTelemetry?.(this.currentTelemetry);
   }
 
+  public pushToRing(ring: Float32Array, samples: Float32Array, type: "raw" | "proc") {
+    const cap = this.bufferCapacity;
+    let pos = type === "raw" ? this.rawWritePos : this.procWritePos;
+
+    for (let i = 0; i < samples.length; i++) {
+      ring[pos] = samples[i];
+      pos = (pos + 1) % cap;
+    }
+
+    if (type === "raw") {
+      this.rawWritePos = pos;
+      this.rawTotalWritten += samples.length;
+    } else {
+      this.procWritePos = pos;
+      this.procTotalWritten += samples.length;
+    }
+  }
+
+  public extractChronologicalAudio(type: "raw" | "proc"): Float32Array {
+    const ring = type === "raw" ? this.rawRing : this.procRing;
+    const writePos = type === "raw" ? this.rawWritePos : this.procWritePos;
+    const totalWritten = type === "raw" ? this.rawTotalWritten : this.procTotalWritten;
+    const cap = this.bufferCapacity;
+
+    if (totalWritten === 0) return new Float32Array(0);
+
+    const isFull = totalWritten >= cap;
+    const count = isFull ? cap : totalWritten;
+    const out = new Float32Array(count);
+    const oldestIdx = isFull ? writePos : 0;
+
+    for (let i = 0; i < count; i++) {
+      out[i] = ring[(oldestIdx + i) % cap];
+    }
+    return out;
+  }
+
   public stopStream(): void {
     this._isStreaming = false;
 
-    // Flush and close WebSocket cleanly
+    // Flush and close WebSocket
     if (this.socket) {
       this.socket.close();
       this.socket = null;
@@ -320,24 +421,123 @@ export class VaaniAudioEngine {
       this.micStream = null;
     }
 
+    // Freeze recorded audio buffers for click-to-play review
+    this.frozenRawAudio = this.extractChronologicalAudio("raw");
+    this.frozenProcAudio = this.extractChronologicalAudio("proc");
+
     this.nextPlayTime = 0;
     this.callbacks.onStatusChange?.("disconnected");
   }
 
-  public toggleIsolation(on: boolean): void {
-    this._isIsolationOn = on;
+  // --------------------------------------------------------------------------
+  // Post-Stop Review Playback (Click on Waveform to Play)
+  // --------------------------------------------------------------------------
+
+  public async startReviewPlayback(trackType: "raw" | "proc", fraction: number = 0): Promise<void> {
+    if (this._isStreaming) return;
+
+    const audioData = trackType === "raw" ? this.frozenRawAudio : this.frozenProcAudio;
+    if (!audioData || audioData.length === 0) return;
+
+    const ctx = await this.initAudioContext();
+    this.stopReviewPlayback();
+
+    const sampleRate = ctx.sampleRate;
+    const totalDuration = audioData.length / sampleRate;
+    let startOffset = fraction * this.windowDurationSec;
+    if (startOffset > totalDuration) {
+      startOffset = 0;
+    }
+
+    const audioBuf = ctx.createBuffer(1, audioData.length, sampleRate);
+    audioBuf.getChannelData(0).set(audioData);
+
+    this.reviewSourceNode = ctx.createBufferSource();
+    this.reviewSourceNode.buffer = audioBuf;
+
+    if (this.outputGainNode) {
+      const curVol = this._isSpeakerMuted ? 0.0 : this._speakerVolume;
+      this.outputGainNode.gain.setValueAtTime(curVol, ctx.currentTime);
+      this.reviewSourceNode.connect(this.outputGainNode);
+    }
+
+    this.reviewStartTimeCtx = ctx.currentTime;
+    this.reviewStartOffsetSec = startOffset;
+    this.reviewDurationSec = totalDuration;
+    this.activeReviewTrack = trackType;
+    this.isReviewPlaying = true;
+
+    this.reviewSourceNode.onended = () => {
+      if (this.isReviewPlaying && this.activeReviewTrack === trackType) {
+        this.stopReviewPlayback();
+      }
+    };
+
+    this.reviewSourceNode.start(0, startOffset);
   }
 
-  public toggleMuteMic(muted: boolean): void {
-    this._isMicMuted = muted;
+  public stopReviewPlayback(): void {
+    if (this.reviewSourceNode) {
+      try {
+        this.reviewSourceNode.stop();
+        this.reviewSourceNode.disconnect();
+      } catch {
+        // Ignore already stopped
+      }
+      this.reviewSourceNode = null;
+    }
+    this.isReviewPlaying = false;
+    this.activeReviewTrack = null;
+    this.callbacks.onReviewPlaybackEnded?.();
   }
 
-  public toggleMuteSpeaker(muted: boolean): void {
-    this._isSpeakerMuted = muted;
+  public toggleReviewPlayback(trackType: "raw" | "proc"): void {
+    if (this.isReviewPlaying && this.activeReviewTrack === trackType) {
+      this.stopReviewPlayback();
+    } else {
+      this.startReviewPlayback(trackType, 0);
+    }
+  }
+
+  public getCurrentPlayheadSec(): number | null {
+    if (!this.isReviewPlaying || !this.ctx) return null;
+    const elapsed = this.ctx.currentTime - this.reviewStartTimeCtx;
+    const current = this.reviewStartOffsetSec + elapsed;
+    if (current > this.reviewDurationSec) {
+      return null;
+    }
+    return current;
+  }
+
+  public getIsReviewPlaying(): boolean {
+    return this.isReviewPlaying;
+  }
+
+  public getActiveReviewTrack(): ReviewTrack {
+    return this.activeReviewTrack;
+  }
+
+  // --------------------------------------------------------------------------
+  // Controls
+  // --------------------------------------------------------------------------
+
+  public toggleBypass(): boolean {
+    this._isBypassActive = !this._isBypassActive;
+    return this._isBypassActive;
+  }
+
+  public toggleMuteMic(): boolean {
+    this._isMicMuted = !this._isMicMuted;
+    return this._isMicMuted;
+  }
+
+  public toggleMuteSpeaker(): boolean {
+    this._isSpeakerMuted = !this._isSpeakerMuted;
     if (this.outputGainNode && this.ctx) {
-      const vol = muted ? 0 : this._speakerVolume;
+      const vol = this._isSpeakerMuted ? 0 : this._speakerVolume;
       this.outputGainNode.gain.setValueAtTime(vol, this.ctx.currentTime);
     }
+    return this._isSpeakerMuted;
   }
 
   public setVolume(volume: number): void {
@@ -376,12 +576,20 @@ export class VaaniAudioEngine {
     return this._isStreaming;
   }
 
-  public getIsIsolationOn(): boolean {
-    return this._isIsolationOn;
+  public getIsBypassActive(): boolean {
+    return this._isBypassActive;
   }
 
-  public getActiveMicLabel(): string {
-    return this.activeMicLabel;
+  public getIsMicMuted(): boolean {
+    return this._isMicMuted;
+  }
+
+  public getIsSpeakerMuted(): boolean {
+    return this._isSpeakerMuted;
+  }
+
+  public getSpeakerVolume(): number {
+    return this._speakerVolume;
   }
 
   public getActiveModelName(): string {
@@ -389,6 +597,7 @@ export class VaaniAudioEngine {
   }
 
   public destroy(): void {
+    this.stopReviewPlayback();
     this.stopStream();
     if (this.outputGainNode) {
       this.outputGainNode.disconnect();
