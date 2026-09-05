@@ -3,9 +3,9 @@ import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 
 export const metadata: Metadata = {
-  title: "Intelligence Designed To Evolve — VAANI Neural Audio",
+  title: "Project Vaani — Intelligence Designed To Evolve",
   description:
-    "Real-time, edge-AI adaptive voice isolation and neural noise cancellation engineered for acoustic extremes.",
+    "Project Vaani: Real-time, edge-AI adaptive voice isolation and neural noise cancellation engineered for mission-critical acoustic extremes.",
 };
 
 export default function RootLayout({

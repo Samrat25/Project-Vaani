@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 interface StatItem {
   icon: string;
@@ -117,19 +118,28 @@ export default function Hero(): React.JSX.Element {
   return (
     <section
       id="hero"
-      className="relative w-full min-h-[calc(100vh-80px)] flex flex-col justify-between items-center text-center px-4 sm:px-6 pt-10 sm:pt-14 pb-8 max-w-[1000px] mx-auto z-10"
+      className="relative w-full min-h-screen flex flex-col justify-between items-center text-center px-4 sm:px-6 pt-12 sm:pt-16 pb-8 max-w-[1000px] mx-auto z-10"
     >
-      {/* Middle Region: Trust Row, Dot-Matrix Headline, Subhead, Glowing CTA */}
+      {/* Middle Region: Logo, Project Vaani Tagline, Dot-Matrix Headline, Subhead, Glowing Demo CTAs */}
       <div className="flex-1 flex flex-col items-center justify-center max-w-[850px] my-auto">
-        {/* Tactical Status Tagline Pill */}
-        <div
-          className="inline-flex items-center gap-2.5 px-4 py-1.5 mb-6 sm:mb-8 rounded-full border border-white/20 bg-black/60 backdrop-blur-md text-[#c4c2c3] text-xs sm:text-[13px] font-mono tracking-wider anim-reveal shadow-lg"
-          style={{ "--d": "0.05s" } as React.CSSProperties}
-        >
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
-          <span className="text-white font-semibold">TACTICAL EDGE-AI ACOUSTIC ISOLATION</span>
-          <span className="text-neutral-500">•</span>
-          <span className="text-neutral-300">SUB-3MS AIR-GAPPED DSP</span>
+        {/* Project Vaani Minimal Brand Badge & Logo */}
+        <div className="flex flex-col items-center justify-center gap-3 mb-6">
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white p-2.5 shadow-[0_0_35px_rgba(255,255,255,0.45)] flex items-center justify-center hover:scale-105 transition-transform">
+            <img
+              src="/assets/logo.webp"
+              alt="Project Vaani"
+              className="w-10 h-10 object-contain"
+            />
+          </div>
+          <div
+            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/20 bg-black/60 backdrop-blur-md text-[#c4c2c3] text-xs sm:text-[13px] font-mono tracking-wider anim-reveal shadow-lg"
+            style={{ "--d": "0.05s" } as React.CSSProperties}
+          >
+            <span className="w-2 h-2 rounded-full bg-[#FF6B00] animate-pulse shadow-[0_0_8px_#FF6B00]" />
+            <span className="text-white font-bold tracking-widest uppercase">PROJECT VAANI</span>
+            <span className="text-neutral-500">•</span>
+            <span className="text-neutral-300">TACTICAL EDGE-AI ACOUSTIC ISOLATION</span>
+          </div>
         </div>
 
         {/* Headline: Solid White Dot-Matrix Display Font */}
@@ -150,29 +160,41 @@ export default function Hero(): React.JSX.Element {
 
         {/* Subhead */}
         <p
-          className="max-w-[540px] mx-auto font-sans text-[#d0d0d0] text-sm sm:text-base leading-relaxed opacity-85 mt-4 sm:mt-5 mb-7 sm:mb-9 anim-reveal"
+          className="max-w-[580px] mx-auto font-sans text-[#d0d0d0] text-sm sm:text-base leading-relaxed opacity-85 mt-4 sm:mt-5 mb-7 sm:mb-9 anim-reveal"
           style={{ "--d": "0.28s" } as React.CSSProperties}
         >
-          Build applications that reason, adapt and collaborate using an on-device neural voice isolation platform designed for mission-critical acoustic extremes.
+          Project Vaani is an on-device neural voice isolation platform designed for mission-critical acoustic extremes, delivering sub-3ms air-gapped tactical speech clarity.
         </p>
 
-        {/* Glowing CTA Button & Live Mic Demo Link */}
+        {/* Glowing Demo Buttons */}
         <div
           className="flex flex-wrap items-center justify-center gap-3.5 anim-reveal"
           style={{ "--d": "0.40s" } as React.CSSProperties}
         >
-          <a
-            href="#player"
+          <Link
+            href="/demo"
             className="inline-flex items-center justify-center bg-white text-black font-semibold text-sm sm:text-[14.5px] px-8 sm:px-10 py-3 sm:py-3.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_0_22px_rgba(255,255,255,0.32),0_0_44px_rgba(255,255,255,0.12)] hover:scale-105 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.25),0_0_28px_rgba(255,255,255,0.45),0_0_56px_rgba(255,255,255,0.2)] transition-all duration-200"
           >
-            Hear The Difference
-          </a>
-          <a
+            <span>Launch Live Demo</span>
+            <span className="ml-2 font-bold">&rarr;</span>
+          </Link>
+          <Link
             href="/demo"
             className="inline-flex items-center justify-center bg-[#28282a]/90 hover:bg-[#323234] border border-white/20 text-white font-medium text-sm sm:text-[14.5px] px-6 sm:px-8 py-3 sm:py-3.5 rounded-full transition-all duration-200 hover:scale-105"
           >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse mr-2" />
             <span>Live Mic Test Suite</span>
             <span className="ml-2 text-emerald-400 font-bold">&rarr;</span>
+          </Link>
+        </div>
+
+        {/* Subtle pre-recorded player jump */}
+        <div className="mt-4 anim-reveal" style={{ "--d": "0.48s" } as React.CSSProperties}>
+          <a
+            href="#player"
+            className="text-[11px] sm:text-xs text-neutral-400 hover:text-white underline decoration-dotted transition-colors"
+          >
+            Or audition pre-recorded tactical scenarios below ↓
           </a>
         </div>
       </div>

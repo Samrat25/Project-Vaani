@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ViperAudioPlayer from "@/components/ViperAudioPlayer";
 import WhatItDoes from "@/components/WhatItDoes";
@@ -10,7 +9,6 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main className="min-h-screen text-white relative">
-      <Navbar />
       <Hero />
       <ViperAudioPlayer />
       <WhatItDoes />

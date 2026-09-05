@@ -345,13 +345,13 @@ export default function ViperAudioPlayer(): React.JSX.Element {
         {/* Section Title */}
         <div className="text-center mb-8 sm:mb-12">
           <p className="text-[#FF6B00] text-xs sm:text-sm font-mono tracking-widest uppercase mb-2">
-            MISSION-CRITICAL AUDIO DEMONSTRATION
+            PROJECT VAANI • MISSION-CRITICAL AUDIO DEMONSTRATION
           </p>
           <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold uppercase tracking-wider text-white font-sans">
             EXPERIENCE THE POWER OF OUR AI AUDIO TECHNOLOGY
           </h2>
           <p className="text-neutral-400 text-xs sm:text-sm max-w-2xl mx-auto mt-2">
-            Authentic two-way military and emergency communications. Toggle Voice Isolation to audition sub-3ms real-time acoustic separation.
+            Project Vaani authentic two-way military and emergency communications. Toggle Voice Isolation to audition sub-3ms real-time acoustic separation.
           </p>
         </div>
 
