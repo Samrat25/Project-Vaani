@@ -2,11 +2,13 @@
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
+import viperWaveformsData from "@/data/viperWaveforms.json";
 
 interface Scenario {
   id: string;
-  category: "Military" | "Roadside";
+  category: "Military" | "Emergency";
   title: string;
+  subtitle: string;
   rawSrc: string;
   enhancedSrc: string;
   durationSec: number;
@@ -17,49 +19,55 @@ const SCENARIOS: Scenario[] = [
     id: "airspace",
     category: "Military",
     title: "AIRSPACE DISPUTE",
+    subtitle: "Tactical Fighter Intercept & Air Traffic Vector Clearances",
     rawSrc: "/samples/airspace_dispute_raw.wav",
     enhancedSrc: "/samples/airspace_dispute_enhanced.wav",
-    durationSec: 7.0,
+    durationSec: 22.0,
   },
   {
     id: "chinook",
     category: "Military",
     title: "CHINOOK",
+    subtitle: "Heavy-Lift Rotor Wash & Ground Squad LZ Extraction Comms",
     rawSrc: "/samples/chinook_raw.wav",
     enhancedSrc: "/samples/chinook_enhanced.wav",
-    durationSec: 7.0,
+    durationSec: 16.1,
   },
   {
     id: "refuelling",
     category: "Military",
     title: "AIRCRAFT REFUELLING",
+    subtitle: "Aerial Tanker Boom Operator & Cockpit In-Flight Coupling",
     rawSrc: "/samples/aircraft_refuelling_raw.wav",
     enhancedSrc: "/samples/aircraft_refuelling_enhanced.wav",
-    durationSec: 7.0,
+    durationSec: 218.4,
   },
   {
     id: "engine",
     category: "Military",
     title: "ENGINE ISSUES",
+    subtitle: "Armored Combat Vehicle Intercom & Mechanical Telemetry",
     rawSrc: "/samples/engine_issues_raw.wav",
     enhancedSrc: "/samples/engine_issues_enhanced.wav",
-    durationSec: 7.0,
+    durationSec: 28.0,
   },
   {
     id: "urban",
     category: "Military",
     title: "URBAN WARFARE",
+    subtitle: "Multi-Team Tactical Breach & High-Intensity Combat Comms",
     rawSrc: "/samples/urban_warfare_raw.wav",
     enhancedSrc: "/samples/urban_warfare_enhanced.wav",
-    durationSec: 7.0,
+    durationSec: 57.9,
   },
   {
     id: "crash",
-    category: "Roadside",
+    category: "Emergency",
     title: "PH CRASH ROADSIDE 01",
+    subtitle: "Highway Incident Response & Emergency Medical Radio Relaying",
     rawSrc: "/samples/crash_roadside_raw.wav",
     enhancedSrc: "/samples/crash_roadside_enhanced.wav",
-    durationSec: 7.0,
+    durationSec: 94.6,
   },
 ];
 
@@ -69,7 +77,7 @@ export default function ViperAudioPlayer(): React.JSX.Element {
   const [isVoiceIsolated, setIsVoiceIsolated] = useState<boolean>(true);
   const [isSpectrogramView, setIsSpectrogramView] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
-  const [duration, setDuration] = useState<number>(7.0);
+  const [duration, setDuration] = useState<number>(SCENARIOS[0].durationSec);
 
   const rawAudioRef = useRef<HTMLAudioElement | null>(null);
   const enhAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -132,6 +140,7 @@ export default function ViperAudioPlayer(): React.JSX.Element {
   const selectTrack = (index: number) => {
     setActiveTrackIndex(index);
     setCurrentTime(0);
+    setDuration(SCENARIOS[index].durationSec);
     const wasPlaying = isPlaying;
 
     setTimeout(() => {
@@ -197,35 +206,17 @@ export default function ViperAudioPlayer(): React.JSX.Element {
     }
   };
 
+  const handleLoadedMetadata = () => {
+    if (enhAudioRef.current && enhAudioRef.current.duration && !isNaN(enhAudioRef.current.duration)) {
+      setDuration(enhAudioRef.current.duration);
+    }
+  };
+
   // Audio ended handler
   const handleEnded = () => {
     setIsPlaying(false);
     setCurrentTime(0);
   };
-
-  // Static bars generation for dual-layer waveform display
-  const NUM_BARS = 76;
-  const barRatios = useRef<number[]>([]);
-  const voiceRatios = useRef<number[]>([]);
-
-  if (barRatios.current.length === 0) {
-    const raw: number[] = [];
-    const voice: number[] = [];
-    for (let i = 0; i < NUM_BARS; i++) {
-      const envelope = Math.sin((i / NUM_BARS) * Math.PI) * 0.8 + 0.2;
-      const noiseAmp = envelope * (0.35 + 0.65 * Math.abs(Math.sin(i * 1.35)));
-      const isSpeechBurst =
-        (i >= 6 && i <= 20) ||
-        (i >= 26 && i <= 42) ||
-        (i >= 48 && i <= 62) ||
-        (i >= 66 && i <= 72);
-      const voiceAmp = isSpeechBurst ? noiseAmp * (0.65 + 0.35 * Math.sin(i * 0.7)) : 0;
-      raw.push(Math.min(1.0, Math.max(0.12, noiseAmp)));
-      voice.push(Math.min(1.0, Math.max(0.0, voiceAmp)));
-    }
-    barRatios.current = raw;
-    voiceRatios.current = voice;
-  }
 
   // Draw Dual-Layer Waveform or Spectrogram
   const drawVisualizer = useCallback(() => {
@@ -268,30 +259,45 @@ export default function ViperAudioPlayer(): React.JSX.Element {
         ctx.fillRect(x, y, barWidth - 1, barHeight);
       }
     } else {
-      // 2. Waveform Mode: Dual-Layer Vertical Bars
+      // 2. Waveform Mode: Authentic Dual-Layer Vertical Bars from real audio
+      const trackData = (viperWaveformsData as Record<string, { raw: number[]; voice: number[]; duration: number }>)[currentTrack.id];
+      const rawBars = trackData?.raw || [];
+      const voiceBars = trackData?.voice || [];
+      const numBars = Math.max(rawBars.length, 76);
+
       const progressRatio = duration > 0 ? currentTime / duration : 0;
-      const barWidth = (width - NUM_BARS * 2.5) / NUM_BARS;
+      const barWidth = (width - numBars * 2.5) / numBars;
       const centerY = height / 2;
 
-      for (let i = 0; i < NUM_BARS; i++) {
-        const barRatio = i / NUM_BARS;
+      for (let i = 0; i < numBars; i++) {
+        const barRatio = i / numBars;
         const isPastPlayhead = barRatio <= progressRatio;
-        const rawAmp = barRatios.current[i] || 0.3;
-        const voiceAmp = voiceRatios.current[i] || 0;
+        const rawAmp = rawBars[i] ?? 0.3;
+        const voiceAmp = voiceBars[i] ?? 0;
 
-        const rawBarH = rawAmp * (height * 0.82);
+        const rawBarH = Math.max(6, rawAmp * (height * 0.82));
         const rawTop = centerY - rawBarH / 2;
         const x = i * (barWidth + 2.5) + 4;
 
         // Layer 1: Grey raw noise bars
-        ctx.fillStyle = isPastPlayhead ? "rgba(225, 225, 230, 0.95)" : "rgba(150, 150, 160, 0.40)";
+        if (isVoiceIsolated) {
+          // When voice is isolated, background raw bars dim
+          ctx.fillStyle = isPastPlayhead
+            ? "rgba(180, 185, 195, 0.45)"
+            : "rgba(110, 115, 125, 0.25)";
+        } else {
+          // When raw noise pass is active, grey bars are prominent
+          ctx.fillStyle = isPastPlayhead
+            ? "rgba(235, 235, 240, 0.95)"
+            : "rgba(160, 160, 170, 0.50)";
+        }
         ctx.fillRect(x, rawTop, barWidth, rawBarH);
 
         // Layer 2: Orange Isolated Voice Bars
         if (voiceAmp > 0) {
           const voiceBarH = isVoiceIsolated
-            ? voiceAmp * (height * 0.78)
-            : voiceAmp * (height * 0.52);
+            ? Math.max(8, voiceAmp * (height * 0.82))
+            : Math.max(4, voiceAmp * (height * 0.52));
           const voiceTop = centerY - voiceBarH / 2;
 
           if (isVoiceIsolated) {
@@ -299,10 +305,10 @@ export default function ViperAudioPlayer(): React.JSX.Element {
             ctx.shadowColor = "rgba(255, 107, 0, 0.45)";
             ctx.shadowBlur = 8;
           } else {
-            ctx.fillStyle = "rgba(255, 140, 0, 0.35)";
+            ctx.fillStyle = "rgba(255, 140, 0, 0.25)";
             ctx.shadowBlur = 0;
           }
-          ctx.fillRect(x + 0.5, voiceTop, barWidth - 1, voiceBarH);
+          ctx.fillRect(x + 0.5, voiceTop, Math.max(1, barWidth - 1), voiceBarH);
           ctx.shadowBlur = 0;
         }
       }
@@ -318,7 +324,7 @@ export default function ViperAudioPlayer(): React.JSX.Element {
     }
 
     animFrameIdRef.current = requestAnimationFrame(drawVisualizer);
-  }, [isSpectrogramView, isVoiceIsolated, currentTime, duration]);
+  }, [isSpectrogramView, isVoiceIsolated, currentTime, duration, currentTrack.id]);
 
   useEffect(() => {
     animFrameIdRef.current = requestAnimationFrame(drawVisualizer);
@@ -337,9 +343,17 @@ export default function ViperAudioPlayer(): React.JSX.Element {
     <section id="player" className="w-full py-20 relative z-10 font-sans">
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6">
         {/* Section Title */}
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold uppercase tracking-wider text-center text-white mb-8 sm:mb-12 font-sans">
-          EXPERIENCE THE POWER OF OUR AI AUDIO TECHNOLOGY
-        </h2>
+        <div className="text-center mb-8 sm:mb-12">
+          <p className="text-[#FF6B00] text-xs sm:text-sm font-mono tracking-widest uppercase mb-2">
+            MISSION-CRITICAL AUDIO DEMONSTRATION
+          </p>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold uppercase tracking-wider text-white font-sans">
+            EXPERIENCE THE POWER OF OUR AI AUDIO TECHNOLOGY
+          </h2>
+          <p className="text-neutral-400 text-xs sm:text-sm max-w-2xl mx-auto mt-2">
+            Authentic two-way military and emergency communications. Toggle Voice Isolation to audition sub-3ms real-time acoustic separation.
+          </p>
+        </div>
 
         {/* Hidden Dual Audio Elements for Seamless Crossfade */}
         <audio
@@ -347,6 +361,7 @@ export default function ViperAudioPlayer(): React.JSX.Element {
           src={currentTrack.rawSrc}
           preload="auto"
           onTimeUpdate={handleTimeUpdate}
+          onLoadedMetadata={handleLoadedMetadata}
           onEnded={handleEnded}
         />
         <audio
@@ -354,6 +369,7 @@ export default function ViperAudioPlayer(): React.JSX.Element {
           src={currentTrack.enhancedSrc}
           preload="auto"
           onTimeUpdate={handleTimeUpdate}
+          onLoadedMetadata={handleLoadedMetadata}
           onEnded={handleEnded}
         />
 
@@ -363,12 +379,13 @@ export default function ViperAudioPlayer(): React.JSX.Element {
           <div className="lg:col-span-4 flex flex-col justify-between gap-4">
             {/* Playlist Container */}
             <div className="bg-[#12141a]/95 border border-white/10 rounded-2xl p-4 sm:p-5 shadow-2xl flex flex-col h-full">
-              <div className="text-[11px] uppercase tracking-widest text-neutral-400 font-bold mb-3.5">
-                SELECT A FILE TO LISTEN TO:
+              <div className="flex items-center justify-between text-[11px] uppercase tracking-widest text-neutral-400 font-bold mb-3.5">
+                <span>SELECT A FILE TO LISTEN TO:</span>
+                <span className="text-[10px] text-[#FF6B00] font-mono">6 SCENARIOS</span>
               </div>
 
               {/* Track List */}
-              <div className="space-y-2 flex-1 overflow-y-auto max-h-[340px] pr-1 scrollbar-thin">
+              <div className="space-y-2 flex-1 overflow-y-auto max-h-[360px] pr-1 scrollbar-thin">
                 {SCENARIOS.map((track, idx) => {
                   const isSelected = activeTrackIndex === idx;
                   return (
@@ -382,11 +399,16 @@ export default function ViperAudioPlayer(): React.JSX.Element {
                       }`}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] uppercase font-bold tracking-wider text-neutral-400">
-                          {track.category}
-                        </span>
+                        <div className="flex items-center gap-1.5">
+                          <span className={`text-[10px] uppercase font-bold tracking-wider ${isSelected ? "text-[#FF6B00]" : "text-neutral-400"}`}>
+                            {track.category}
+                          </span>
+                          <span className="text-[10px] text-neutral-500 font-mono">
+                            • {formatTime(track.durationSec)}
+                          </span>
+                        </div>
                         {isSelected && isPlaying && (
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00] animate-ping" />
+                          <span className="w-2 h-2 rounded-full bg-[#FF6B00] animate-ping" />
                         )}
                       </div>
                       <div
@@ -395,6 +417,9 @@ export default function ViperAudioPlayer(): React.JSX.Element {
                         }`}
                       >
                         {track.title}
+                      </div>
+                      <div className="text-[11px] text-neutral-400 leading-snug line-clamp-1">
+                        {track.subtitle}
                       </div>
                     </button>
                   );
@@ -405,13 +430,17 @@ export default function ViperAudioPlayer(): React.JSX.Element {
             {/* Want To Test CTA Card */}
             <div className="bg-[#12141a]/95 border border-white/10 rounded-2xl p-4 shadow-xl flex flex-col justify-between gap-2">
               <div className="text-[11px] uppercase font-bold tracking-wider text-neutral-400">
-                WANT TO TEST WITH YOUR AUDIO?
+                WANT TO TEST WITH YOUR OWN AUDIO?
               </div>
+              <p className="text-[11px] text-neutral-400 leading-snug">
+                Stream live microphone audio directly to our sub-3ms air-gapped DPDFNet-8 DSP pipeline.
+              </p>
               <Link
                 href="/demo"
-                className="w-full py-2.5 px-4 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 text-white rounded-xl text-xs font-semibold text-center transition-all shadow-sm"
+                className="w-full mt-1 py-2.5 px-4 bg-[#FF6B00]/10 hover:bg-[#FF6B00]/20 border border-[#FF6B00]/30 hover:border-[#FF6B00] text-white rounded-xl text-xs font-semibold text-center transition-all shadow-sm flex items-center justify-center gap-2"
               >
-                Test Live Mic &bull; Full Suite &rarr;
+                <span>Test Live Mic &bull; Full Suite</span>
+                <span>&rarr;</span>
               </Link>
             </div>
           </div>
@@ -483,7 +512,7 @@ export default function ViperAudioPlayer(): React.JSX.Element {
                 <div className="absolute inset-0 flex items-center justify-center bg-black/25 backdrop-blur-[1px] pointer-events-none">
                   <div className="px-4 py-2 rounded-full bg-black/80 border border-white/20 text-white text-xs font-semibold shadow-2xl flex items-center gap-2">
                     <span className="text-[#FF6B00]">▶</span>
-                    <span>Click Play to Audition Noise Cancellation</span>
+                    <span>Click Play to Audition 2-Person Tactical Dialogue</span>
                   </div>
                 </div>
               )}
@@ -496,7 +525,7 @@ export default function ViperAudioPlayer(): React.JSX.Element {
                 <input
                   type="range"
                   min="0"
-                  max={duration || 7}
+                  max={duration || 10}
                   step="0.05"
                   value={currentTime}
                   onChange={handleSeek}
