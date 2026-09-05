@@ -15,6 +15,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        {/* Automatically clean up any stale Service Workers registered on localhost:3000 by other projects */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(function(regs) {
+                  for (var r of regs) { r.unregister(); }
+                });
+              }
+            `,
+          }}
+        />
+      </head>
       <body className="bg-vaani-bg text-vaani-text antialiased font-mono selection:bg-vaani-accent selection:text-black">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
