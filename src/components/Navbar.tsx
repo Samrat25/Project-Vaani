@@ -2,18 +2,20 @@
 
 import React, { useState, useEffect } from "react";
 
+import Link from "next/link";
+
 interface NavItem {
   name: string;
   href: string;
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { name: "Home", href: "#hero" },
-  { name: "Live Demo", href: "#player" },
-  { name: "Architecture", href: "#about" },
-  { name: "Targets", href: "#targets" },
-  { name: "Specs", href: "#specs" },
-  { name: "Security", href: "#security" },
+  { name: "Home", href: "/#hero" },
+  { name: "Audio Demo", href: "/#player" },
+  { name: "Live Mic Suite", href: "/demo" },
+  { name: "Architecture", href: "/#about" },
+  { name: "Targets", href: "/#targets" },
+  { name: "Specs", href: "/#specs" },
 ];
 
 export default function Navbar(): React.JSX.Element {
@@ -90,12 +92,12 @@ export default function Navbar(): React.JSX.Element {
           </nav>
 
           {/* Desktop Sign In Button */}
-          <a
-            href="#player"
+          <Link
+            href="/demo"
             className="bg-[#28282a] hover:bg-[#323234] text-[#c8c8c8] hover:text-white h-11 sm:h-12 px-5 sm:px-6 rounded-full font-medium text-xs sm:text-sm tracking-tight hidden sm:inline-flex items-center justify-center shadow-[0_4px_14px_rgba(0,0,0,0.22)] transition-all flex-shrink-0"
           >
-            Launch Demo
-          </a>
+            Live Mic Suite &rarr;
+          </Link>
 
           {/* Mobile Burger Button */}
           <button
@@ -149,13 +151,13 @@ export default function Navbar(): React.JSX.Element {
                 {item.name}
               </a>
             ))}
-            <a
-              href="#player"
+            <Link
+              href="/demo"
               onClick={() => setMobileOpen(false)}
               className="mt-3 w-full h-11 rounded-full bg-[#28282a] text-[#c8c8c8] hover:text-white font-medium text-xs flex items-center justify-center transition-colors"
             >
-              Launch Live Demo
-            </a>
+              Live Mic Suite &rarr;
+            </Link>
           </div>
         </div>
       )}

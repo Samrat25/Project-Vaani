@@ -121,45 +121,15 @@ export default function Hero(): React.JSX.Element {
     >
       {/* Middle Region: Trust Row, Dot-Matrix Headline, Subhead, Glowing CTA */}
       <div className="flex-1 flex flex-col items-center justify-center max-w-[850px] my-auto">
-        {/* Trust Row */}
+        {/* Tactical Status Tagline Pill */}
         <div
-          className="inline-flex items-center mb-6 sm:mb-8 anim-reveal"
+          className="inline-flex items-center gap-2.5 px-4 py-1.5 mb-6 sm:mb-8 rounded-full border border-white/20 bg-black/60 backdrop-blur-md text-[#c4c2c3] text-xs sm:text-[13px] font-mono tracking-wider anim-reveal shadow-lg"
           style={{ "--d": "0.05s" } as React.CSSProperties}
         >
-          {/* Avatar 1: Microsoft */}
-          <div
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#28282a] border border-white/40 p-1 flex items-center justify-center relative z-10 hover:-translate-y-0.5 transition-transform"
-            title="Microsoft"
-          >
-            <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-              <i className="fa-brands fa-microsoft text-black text-sm" aria-hidden="true" />
-            </div>
-          </div>
-
-          {/* Avatar 2: Amazon */}
-          <div
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#28282a] border border-white/40 p-1 flex items-center justify-center relative -ml-4 z-20 hover:-translate-y-0.5 transition-transform"
-            title="Amazon"
-          >
-            <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-              <i className="fa-brands fa-amazon text-black text-sm" aria-hidden="true" />
-            </div>
-          </div>
-
-          {/* Avatar 3: Google */}
-          <div
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#28282a] border border-white/40 p-1 flex items-center justify-center relative -ml-4 z-30 hover:-translate-y-0.5 transition-transform"
-            title="Google"
-          >
-            <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-              <i className="fa-brands fa-google text-black text-sm" aria-hidden="true" />
-            </div>
-          </div>
-
-          {/* Trust Text Pill */}
-          <div className="h-10 sm:h-11 rounded-full bg-[#28282a] border border-white/40 -ml-4 pl-6 pr-4 sm:pr-5 flex items-center font-sans font-medium text-[#c4c2c3] text-xs sm:text-[13.5px] whitespace-nowrap z-20 shadow-md">
-            <span>Trusted by 2000+ Enterprises</span>
-          </div>
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
+          <span className="text-white font-semibold">TACTICAL EDGE-AI ACOUSTIC ISOLATION</span>
+          <span className="text-neutral-500">•</span>
+          <span className="text-neutral-300">SUB-3MS AIR-GAPPED DSP</span>
         </div>
 
         {/* Headline: Solid White Dot-Matrix Display Font */}
@@ -186,16 +156,23 @@ export default function Hero(): React.JSX.Element {
           Build applications that reason, adapt and collaborate using an on-device neural voice isolation platform designed for mission-critical acoustic extremes.
         </p>
 
-        {/* Glowing CTA Button */}
+        {/* Glowing CTA Button & Live Mic Demo Link */}
         <div
-          className="anim-reveal"
+          className="flex flex-wrap items-center justify-center gap-3.5 anim-reveal"
           style={{ "--d": "0.40s" } as React.CSSProperties}
         >
           <a
             href="#player"
             className="inline-flex items-center justify-center bg-white text-black font-semibold text-sm sm:text-[14.5px] px-8 sm:px-10 py-3 sm:py-3.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_0_22px_rgba(255,255,255,0.32),0_0_44px_rgba(255,255,255,0.12)] hover:scale-105 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.25),0_0_28px_rgba(255,255,255,0.45),0_0_56px_rgba(255,255,255,0.2)] transition-all duration-200"
           >
-            Launch Live Combat Demo
+            Hear The Difference
+          </a>
+          <a
+            href="/demo"
+            className="inline-flex items-center justify-center bg-[#28282a]/90 hover:bg-[#323234] border border-white/20 text-white font-medium text-sm sm:text-[14.5px] px-6 sm:px-8 py-3 sm:py-3.5 rounded-full transition-all duration-200 hover:scale-105"
+          >
+            <span>Live Mic Test Suite</span>
+            <span className="ml-2 text-emerald-400 font-bold">&rarr;</span>
           </a>
         </div>
       </div>

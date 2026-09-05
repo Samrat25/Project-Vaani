@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import AudioDemo from "@/components/AudioDemo";
+import ViperAudioPlayer from "@/components/ViperAudioPlayer";
 import WhatItDoes from "@/components/WhatItDoes";
 import DeploymentTargets from "@/components/DeploymentTargets";
 import Specs from "@/components/Specs";
@@ -12,7 +12,7 @@ export default function Home() {
     <main className="min-h-screen text-white relative">
       <Navbar />
       <Hero />
-      <AudioDemo />
+      <ViperAudioPlayer />
       <WhatItDoes />
       <DeploymentTargets />
       <Specs />

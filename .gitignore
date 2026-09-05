@@ -28,6 +28,9 @@ env/
 .env
 
 # Generated audio samples
-samples/
+/samples/
 *.wav
+!public/samples/
+!public/samples/*.wav
+
 
