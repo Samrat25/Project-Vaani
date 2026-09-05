@@ -1,22 +1,17 @@
 "use client";
 
 import React from "react";
-import type { ViewMode } from "@/lib/types";
+import type { ViewMode, ConnectionStatus } from "@/lib/types";
 
 interface PlayerControlsProps {
-  isPlaying: boolean;
-  currentTime: number;
-  duration: number;
+  isStreaming: boolean;
+  connectionStatus: ConnectionStatus;
+  streamDuration: number;
   isIsolationOn: boolean;
   viewMode: ViewMode;
-  isLoading: boolean;
-  onPlay: () => void;
-  onPause: () => void;
-  onSeek: (time: number) => void;
+  onToggleStream: () => void;
   onToggleIsolation: () => void;
   onSetViewMode: (mode: ViewMode) => void;
-  onPrev: () => void;
-  onNext: () => void;
 }
 
 const formatTime = (seconds: number) => {
@@ -26,94 +21,74 @@ const formatTime = (seconds: number) => {
 };
 
 export default function PlayerControls({
-  isPlaying,
-  currentTime,
-  duration,
+  isStreaming,
+  connectionStatus,
+  streamDuration,
   isIsolationOn,
   viewMode,
-  isLoading,
-  onPlay,
-  onPause,
-  onSeek,
+  onToggleStream,
   onToggleIsolation,
   onSetViewMode,
-  onPrev,
-  onNext,
 }: PlayerControlsProps): React.JSX.Element {
-  const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
-
-  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    onSeek(pos * duration);
-  };
+  const isConnecting = connectionStatus === "connecting";
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-between py-3.5 px-5 border-t border-vaani-border bg-vaani-surface gap-4 font-mono">
-      {/* Left: Playback Transport Buttons */}
+      {/* Left: Primary Start/Stop Stream Button */}
       <div className="flex items-center gap-3 w-full md:w-auto justify-center">
         <button
-          onClick={onPrev}
-          disabled={isLoading}
-          aria-label="Previous Track"
-          className="p-2 rounded border border-vaani-border bg-vaani-card hover:border-vaani-accent text-vaani-text-muted hover:text-vaani-text transition-colors disabled:opacity-30"
-        >
-          <span className="text-xs font-bold font-mono">&lt;&lt;</span>
-        </button>
-
-        <button
-          onClick={isPlaying ? onPause : onPlay}
-          disabled={isLoading}
-          aria-label={isPlaying ? "Pause" : "Play"}
-          className={`flex items-center justify-center px-5 py-2 rounded font-extrabold text-xs uppercase tracking-wider transition-all shadow-glow-sm ${
-            isPlaying
-              ? "bg-vaani-accent text-black hover:bg-vaani-accent-light"
+          onClick={onToggleStream}
+          disabled={isConnecting}
+          aria-label={isStreaming ? "Stop Live Audio Stream" : "Start Live Audio Stream"}
+          className={`flex items-center justify-center gap-2 px-6 py-2.5 rounded font-extrabold text-xs uppercase tracking-wider transition-all shadow-glow-sm ${
+            isStreaming
+              ? "bg-rose-600 text-white hover:bg-rose-500 shadow-rose-900/40"
               : "bg-vaani-accent text-black hover:bg-vaani-accent-light hover:shadow-glow"
-          } disabled:opacity-40`}
+          } disabled:opacity-40 active:scale-[0.98]`}
         >
-          {isLoading ? (
-            <span className="animate-spin text-xs">⟳</span>
-          ) : isPlaying ? (
-            <span className="flex items-center gap-1.5">
-              <span>❚❚</span> <span>PAUSE</span>
+          {isConnecting ? (
+            <span className="flex items-center gap-2">
+              <span className="animate-spin text-xs">⟳</span>
+              <span>CONNECTING...</span>
+            </span>
+          ) : isStreaming ? (
+            <span className="flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+              <span>STOP STREAM</span>
             </span>
           ) : (
-            <span className="flex items-center gap-1.5">
-              <span>▶</span> <span>PLAY</span>
+            <span className="flex items-center gap-2">
+              <span>▶</span>
+              <span>START LIVE MIC STREAM</span>
             </span>
           )}
         </button>
-
-        <button
-          onClick={onNext}
-          disabled={isLoading}
-          aria-label="Next Track"
-          className="p-2 rounded border border-vaani-border bg-vaani-card hover:border-vaani-accent text-vaani-text-muted hover:text-vaani-text transition-colors disabled:opacity-30"
-        >
-          <span className="text-xs font-bold font-mono">&gt;&gt;</span>
-        </button>
       </div>
 
-      {/* Center: Interactive Scrubber Progress Bar */}
-      <div className="flex-1 w-full flex flex-col gap-1.5 px-0 md:px-4">
-        <div
-          className="h-2 w-full bg-vaani-card rounded-full cursor-pointer relative group border border-vaani-border-subtle overflow-hidden"
-          onClick={handleProgressClick}
-        >
-          {/* Progress fill */}
-          <div
-            className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-vaani-accent to-vaani-highlight rounded-full transition-all duration-75"
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
-        {/* Time Counters */}
-        <div className="flex justify-between text-[0.68rem] text-vaani-text-dim font-mono">
-          <span>{formatTime(currentTime)}</span>
-          <span>{formatTime(duration)}</span>
-        </div>
+      {/* Center: Live Transmission Indicator & Elapsed Timer */}
+      <div className="flex-1 w-full flex items-center justify-center gap-4 px-0 md:px-4">
+        {isStreaming ? (
+          <div className="flex items-center gap-3 bg-vaani-card/80 border border-vaani-accent/30 px-4 py-1.5 rounded-full shadow-glow-sm">
+            <span className="flex h-2.5 w-2.5 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-vaani-accent opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-vaani-accent" />
+            </span>
+            <span className="text-xs font-bold tracking-widest text-vaani-accent uppercase">
+              LIVE TRANSMISSION
+            </span>
+            <span className="text-xs text-vaani-text font-bold tabular-nums">
+              {formatTime(streamDuration)}
+            </span>
+          </div>
+        ) : (
+          <div className="text-xs text-vaani-text-dim uppercase tracking-wider flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-vaani-border" />
+            <span>MIC STANDBY — CLICK START TO STREAM TO DPDFNET-8</span>
+          </div>
+        )}
       </div>
 
-      {/* Right: View Mode & Voice Isolation Toggles */}
+      {/* Right: View Mode & Voice Isolation Master Switch */}
       <div className="flex items-center gap-2.5 w-full md:w-auto justify-end">
         {/* Spectrogram Toggle */}
         <button
@@ -130,18 +105,19 @@ export default function PlayerControls({
         {/* Voice Isolation Master Switch */}
         <button
           onClick={onToggleIsolation}
+          title={isIsolationOn ? "DPDFNet-8 Neural Denoising Active" : "Raw Microphone Bypass Active"}
           className={`flex items-center gap-2 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider rounded border transition-all ${
             isIsolationOn
               ? "bg-vaani-accent text-black border-vaani-accent shadow-glow"
-              : "border-vaani-border bg-vaani-card text-vaani-text-muted hover:border-vaani-accent hover:text-vaani-text"
+              : "border-amber-500/50 bg-amber-500/10 text-amber-400 hover:border-amber-400"
           }`}
         >
           <span
             className={`h-2 w-2 rounded-full transition-colors ${
-              isIsolationOn ? "bg-black animate-pulse" : "bg-vaani-border"
+              isIsolationOn ? "bg-black animate-pulse" : "bg-amber-400"
             }`}
           />
-          <span>Voice Isolation: {isIsolationOn ? "ON" : "OFF"}</span>
+          <span>{isIsolationOn ? "VOICE ISOLATION: ON" : "RAW BYPASS"}</span>
         </button>
       </div>
     </div>

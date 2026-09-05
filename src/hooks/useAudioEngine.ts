@@ -1,145 +1,195 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { EngineState, AudioSample, ViewMode } from '@/lib/types';
-import { VaaniAudioEngine } from '@/lib/audioEngine';
-import { AUDIO_SAMPLES } from '@/lib/audioSamples';
+import { useState, useEffect, useRef, useCallback } from "react";
+import { EngineState, ViewMode, ConnectionStatus, TelemetryData } from "@/lib/types";
+import { VaaniAudioEngine } from "@/lib/audioEngine";
 
 export function useAudioEngine() {
   const [state, setState] = useState<EngineState>({
-    isPlaying: false,
-    isIsolationOn: false,
-    currentTime: 0,
-    duration: 0,
-    currentSampleId: null,
-    viewMode: 'waveform',
-    telemetry: { signalLevel: 0, noiseFloor: -90, snrGain: 0, frameLatency: 0 },
-    isLoading: false,
+    isStreaming: false,
+    isIsolationOn: true,
+    isMicMuted: false,
+    isSpeakerMuted: false,
+    connectionStatus: "idle",
+    errorMessage: null,
+    activeMicLabel: "Default Microphone",
+    activeModelName: "DPDFNet-8 HR (48kHz)",
+    streamDuration: 0,
+    viewMode: "waveform",
+    telemetry: {
+      signalLevel: 0,
+      rawLevel: -100,
+      suppressionGain: 0,
+      frameLatency: 0,
+      rawSnr: 0,
+      enhancedSnr: 0,
+      pesq: 2.5,
+      stoi: 0.85,
+    },
   });
 
   const engineRef = useRef<VaaniAudioEngine | null>(null);
-  const animFrameRef = useRef<number>(0);
+  const streamTimerRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Initialize engine instance
   useEffect(() => {
-    engineRef.current = new VaaniAudioEngine();
+    const engine = new VaaniAudioEngine({
+      onStatusChange: (status: ConnectionStatus) => {
+        setState((prev) => ({
+          ...prev,
+          connectionStatus: status,
+          isStreaming: status === "connected",
+        }));
+      },
+      onError: (errMsg: string) => {
+        setState((prev) => ({
+          ...prev,
+          errorMessage: errMsg,
+          connectionStatus: "error",
+          isStreaming: false,
+        }));
+      },
+      onHandshake: (handshake) => {
+        setState((prev) => ({
+          ...prev,
+          activeModelName: handshake.model || prev.activeModelName,
+        }));
+      },
+      onTelemetry: (telemetry: TelemetryData) => {
+        setState((prev) => ({
+          ...prev,
+          telemetry,
+        }));
+      },
+    });
+
+    engineRef.current = engine;
+
     return () => {
-      engineRef.current?.destroy();
-      cancelAnimationFrame(animFrameRef.current);
+      if (streamTimerRef.current) {
+        clearInterval(streamTimerRef.current);
+      }
+      engine.destroy();
     };
   }, []);
 
-  const updateState = useCallback(() => {
-    if (!engineRef.current) return;
-    
-    const isPlaying = engineRef.current.getIsPlaying();
-    const currentTime = engineRef.current.getCurrentTime();
-    const duration = engineRef.current.getDuration();
-    
-    if (isPlaying && currentTime >= duration && duration > 0) {
-      engineRef.current.stop();
+  // Stream duration counter
+  useEffect(() => {
+    if (state.isStreaming) {
+      const startTime = Date.now() - state.streamDuration * 1000;
+      streamTimerRef.current = setInterval(() => {
+        const elapsedSec = Math.floor((Date.now() - startTime) / 1000);
+        setState((prev) => ({ ...prev, streamDuration: elapsedSec }));
+      }, 1000);
+    } else {
+      if (streamTimerRef.current) {
+        clearInterval(streamTimerRef.current);
+        streamTimerRef.current = null;
+      }
     }
+    return () => {
+      if (streamTimerRef.current) {
+        clearInterval(streamTimerRef.current);
+      }
+    };
+  }, [state.isStreaming]);
 
-    setState(prev => ({
+  const startStream = useCallback(async () => {
+    if (!engineRef.current) return;
+    setState((prev) => ({
       ...prev,
-      isPlaying: engineRef.current!.getIsPlaying(),
-      currentTime: engineRef.current!.getCurrentTime(),
-      duration: engineRef.current!.getDuration(),
-      telemetry: engineRef.current!.getTelemetry(),
+      errorMessage: null,
+      streamDuration: 0,
+      connectionStatus: "connecting",
     }));
 
-    if (engineRef.current.getIsPlaying()) {
-      animFrameRef.current = requestAnimationFrame(updateState);
+    try {
+      await engineRef.current.startStream();
+      setState((prev) => ({
+        ...prev,
+        isStreaming: true,
+        connectionStatus: "connected",
+        activeMicLabel: engineRef.current?.getActiveMicLabel() || prev.activeMicLabel,
+        activeModelName: engineRef.current?.getActiveModelName() || prev.activeModelName,
+      }));
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error ? err.message : "Failed to connect to streaming server";
+      setState((prev) => ({
+        ...prev,
+        errorMessage: message,
+        connectionStatus: "error",
+        isStreaming: false,
+      }));
     }
   }, []);
 
-  const loadSample = async (sample: AudioSample) => {
+  const stopStream = useCallback(() => {
     if (!engineRef.current) return;
-    
-    setState(prev => ({ ...prev, isLoading: true, currentSampleId: sample.id }));
-    
-    try {
-      await engineRef.current.loadSample(sample);
-      setState(prev => ({
-        ...prev,
-        isLoading: false,
-        duration: engineRef.current!.getDuration(),
-        currentTime: 0,
-      }));
-    } catch (error) {
-      console.error('Failed to load sample:', error);
-      setState(prev => ({ ...prev, isLoading: false }));
+    engineRef.current.stopStream();
+    setState((prev) => ({
+      ...prev,
+      isStreaming: false,
+      connectionStatus: "idle",
+    }));
+  }, []);
+
+  const toggleStream = useCallback(() => {
+    if (state.isStreaming) {
+      stopStream();
+    } else {
+      startStream();
     }
-  };
+  }, [state.isStreaming, startStream, stopStream]);
 
-  const play = () => {
+  const toggleIsolation = useCallback((on?: boolean) => {
     if (!engineRef.current) return;
-    engineRef.current.play();
-    updateState();
-  };
+    const target = on !== undefined ? on : !engineRef.current.getIsIsolationOn();
+    engineRef.current.toggleIsolation(target);
+    setState((prev) => ({ ...prev, isIsolationOn: target }));
+  }, []);
 
-  const pause = () => {
+  const toggleMuteMic = useCallback(() => {
     if (!engineRef.current) return;
-    engineRef.current.pause();
-    cancelAnimationFrame(animFrameRef.current);
-    updateState();
-  };
+    const nextMuted = !state.isMicMuted;
+    engineRef.current.toggleMuteMic(nextMuted);
+    setState((prev) => ({ ...prev, isMicMuted: nextMuted }));
+  }, [state.isMicMuted]);
 
-  const stop = () => {
+  const toggleMuteSpeaker = useCallback(() => {
     if (!engineRef.current) return;
-    engineRef.current.stop();
-    cancelAnimationFrame(animFrameRef.current);
-    updateState();
-  };
+    const nextMuted = !state.isSpeakerMuted;
+    engineRef.current.toggleMuteSpeaker(nextMuted);
+    setState((prev) => ({ ...prev, isSpeakerMuted: nextMuted }));
+  }, [state.isSpeakerMuted]);
 
-  const seek = (fraction: number) => {
-    if (!engineRef.current) return;
-    engineRef.current.seek(fraction);
-    updateState();
-  };
+  const setViewMode = useCallback((mode: ViewMode) => {
+    setState((prev) => ({ ...prev, viewMode: mode }));
+  }, []);
 
-  const toggleIsolation = (on: boolean) => {
-    if (!engineRef.current) return;
-    engineRef.current.toggleIsolation(on);
-    setState(prev => ({ ...prev, isIsolationOn: on }));
-  };
+  const clearError = useCallback(() => {
+    setState((prev) => ({ ...prev, errorMessage: null }));
+  }, []);
 
-  const setViewMode = (mode: ViewMode) => {
-    setState(prev => ({ ...prev, viewMode: mode }));
-  };
+  const getRawData = useCallback(() => {
+    return engineRef.current?.getRawAnalyserData();
+  }, []);
 
-  const nextTrack = () => {
-    if (!state.currentSampleId) return;
-    const idx = AUDIO_SAMPLES.findIndex(s => s.id === state.currentSampleId);
-    if (idx >= 0) {
-      const nextIdx = (idx + 1) % AUDIO_SAMPLES.length;
-      loadSample(AUDIO_SAMPLES[nextIdx]);
-    }
-  };
-
-  const prevTrack = () => {
-    if (!state.currentSampleId) return;
-    const idx = AUDIO_SAMPLES.findIndex(s => s.id === state.currentSampleId);
-    if (idx >= 0) {
-      const prevIdx = (idx - 1 + AUDIO_SAMPLES.length) % AUDIO_SAMPLES.length;
-      loadSample(AUDIO_SAMPLES[prevIdx]);
-    }
-  };
-
-  const getRawData = () => engineRef.current?.getRawAnalyserData();
-  const getProcData = () => engineRef.current?.getProcessedAnalyserData();
+  const getProcData = useCallback(() => {
+    return engineRef.current?.getProcessedAnalyserData();
+  }, []);
 
   return {
     state,
-    loadSample,
-    play,
-    pause,
-    stop,
-    seek,
+    startStream,
+    stopStream,
+    toggleStream,
     toggleIsolation,
+    toggleMuteMic,
+    toggleMuteSpeaker,
     setViewMode,
-    nextTrack,
-    prevTrack,
+    clearError,
     getRawData,
-    getProcData
+    getProcData,
   };
 }
