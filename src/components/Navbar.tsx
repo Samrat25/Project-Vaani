@@ -28,14 +28,21 @@ export default function Navbar(): React.JSX.Element {
       const scrollPos = window.scrollY + 200;
       for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
         const item = NAV_ITEMS[i];
-        if (item.href === "#hero") continue;
-        const el = document.querySelector(item.href);
-        if (el) {
-          const top = (el as HTMLElement).offsetTop;
-          if (scrollPos >= top) {
-            setActiveSection(item.name);
-            return;
+        if (!item.href.includes("#")) continue;
+        const hash = item.href.substring(item.href.indexOf("#"));
+        if (hash === "#hero") continue;
+
+        try {
+          const el = document.querySelector(hash);
+          if (el) {
+            const top = (el as HTMLElement).offsetTop;
+            if (scrollPos >= top) {
+              setActiveSection(item.name);
+              return;
+            }
           }
+        } catch {
+          // ignore selector errors safely
         }
       }
       setActiveSection("Home");
@@ -70,7 +77,7 @@ export default function Navbar(): React.JSX.Element {
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.name;
               return (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
                   onClick={() => setActiveSection(item.name)}
@@ -86,7 +93,7 @@ export default function Navbar(): React.JSX.Element {
                       className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-[3px] h-[3px] rounded-full bg-black shadow-[-5px_0_0_#000,5px_0_0_#000]"
                     />
                   )}
-                </a>
+                </Link>
               );
             })}
           </nav>
@@ -137,7 +144,7 @@ export default function Navbar(): React.JSX.Element {
             className="absolute top-20 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-[380px] bg-white rounded-3xl p-5 shadow-2xl flex flex-col gap-2 z-50"
           >
             {NAV_ITEMS.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 onClick={() => {
@@ -149,7 +156,7 @@ export default function Navbar(): React.JSX.Element {
                 }`}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
             <Link
               href="/demo"
