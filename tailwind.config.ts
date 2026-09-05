@@ -32,6 +32,7 @@ const config: Config = {
       fontFamily: {
         mono: ["JetBrains Mono", "Consolas", "monospace"],
         sans: ["Inter", "system-ui", "sans-serif"],
+        display: ["BubbledotICG-FinePos", "Geist Pixel Circle", "monospace"],
       },
       boxShadow: {
         "glow-sm": "0 0 15px -3px var(--color-accent-glow)",

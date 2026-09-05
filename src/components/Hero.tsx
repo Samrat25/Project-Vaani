@@ -1,103 +1,231 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+
+interface StatItem {
+  icon: string;
+  target: number;
+  decimals: number;
+  suffix: string;
+  label: string;
+  duration: number;
+  delay: number;
+}
+
+const STATS: StatItem[] = [
+  {
+    icon: "<",
+    target: 120,
+    decimals: 0,
+    suffix: "ms",
+    label: "Inference Time",
+    duration: 1500,
+    delay: 350,
+  },
+  {
+    icon: "%",
+    target: 99.99,
+    decimals: 2,
+    suffix: "%",
+    label: "Platform Uptime",
+    duration: 1580,
+    delay: 450,
+  },
+  {
+    icon: "*",
+    target: 24,
+    decimals: 0,
+    suffix: "/7",
+    label: "Autonomous Runtime",
+    duration: 1660,
+    delay: 550,
+  },
+  {
+    icon: "#",
+    target: 2.4,
+    decimals: 1,
+    suffix: "M",
+    label: "Context Windows",
+    duration: 1740,
+    delay: 650,
+  },
+];
 
 export default function Hero(): React.JSX.Element {
+  const [counts, setCounts] = useState<string[]>(STATS.map((s) => (0).toFixed(s.decimals)));
+  const statsRef = useRef<HTMLDivElement>(null);
+  const animatedRef = useRef<boolean>(false);
+
+  useEffect(() => {
+    if (!statsRef.current) return;
+
+    const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+
+    const animateValue = (
+      index: number,
+      target: number,
+      decimals: number,
+      duration: number,
+      delay: number
+    ) => {
+      setTimeout(() => {
+        let startTime: number | null = null;
+        const step = (timestamp: number) => {
+          if (!startTime) startTime = timestamp;
+          const elapsed = timestamp - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const current = easeOutCubic(progress) * target;
+
+          setCounts((prev) => {
+            const next = [...prev];
+            next[index] = current.toFixed(decimals);
+            return next;
+          });
+
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            setCounts((prev) => {
+              const next = [...prev];
+              next[index] = target.toFixed(decimals);
+              return next;
+            });
+          }
+        };
+        requestAnimationFrame(step);
+      }, delay);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !animatedRef.current) {
+            animatedRef.current = true;
+            STATS.forEach((stat, idx) => {
+              animateValue(idx, stat.target, stat.decimals, stat.duration, stat.delay);
+            });
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(statsRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative w-full overflow-hidden border-b border-vaani-border bg-hero-glow bg-grid-pattern py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: Headline & Action */}
-          <div className="lg:col-span-7 flex flex-col items-start">
-            {/* Tagline Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded border border-vaani-accent/30 bg-vaani-accent/10 text-vaani-accent text-[0.7rem] font-bold tracking-widest uppercase shadow-glow-sm">
-              <span className="h-1.5 w-1.5 rounded-full bg-vaani-emerald animate-ping" />
-              <span>EDGE-AI ADAPTIVE NOISE CANCELLATION</span>
-            </div>
-
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase tracking-tight text-vaani-text leading-[1.02] mb-6">
-              STRIP THE NOISE.
-              <br />
-              <span className="text-gradient-accent">KEEP THE VOICE.</span>
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-sm md:text-base text-vaani-text-muted leading-relaxed max-w-xl mb-8">
-              On-device AI voice isolation engineered for mission-critical defence and emergency radio communications. Suppresses heavy rotor wash, supersonic gunfire, and engine rumble with sub-3ms algorithmic latency.
-            </p>
-
-            {/* CTA Group */}
-            <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
-              <a
-                href="#player"
-                className="w-full sm:w-auto px-8 py-3.5 bg-vaani-accent text-black font-extrabold text-xs uppercase tracking-wider rounded hover:bg-vaani-accent-light transition-all shadow-glow hover:shadow-glow-lg text-center"
-              >
-                RUN LIVE DEMO &gt;&gt;
-              </a>
-              <a
-                href="#specs"
-                className="w-full sm:w-auto px-6 py-3.5 border border-vaani-border bg-vaani-surface/80 hover:border-vaani-accent text-vaani-text font-bold text-xs uppercase tracking-wider rounded hover:text-vaani-accent transition-all text-center"
-              >
-                VIEW SPEC SHEET
-              </a>
+    <section
+      id="hero"
+      className="relative w-full min-h-[calc(100vh-80px)] flex flex-col justify-between items-center text-center px-4 sm:px-6 pt-10 sm:pt-14 pb-8 max-w-[1000px] mx-auto z-10"
+    >
+      {/* Middle Region: Trust Row, Dot-Matrix Headline, Subhead, Glowing CTA */}
+      <div className="flex-1 flex flex-col items-center justify-center max-w-[850px] my-auto">
+        {/* Trust Row */}
+        <div
+          className="inline-flex items-center mb-6 sm:mb-8 anim-reveal"
+          style={{ "--d": "0.05s" } as React.CSSProperties}
+        >
+          {/* Avatar 1: Microsoft */}
+          <div
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#28282a] border border-white/40 p-1 flex items-center justify-center relative z-10 hover:-translate-y-0.5 transition-transform"
+            title="Microsoft"
+          >
+            <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
+              <i className="fa-brands fa-microsoft text-black text-sm" aria-hidden="true" />
             </div>
           </div>
 
-          {/* Right Column: Tactical Status Readout Module */}
-          <div className="lg:col-span-5">
-            <div className="w-full rounded-xl border border-vaani-border bg-vaani-surface/95 backdrop-blur-sm p-6 shadow-2xl relative overflow-hidden group hover:border-vaani-accent/60 transition-colors">
-              {/* Subtle top indicator bar */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-vaani-accent via-vaani-cyan to-vaani-emerald" />
-
-              <div className="flex items-center justify-between pb-4 mb-4 border-b border-vaani-border">
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-vaani-emerald animate-pulse" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-vaani-text">
-                    SYSTEM TELEMETRY
-                  </span>
-                </div>
-                <span className="text-[0.65rem] px-2 py-0.5 rounded bg-vaani-card border border-vaani-border text-vaani-text-muted font-mono">
-                  DSP-CORE 01
-                </span>
-              </div>
-
-              {/* Status List */}
-              <div className="space-y-3 font-mono text-xs">
-                <div className="flex items-center justify-between p-2.5 rounded bg-vaani-card border border-vaani-border-subtle">
-                  <span className="text-vaani-text-dim text-[0.7rem] uppercase">FIRMWARE</span>
-                  <span className="font-bold text-vaani-text">VAANI EDGE v2.1</span>
-                </div>
-
-                <div className="flex items-center justify-between p-2.5 rounded bg-vaani-card border border-vaani-border-subtle">
-                  <span className="text-vaani-text-dim text-[0.7rem] uppercase">PROCESSING</span>
-                  <span className="font-bold text-vaani-accent flex items-center gap-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-vaani-accent" />
-                    ON-DEVICE AIR-GAPPED
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between p-2.5 rounded bg-vaani-card border border-vaani-border-subtle">
-                  <span className="text-vaani-text-dim text-[0.7rem] uppercase">FRAME LATENCY</span>
-                  <span className="font-bold text-vaani-cyan">&lt; 2.8 ms</span>
-                </div>
-
-                <div className="flex items-center justify-between p-2.5 rounded bg-vaani-card border border-vaani-border-subtle">
-                  <span className="text-vaani-text-dim text-[0.7rem] uppercase">DATA EXFILTRATION</span>
-                  <span className="font-bold text-vaani-emerald">0 BYTES (NO CLOUD)</span>
-                </div>
-
-                <div className="flex items-center justify-between p-2.5 rounded bg-vaani-card border border-vaani-border-subtle">
-                  <span className="text-vaani-text-dim text-[0.7rem] uppercase">ANC STATUS</span>
-                  <span className="font-bold text-vaani-emerald flex items-center gap-1">
-                    READY / ACTIVE
-                  </span>
-                </div>
-              </div>
+          {/* Avatar 2: Amazon */}
+          <div
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#28282a] border border-white/40 p-1 flex items-center justify-center relative -ml-4 z-20 hover:-translate-y-0.5 transition-transform"
+            title="Amazon"
+          >
+            <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
+              <i className="fa-brands fa-amazon text-black text-sm" aria-hidden="true" />
             </div>
+          </div>
+
+          {/* Avatar 3: Google */}
+          <div
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#28282a] border border-white/40 p-1 flex items-center justify-center relative -ml-4 z-30 hover:-translate-y-0.5 transition-transform"
+            title="Google"
+          >
+            <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
+              <i className="fa-brands fa-google text-black text-sm" aria-hidden="true" />
+            </div>
+          </div>
+
+          {/* Trust Text Pill */}
+          <div className="h-10 sm:h-11 rounded-full bg-[#28282a] border border-white/40 -ml-4 pl-6 pr-4 sm:pr-5 flex items-center font-sans font-medium text-[#c4c2c3] text-xs sm:text-[13.5px] whitespace-nowrap z-20 shadow-md">
+            <span>Trusted by 2000+ Enterprises</span>
           </div>
         </div>
+
+        {/* Headline: Solid White Dot-Matrix Display Font */}
+        <h1 className="font-display text-white text-[clamp(32px,6.8vw,80px)] leading-[1.08] tracking-[-0.04em] font-normal mb-2 uppercase select-none">
+          <span
+            className="block anim-reveal"
+            style={{ "--d": "0.12s" } as React.CSSProperties}
+          >
+            Intelligence
+          </span>
+          <span
+            className="block anim-reveal"
+            style={{ "--d": "0.30s" } as React.CSSProperties}
+          >
+            Designed To Evolve
+          </span>
+        </h1>
+
+        {/* Subhead */}
+        <p
+          className="max-w-[540px] mx-auto font-sans text-[#d0d0d0] text-sm sm:text-base leading-relaxed opacity-85 mt-4 sm:mt-5 mb-7 sm:mb-9 anim-reveal"
+          style={{ "--d": "0.28s" } as React.CSSProperties}
+        >
+          Build applications that reason, adapt and collaborate using an on-device neural voice isolation platform designed for mission-critical acoustic extremes.
+        </p>
+
+        {/* Glowing CTA Button */}
+        <div
+          className="anim-reveal"
+          style={{ "--d": "0.40s" } as React.CSSProperties}
+        >
+          <a
+            href="#player"
+            className="inline-flex items-center justify-center bg-white text-black font-semibold text-sm sm:text-[14.5px] px-8 sm:px-10 py-3 sm:py-3.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_0_22px_rgba(255,255,255,0.32),0_0_44px_rgba(255,255,255,0.12)] hover:scale-105 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.25),0_0_28px_rgba(255,255,255,0.45),0_0_56px_rgba(255,255,255,0.2)] transition-all duration-200"
+          >
+            Launch Live Combat Demo
+          </a>
+        </div>
+      </div>
+
+      {/* Bottom Region: Stats Footer */}
+      <div
+        ref={statsRef}
+        aria-label="Platform Statistics"
+        className="w-full max-w-[920px] grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-12 sm:pt-14 pb-4"
+      >
+        {STATS.map((stat, idx) => (
+          <div
+            key={stat.label}
+            className="flex flex-col items-center text-center gap-1 anim-reveal"
+            style={{ "--d": `${0.5 + idx * 0.08}s` } as React.CSSProperties}
+          >
+            <div className="font-display text-white text-2xl sm:text-3xl leading-none">
+              {stat.icon}
+            </div>
+            <div className="flex items-baseline justify-center font-sans font-semibold text-white text-xl sm:text-2xl tracking-tight">
+              <span>{counts[idx]}</span>
+              <span className="text-[0.8em] font-medium ml-0.5">{stat.suffix}</span>
+            </div>
+            <div className="font-sans text-[#8e8e8e] text-xs sm:text-[12.5px] font-normal">
+              {stat.label}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
 }
+

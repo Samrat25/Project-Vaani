@@ -60,20 +60,21 @@ export default function AudioDemo(): React.JSX.Element {
   return (
     <section
       id="player"
-      className="w-full py-16 border-b border-vaani-border bg-vaani-bg transition-colors duration-200"
+      className="w-full py-20 relative z-10"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col space-y-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col space-y-7 glass-panel rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/10 backdrop-blur-xl bg-black/65">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-vaani-accent/40 bg-vaani-accent/10 text-vaani-accent text-[0.7rem] font-bold tracking-widest uppercase shadow-glow-sm">
-            <span>FULL-DUPLEX WEBSOCKET NEURAL STREAMING SUITE</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/20 bg-white/5 text-[#c4c2c3] text-[0.7rem] font-medium tracking-widest uppercase shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>NEURAL STREAMING ENGINE</span>
           </div>
-          <h2 className="text-2xl md:text-4xl font-extrabold uppercase tracking-tight text-vaani-text">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-white font-sans">
             LIVE COMBAT SPEECH ENHANCEMENT DEMO
           </h2>
-          <p className="text-xs md:text-sm text-vaani-text-muted max-w-2xl">
-            Stream microphone audio over WebSockets to <code className="text-vaani-accent">DPDFNet-8 ONNX</code>. Inspect the continuous 30-second rolling waveforms in real time, compare with Raw Bypass, and click any waveform to play back review segments.
+          <p className="text-xs sm:text-sm text-neutral-400 max-w-2xl leading-relaxed">
+            Stream microphone audio over WebSockets to <code className="text-emerald-400 bg-white/5 px-1.5 py-0.5 rounded font-mono">DPDFNet-8 ONNX</code>. Inspect the continuous 30-second rolling waveforms in real time, compare with Raw Bypass, and click any waveform to play back review segments.
           </p>
         </div>
 
@@ -115,7 +116,7 @@ export default function AudioDemo(): React.JSX.Element {
         )}
 
         {/* CONTROLS BAR */}
-        <div className="bg-white dark:bg-[#161b22] border border-slate-200 dark:border-slate-800 rounded-xl p-3 flex flex-wrap items-center justify-between gap-3 shadow-xs font-mono transition-colors">
+        <div className="bg-[#12151e]/90 border border-white/10 rounded-2xl p-3.5 sm:p-4 flex flex-wrap items-center justify-between gap-3 shadow-xl font-mono">
           {/* Left: Mic Select & Stream Start / Stop */}
           <div className="flex items-center flex-wrap gap-2.5">
             {/* Microphone Dropdown */}
@@ -124,19 +125,19 @@ export default function AudioDemo(): React.JSX.Element {
                 value={state.selectedMicId}
                 onChange={(e) => selectMic(e.target.value)}
                 disabled={state.isStreaming}
-                className="w-full bg-slate-50 dark:bg-[#0d1117] border border-slate-200 dark:border-slate-700 hover:border-slate-300 text-slate-800 dark:text-slate-200 text-xs rounded-lg px-3 py-2 pr-8 appearance-none focus:outline-none focus:ring-1 focus:ring-slate-400 transition-colors disabled:opacity-60"
+                className="w-full bg-[#1b202c] border border-white/15 hover:border-white/30 text-white text-xs rounded-xl px-3 py-2.5 pr-8 appearance-none focus:outline-none focus:ring-1 focus:ring-white/40 transition-colors disabled:opacity-60"
               >
                 {state.availableMics.length === 0 ? (
                   <option value="">Default Microphone</option>
                 ) : (
                   state.availableMics.map((mic) => (
-                    <option key={mic.deviceId} value={mic.deviceId}>
+                    <option key={mic.deviceId} value={mic.deviceId} className="bg-[#1b202c] text-white">
                       {mic.label}
                     </option>
                   ))
                 )}
               </select>
-              <span className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 text-xs">
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-neutral-400 text-xs">
                 ▼
               </span>
             </div>
@@ -145,14 +146,14 @@ export default function AudioDemo(): React.JSX.Element {
             <button
               onClick={toggleStream}
               disabled={state.connectionStatus === "connecting"}
-              className={`px-4 py-2 rounded-lg text-xs font-bold flex items-center space-x-2 transition-all shadow-xs active:scale-[0.98] ${
+              className={`px-5 py-2.5 rounded-xl text-xs font-bold flex items-center space-x-2 transition-all shadow-md active:scale-[0.98] ${
                 state.isStreaming
                   ? "bg-rose-600 hover:bg-rose-500 text-white shadow-rose-900/40"
-                  : "bg-slate-900 dark:bg-vaani-accent text-white dark:text-black hover:bg-slate-800 dark:hover:bg-vaani-accent-light"
+                  : "bg-white text-black hover:bg-neutral-200 shadow-[0_0_20px_rgba(255,255,255,0.25)]"
               } disabled:opacity-50`}
             >
               <span>{state.isStreaming ? "⏹" : "▶"}</span>
-              <span>{state.isStreaming ? "Stop" : "Start"}</span>
+              <span>{state.isStreaming ? "Stop Streaming" : "Start Live Stream"}</span>
             </button>
           </div>
 
@@ -162,10 +163,10 @@ export default function AudioDemo(): React.JSX.Element {
             <button
               onClick={toggleBypass}
               title="Toggle filter bypass (listen to raw mic instead of filtered audio)"
-              className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center space-x-1.5 border transition-colors ${
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 border transition-colors ${
                 state.isBypassActive
-                  ? "bg-amber-500/15 border-amber-500/50 text-amber-500"
-                  : "bg-slate-50 dark:bg-[#0d1117] border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
+                  ? "bg-amber-500/20 border-amber-500/60 text-amber-400"
+                  : "bg-[#1b202c] border-white/10 text-neutral-300 hover:border-white/25 hover:text-white"
               }`}
             >
               <span>⚙</span>
@@ -175,10 +176,10 @@ export default function AudioDemo(): React.JSX.Element {
             {/* Mute Mic Button */}
             <button
               onClick={toggleMuteMic}
-              className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center space-x-1.5 border transition-colors ${
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 border transition-colors ${
                 state.isMicMuted
-                  ? "bg-rose-500/15 border-rose-500/50 text-rose-400"
-                  : "bg-slate-50 dark:bg-[#0d1117] border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
+                  ? "bg-rose-500/20 border-rose-500/60 text-rose-400"
+                  : "bg-[#1b202c] border-white/10 text-neutral-300 hover:border-white/25 hover:text-white"
               }`}
             >
               <span>🎤</span>
@@ -188,10 +189,10 @@ export default function AudioDemo(): React.JSX.Element {
             {/* Mute Speaker Button */}
             <button
               onClick={toggleMuteSpeaker}
-              className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center space-x-1.5 border transition-colors ${
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 border transition-colors ${
                 state.isSpeakerMuted
-                  ? "bg-rose-500/15 border-rose-500/50 text-rose-400"
-                  : "bg-slate-50 dark:bg-[#0d1117] border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
+                  ? "bg-rose-500/20 border-rose-500/60 text-rose-400"
+                  : "bg-[#1b202c] border-white/10 text-neutral-300 hover:border-white/25 hover:text-white"
               }`}
             >
               <span>🔊</span>
@@ -199,15 +200,15 @@ export default function AudioDemo(): React.JSX.Element {
             </button>
 
             {/* Speaker Volume Slider */}
-            <div className="hidden sm:flex items-center space-x-2 pl-2 border-l border-slate-200 dark:border-slate-800">
-              <span className="text-slate-400 text-xs">🔈</span>
+            <div className="hidden sm:flex items-center space-x-2 pl-2 border-l border-white/10">
+              <span className="text-neutral-400 text-xs">🔈</span>
               <input
                 type="range"
                 min="0"
                 max="100"
                 value={state.speakerVolume}
                 onChange={(e) => setVolume(parseInt(e.target.value, 10))}
-                className="w-20 accent-slate-700 dark:accent-vaani-accent h-1 bg-slate-200 dark:bg-slate-700 rounded-lg cursor-pointer"
+                className="w-20 accent-white h-1 bg-white/20 rounded-lg cursor-pointer"
                 title="Speaker volume"
               />
             </div>
