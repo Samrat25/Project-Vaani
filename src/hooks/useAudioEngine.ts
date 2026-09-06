@@ -68,6 +68,13 @@ export function useAudioEngine() {
           telemetry,
         }));
       },
+      onReviewPlaybackStarted: (track: ReviewTrack) => {
+        setState((prev) => ({
+          ...prev,
+          isReviewPlaying: true,
+          activeReviewTrack: track,
+        }));
+      },
       onReviewPlaybackEnded: () => {
         setState((prev) => ({
           ...prev,
@@ -138,12 +145,17 @@ export function useAudioEngine() {
   const stopStream = useCallback(() => {
     if (!engineRef.current) return;
     engineRef.current.stopStream();
+    const hasRaw = Boolean(
+      engineRef.current.frozenRawAudio && engineRef.current.frozenRawAudio.length > 0
+    );
+    const hasProc = Boolean(
+      engineRef.current.frozenProcAudio && engineRef.current.frozenProcAudio.length > 0
+    );
     setState((prev) => ({
       ...prev,
       isStreaming: false,
       connectionStatus: "idle",
-      hasRecordedAudio:
-        (engineRef.current?.frozenRawAudio && engineRef.current.frozenRawAudio.length > 0) || false,
+      hasRecordedAudio: hasRaw || hasProc,
     }));
   }, []);
 
@@ -179,9 +191,9 @@ export function useAudioEngine() {
     setState((prev) => ({ ...prev, speakerVolume: volumePercent }));
   }, []);
 
-  const toggleReviewPlayback = useCallback((trackType: "raw" | "proc") => {
+  const toggleReviewPlayback = useCallback(async (trackType: "raw" | "proc") => {
     if (!engineRef.current) return;
-    engineRef.current.toggleReviewPlayback(trackType);
+    await engineRef.current.toggleReviewPlayback(trackType);
     setState((prev) => ({
       ...prev,
       isReviewPlaying: engineRef.current?.getIsReviewPlaying() || false,
@@ -189,13 +201,13 @@ export function useAudioEngine() {
     }));
   }, []);
 
-  const startReviewPlaybackAt = useCallback((trackType: "raw" | "proc", fraction: number) => {
+  const startReviewPlaybackAt = useCallback(async (trackType: "raw" | "proc", fraction: number) => {
     if (!engineRef.current) return;
-    engineRef.current.startReviewPlayback(trackType, fraction);
+    await engineRef.current.startReviewPlayback(trackType, fraction);
     setState((prev) => ({
       ...prev,
-      isReviewPlaying: true,
-      activeReviewTrack: trackType,
+      isReviewPlaying: engineRef.current?.getIsReviewPlaying() || false,
+      activeReviewTrack: engineRef.current?.getActiveReviewTrack() || null,
     }));
   }, []);
 

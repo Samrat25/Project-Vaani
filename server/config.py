@@ -33,8 +33,8 @@ class ServerConfig(BaseModel):
     default_audio_format: str = "int16"  # "int16" (PCM 16-bit) or "float32"
     send_telemetry_with_audio: bool = True
     
-    # Threading for ONNX session
-    intra_op_num_threads: int = 2
+    # Threading for ONNX session (1 thread prevents context switching thrashing on containerized cloud CPUs)
+    intra_op_num_threads: int = 1
     inter_op_num_threads: int = 1
 
 

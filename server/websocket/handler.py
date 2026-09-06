@@ -5,6 +5,7 @@ Handles real-time duplex streaming of audio buffers and control commands over We
 
 import json
 import time
+import asyncio
 import logging
 from fastapi import WebSocket, WebSocketDisconnect
 
@@ -55,8 +56,8 @@ async def handle_websocket_stream(websocket: WebSocket):
                     await websocket.send_text(json.dumps(err_msg))
                     continue
 
-                # Process chunk through DPDFNet-8 streaming pipeline
-                enhanced_audio, telemetry = stream_state.process_chunk(raw_audio)
+                # Process chunk through DPDFNet-8 streaming pipeline (non-blocking for asyncio loop)
+                enhanced_audio, telemetry = await asyncio.to_thread(stream_state.process_chunk, raw_audio)
 
                 # Return enhanced binary audio buffer if frames were emitted
                 if len(enhanced_audio) > 0:
@@ -118,7 +119,7 @@ async def handle_websocket_stream(websocket: WebSocket):
 
                 elif msg_type == "flush":
                     # Drain remaining buffered audio
-                    flushed_audio, telemetry = stream_state.flush()
+                    flushed_audio, telemetry = await asyncio.to_thread(stream_state.flush)
                     if len(flushed_audio) > 0:
                         out_bytes = float32_to_bytes(flushed_audio, audio_format=stream_state.audio_format)
                         client.bytes_sent += len(out_bytes)

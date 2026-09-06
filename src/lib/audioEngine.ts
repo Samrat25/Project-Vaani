@@ -14,6 +14,7 @@ export interface AudioEngineCallbacks {
   onError?: (error: string) => void;
   onTelemetry?: (telemetry: TelemetryData) => void;
   onHandshake?: (handshake: ServerHandshake) => void;
+  onReviewPlaybackStarted?: (track: ReviewTrack) => void;
   onReviewPlaybackEnded?: () => void;
 }
 
@@ -223,8 +224,8 @@ export class VaaniAudioEngine {
         this.micSourceNode.connect(this.rawAnalyser);
       }
 
-      // 3. Audio Processor (1024 buffer size)
-      const bufferSize = 1024;
+      // 3. Audio Processor (2048 buffer size = 42.6ms @ 48kHz for rock-solid streaming stability)
+      const bufferSize = 2048;
       this.processorNode = ctx.createScriptProcessor(bufferSize, 1, 1);
 
       this.processorNode.onaudioprocess = (e: AudioProcessingEvent) => {
@@ -321,7 +322,7 @@ export class VaaniAudioEngine {
       }
 
       const now = this.ctx.currentTime;
-      if (this.nextPlayTime < now) {
+      if (this.nextPlayTime < now || this.nextPlayTime > now + 0.15) {
         this.nextPlayTime = now + 0.02; // 20ms jitter margin
       }
 
@@ -440,6 +441,9 @@ export class VaaniAudioEngine {
     if (!audioData || audioData.length === 0) return;
 
     const ctx = await this.initAudioContext();
+    if (ctx.state === "suspended") {
+      await ctx.resume();
+    }
     this.stopReviewPlayback();
 
     const sampleRate = ctx.sampleRate;
@@ -455,17 +459,20 @@ export class VaaniAudioEngine {
     this.reviewSourceNode = ctx.createBufferSource();
     this.reviewSourceNode.buffer = audioBuf;
 
-    if (this.outputGainNode) {
-      const curVol = this._isSpeakerMuted ? 0.0 : this._speakerVolume;
-      this.outputGainNode.gain.setValueAtTime(curVol, ctx.currentTime);
-      this.reviewSourceNode.connect(this.outputGainNode);
+    if (!this.outputGainNode) {
+      this.outputGainNode = ctx.createGain();
+      this.outputGainNode.connect(ctx.destination);
     }
+    const curVol = this._isSpeakerMuted ? 0.0 : this._speakerVolume;
+    this.outputGainNode.gain.setValueAtTime(curVol, ctx.currentTime);
+    this.reviewSourceNode.connect(this.outputGainNode);
 
     this.reviewStartTimeCtx = ctx.currentTime;
     this.reviewStartOffsetSec = startOffset;
     this.reviewDurationSec = totalDuration;
     this.activeReviewTrack = trackType;
     this.isReviewPlaying = true;
+    this.callbacks.onReviewPlaybackStarted?.(trackType);
 
     this.reviewSourceNode.onended = () => {
       if (this.isReviewPlaying && this.activeReviewTrack === trackType) {
@@ -479,6 +486,7 @@ export class VaaniAudioEngine {
   public stopReviewPlayback(): void {
     if (this.reviewSourceNode) {
       try {
+        this.reviewSourceNode.onended = null;
         this.reviewSourceNode.stop();
         this.reviewSourceNode.disconnect();
       } catch {
@@ -486,16 +494,19 @@ export class VaaniAudioEngine {
       }
       this.reviewSourceNode = null;
     }
+    const wasPlaying = this.isReviewPlaying;
     this.isReviewPlaying = false;
     this.activeReviewTrack = null;
-    this.callbacks.onReviewPlaybackEnded?.();
+    if (wasPlaying) {
+      this.callbacks.onReviewPlaybackEnded?.();
+    }
   }
 
-  public toggleReviewPlayback(trackType: "raw" | "proc"): void {
+  public async toggleReviewPlayback(trackType: "raw" | "proc"): Promise<void> {
     if (this.isReviewPlaying && this.activeReviewTrack === trackType) {
       this.stopReviewPlayback();
     } else {
-      this.startReviewPlayback(trackType, 0);
+      await this.startReviewPlayback(trackType, 0);
     }
   }
 

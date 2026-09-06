@@ -131,7 +131,7 @@ export default function AudacityWaveformTrack({
       ctx.textAlign = "center";
       ctx.textBaseline = "top";
 
-      const seconds = [30, 25, 20, 15, 10, 5, 0];
+      const seconds = [0, 5, 10, 15, 20, 25, 30];
       for (let s = 0; s < seconds.length; s++) {
         const x = padLeft + (s / (seconds.length - 1)) * plotW;
 
@@ -141,7 +141,7 @@ export default function AudacityWaveformTrack({
         ctx.lineTo(x, padTop + plotH + 3);
         ctx.stroke();
 
-        const label = seconds[s] === 0 ? "0s" : `-${seconds[s]}s`;
+        const label = `${seconds[s]}s`;
         ctx.fillText(label, x, rulerY);
       }
 
@@ -152,19 +152,16 @@ export default function AudacityWaveformTrack({
       const ring = trackType === "raw" ? engine.rawRing : engine.procRing;
       const frozenAudio = trackType === "raw" ? engine.frozenRawAudio : engine.frozenProcAudio;
 
+      const isStreaming = engine.getIsStreaming();
+      const isFrozen = !isStreaming && frozenAudio && frozenAudio.length > 0;
+      const audioData = isFrozen ? frozenAudio : ring;
       const isFull = totalWritten >= cap;
-      const availableSamples = isFull ? cap : Math.max(1, totalWritten);
-
-      const audioData =
-        !engine.getIsStreaming() && frozenAudio && frozenAudio.length > 0
-          ? frozenAudio
-          : ring;
-      const oldestIndex =
-        !engine.getIsStreaming() && frozenAudio && frozenAudio.length > 0
-          ? 0
-          : isFull
-          ? writePos
-          : 0;
+      const availableSamples = isFrozen
+        ? frozenAudio.length
+        : isFull
+        ? cap
+        : Math.max(0, totalWritten);
+      const oldestIndex = isFrozen ? 0 : isFull ? writePos : 0;
       const samplesPerPixel = cap / plotW;
 
       ctx.strokeStyle = strokeColor;
@@ -180,9 +177,9 @@ export default function AudacityWaveformTrack({
         let hasData = false;
 
         for (let s = sampleStart; s < sampleEnd; s++) {
-          if (!isFull && s >= availableSamples) break;
+          if (s >= availableSamples) break;
 
-          const ringIdx = (oldestIndex + s) % cap;
+          const ringIdx = isFrozen ? s : (oldestIndex + s) % cap;
           const val = audioData[ringIdx] || 0;
           if (val < min) min = val;
           if (val > max) max = val;
@@ -333,13 +330,17 @@ export default function AudacityWaveformTrack({
           {/* Post-Stop Review Button */}
           {!isStreaming && hasRecordedAudio && (
             <button
-              onClick={() => onToggleReview(trackType)}
-              className={`px-2.5 py-1 rounded-md text-[11px] font-bold flex items-center space-x-1 border transition-all ${
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleReview(trackType);
+              }}
+              title={trackType === "raw" ? "Play recorded raw microphone audio" : "Play processed DPDFNet-8 enhanced audio"}
+              className={`px-3 py-1 rounded-md text-[11px] font-bold flex items-center space-x-1.5 border transition-all cursor-pointer shadow-xs active:scale-95 ${
                 isCurrentReviewActive
-                  ? "bg-rose-600 text-white border-rose-600"
+                  ? "bg-rose-600 text-white border-rose-600 ring-2 ring-rose-500/50 animate-pulse"
                   : trackType === "raw"
-                  ? "bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800 hover:bg-blue-100"
-                  : "bg-teal-50 dark:bg-teal-950/40 text-teal-700 dark:text-teal-300 border-teal-200 dark:border-teal-800 hover:bg-teal-100"
+                  ? "bg-blue-600 hover:bg-blue-500 text-white border-blue-600 hover:shadow-blue-500/30"
+                  : "bg-teal-600 hover:bg-teal-500 text-white border-teal-600 hover:shadow-teal-500/30"
               }`}
             >
               <span>{isCurrentReviewActive ? "❚❚ Pause" : trackType === "raw" ? "▶ Play Raw" : "▶ Play Filtered"}</span>

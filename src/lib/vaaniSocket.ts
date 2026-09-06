@@ -73,6 +73,9 @@ export class VaaniSocket {
       }, 5000);
 
       this.ws.onopen = () => {
+        if (this.ws) {
+          this.ws.binaryType = "arraybuffer";
+        }
         if (this.connectionTimeout) {
           clearTimeout(this.connectionTimeout);
           this.connectionTimeout = null;
@@ -80,10 +83,21 @@ export class VaaniSocket {
         this.callbacks.onStatusChange?.("connected");
       };
 
-      this.ws.onmessage = (event: MessageEvent) => {
-        // Handle incoming binary enhanced audio frame
+      this.ws.onmessage = async (event: MessageEvent) => {
+        // Handle incoming binary enhanced audio frame (ArrayBuffer or Blob)
+        let arrayBuffer: ArrayBuffer | null = null;
         if (event.data instanceof ArrayBuffer) {
-          const pcm16 = new Int16Array(event.data);
+          arrayBuffer = event.data;
+        } else if (typeof Blob !== "undefined" && event.data instanceof Blob) {
+          try {
+            arrayBuffer = await event.data.arrayBuffer();
+          } catch {
+            arrayBuffer = null;
+          }
+        }
+
+        if (arrayBuffer && arrayBuffer.byteLength > 0) {
+          const pcm16 = new Int16Array(arrayBuffer);
           const float32 = new Float32Array(pcm16.length);
           for (let i = 0; i < pcm16.length; i++) {
             float32[i] = pcm16[i] / 32768.0;
@@ -151,7 +165,15 @@ export class VaaniSocket {
 
   public sendAudioChunk(pcm16Data: ArrayBufferView) {
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
-      this.ws.send(pcm16Data.buffer);
+      if (pcm16Data.byteOffset === 0 && pcm16Data.byteLength === pcm16Data.buffer.byteLength) {
+        this.ws.send(pcm16Data.buffer);
+      } else {
+        const slice = pcm16Data.buffer.slice(
+          pcm16Data.byteOffset,
+          pcm16Data.byteOffset + pcm16Data.byteLength
+        );
+        this.ws.send(slice);
+      }
     }
   }
 
