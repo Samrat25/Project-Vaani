@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   title: "Project Vaani — Intelligence Designed To Evolve",
   description:
     "Project Vaani: Real-time, edge-AI adaptive voice isolation and neural noise cancellation engineered for mission-critical acoustic extremes.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -16,6 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
+        {/* Favicon & Web App Icons */}
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/icon.png" />
+
         {/* Inter Font */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

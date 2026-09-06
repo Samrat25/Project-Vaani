@@ -20,11 +20,11 @@ export default function DemoPage(): React.JSX.Element {
             href="/"
             className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-white hover:text-orange-400 transition-colors"
           >
-            <span className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-md">
+            <span className="w-8 h-8 rounded-full flex items-center justify-center shadow-md overflow-hidden">
               <img
-                src="/assets/logo.webp"
+                src="/assets/logo.png"
                 alt="Logo"
-                className="w-5 h-5 object-contain"
+                className="w-full h-full object-contain"
               />
             </span>
             <span>&larr; Return to Home</span>

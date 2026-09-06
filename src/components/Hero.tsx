@@ -124,11 +124,11 @@ export default function Hero(): React.JSX.Element {
       <div className="flex-1 flex flex-col items-center justify-center max-w-[850px] my-auto">
         {/* Project Vaani Minimal Brand Badge & Logo */}
         <div className="flex flex-col items-center justify-center gap-3 mb-6">
-          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white p-2.5 shadow-[0_0_35px_rgba(255,255,255,0.45)] flex items-center justify-center hover:scale-105 transition-transform">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-[0_0_35px_rgba(0,255,200,0.3)] flex items-center justify-center hover:scale-105 transition-transform overflow-hidden">
             <img
-              src="/assets/logo.webp"
+              src="/assets/logo.png"
               alt="Project Vaani"
-              className="w-10 h-10 object-contain"
+              className="w-full h-full object-contain"
             />
           </div>
           <div
