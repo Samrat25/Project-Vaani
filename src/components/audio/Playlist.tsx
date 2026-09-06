@@ -107,7 +107,7 @@ export default function Playlist({
             <span className="text-vaani-cyan font-bold">WS DUPLEX</span>
           </div>
           <div className="font-mono text-[0.7rem] text-vaani-text-dim truncate">
-            ws://localhost:8000/ws/stream
+            {process.env.NEXT_PUBLIC_VAANI_WS_URL || "wss://vaani-backend-qe3r.onrender.com/ws/stream"}
           </div>
           <div className="text-[0.68rem] text-vaani-text-muted flex items-center justify-between pt-1 border-t border-vaani-border-subtle">
             <span>CHUNK PROTOCOL:</span>

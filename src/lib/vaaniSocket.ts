@@ -28,11 +28,18 @@ export class VaaniSocket {
     } else if (process.env.NEXT_PUBLIC_VAANI_WS_URL) {
       this.url = process.env.NEXT_PUBLIC_VAANI_WS_URL;
     } else {
-      // Default to localhost:8000/ws/stream
-      const isHttps =
-        typeof window !== "undefined" && window.location.protocol === "https:";
-      const protocol = isHttps ? "wss:" : "ws:";
-      this.url = `${protocol}//localhost:8000/ws/stream`;
+      const isBrowser = typeof window !== "undefined";
+      const isLocal =
+        isBrowser &&
+        (window.location.hostname === "localhost" ||
+          window.location.hostname === "127.0.0.1");
+
+      if (isLocal) {
+        this.url = "ws://localhost:8000/ws/stream";
+      } else {
+        // Default to live production Render backend
+        this.url = "wss://vaani-backend-qe3r.onrender.com/ws/stream";
+      }
     }
   }
 

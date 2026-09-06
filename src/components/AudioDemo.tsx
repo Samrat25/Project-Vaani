@@ -27,7 +27,7 @@ export default function AudioDemo(): React.JSX.Element {
         return (
           <div className="flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="font-bold">Streaming (ws://localhost:8000)</span>
+            <span className="font-bold">Streaming &bull; DPDFNet-8 Live</span>
           </div>
         );
       case "connecting":

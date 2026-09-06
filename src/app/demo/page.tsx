@@ -40,8 +40,8 @@ export default function DemoPage(): React.JSX.Element {
 
           {/* Right: Connect Status */}
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-white/5 border border-white/15 text-neutral-300">
-              PORT 8000
+            <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+              LIVE CLOUD DSP
             </span>
           </div>
         </div>
