@@ -1,0 +1,38 @@
+# =================================================================
+# PROJECT VAANI - Next.js 14 Frontend
+# =================================================================
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm ci
+
+# Copy application files
+COPY . .
+
+# Build argument for WebSocket URL
+ARG NEXT_PUBLIC_VAANI_WS_URL
+ENV NEXT_PUBLIC_VAANI_WS_URL=$NEXT_PUBLIC_VAANI_WS_URL
+ENV NODE_ENV=production
+
+# Build Next.js production bundle
+RUN npm run build
+
+# Runner stage
+FROM node:20-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV PORT=3000
+
+# Copy built assets and node_modules
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start"]
