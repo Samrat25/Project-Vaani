@@ -15,13 +15,13 @@ export function useAudioEngine() {
     isStreaming: false,
     isBypassActive: false,
     isMicMuted: false,
-    isSpeakerMuted: false,
+    isSpeakerMuted: true, // Default muted to prevent acoustic feedback loop / delayed self-echo
     speakerVolume: 100,
     availableMics: [],
     selectedMicId: "",
     connectionStatus: "idle",
     errorMessage: null,
-    activeModelName: "DPDFNet-8 HR (48kHz)",
+    activeModelName: "DPDFNet-2 (48kHz Real-Time)",
     telemetry: {
       signalLevel: 0,
       rawLevel: -100,
@@ -142,9 +142,9 @@ export function useAudioEngine() {
     }
   }, []);
 
-  const stopStream = useCallback(() => {
+  const stopStream = useCallback(async () => {
     if (!engineRef.current) return;
-    engineRef.current.stopStream();
+    await engineRef.current.stopStream();
     const hasRaw = Boolean(
       engineRef.current.frozenRawAudio && engineRef.current.frozenRawAudio.length > 0
     );

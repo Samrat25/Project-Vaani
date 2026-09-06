@@ -60,9 +60,10 @@ export class VaaniAudioEngine {
   // Real-time streaming & playback state
   private socket: VaaniSocket | null = null;
   private _isStreaming: boolean = false;
-  private _isBypassActive: boolean = false; // true = Raw Mic Bypass; false = DPDFNet-8 AI Filter
+  private _isDraining: boolean = false;
+  private _isBypassActive: boolean = false; // true = Raw Mic Bypass; false = DPDFNet AI Filter
   private _isMicMuted: boolean = false;
-  private _isSpeakerMuted: boolean = false;
+  private _isSpeakerMuted: boolean = true; // Default muted to prevent acoustic feedback loop / delayed echo
   private _speakerVolume: number = 1.0;
   private nextPlayTime: number = 0;
   private callbacks: AudioEngineCallbacks;
@@ -287,7 +288,7 @@ export class VaaniAudioEngine {
   }
 
   private handleEnhancedAudioChunk(float32Array: Float32Array) {
-    if (!this._isStreaming || !this.ctx) return;
+    if ((!this._isStreaming && !this._isDraining) || !this.ctx) return;
 
     // Push into 30-second continuous rolling ring buffer
     this.pushToRing(this.procRing, float32Array, "proc");
@@ -301,8 +302,8 @@ export class VaaniAudioEngine {
     const procDb = rms > 0.0001 ? 20 * Math.log10(rms) : -100;
     this.currentTelemetry.signalLevel = Math.round(procDb * 10) / 10;
 
-    // Play enhanced audio through speakers ONLY if not in bypass mode and speaker not muted
-    if (!this._isBypassActive && !this._isSpeakerMuted && this.outputGainNode) {
+    // Play enhanced audio through speakers ONLY if not in bypass mode, speaker monitor unmuted, and not draining
+    if (!this._isBypassActive && !this._isSpeakerMuted && !this._isDraining && this.outputGainNode) {
       const audioBuf = this.ctx.createBuffer(
         1,
         float32Array.length,
@@ -397,16 +398,13 @@ export class VaaniAudioEngine {
     return out;
   }
 
-  public stopStream(): void {
-    this._isStreaming = false;
+  public async stopStream(): Promise<void> {
+    if (!this._isStreaming && !this._isDraining) return;
 
-    // Flush and close WebSocket
-    if (this.socket) {
-      this.socket.close();
-      this.socket = null;
-    }
+    // 1. Mark draining phase and silence speaker output
+    this._isDraining = true;
 
-    // Stop and disconnect microphone
+    // 2. Stop and disconnect microphone immediately so recording ceases
     if (this.processorNode) {
       this.processorNode.disconnect();
       this.processorNode = null;
@@ -422,7 +420,30 @@ export class VaaniAudioEngine {
       this.micStream = null;
     }
 
-    // Freeze recorded audio buffers for click-to-play review
+    // 3. Request server to flush remaining buffered audio and wait up to 1200ms
+    if (this.socket && this.socket.isOpen) {
+      this.socket.sendFlush();
+      const drainStart = Date.now();
+      while (
+        this.socket &&
+        this.socket.isOpen &&
+        this.procTotalWritten < this.rawTotalWritten &&
+        Date.now() - drainStart < 1200
+      ) {
+        await new Promise((resolve) => setTimeout(resolve, 60));
+      }
+    }
+
+    // 4. Mark streaming finished and close socket
+    this._isStreaming = false;
+    this._isDraining = false;
+
+    if (this.socket) {
+      this.socket.close();
+      this.socket = null;
+    }
+
+    // 5. Freeze recorded audio buffers for click-to-play review
     this.frozenRawAudio = this.extractChronologicalAudio("raw");
     this.frozenProcAudio = this.extractChronologicalAudio("proc");
 
@@ -463,8 +484,8 @@ export class VaaniAudioEngine {
       this.outputGainNode = ctx.createGain();
       this.outputGainNode.connect(ctx.destination);
     }
-    const curVol = this._isSpeakerMuted ? 0.0 : this._speakerVolume;
-    this.outputGainNode.gain.setValueAtTime(curVol, ctx.currentTime);
+    // Post-recording review playback always plays at full speaker volume
+    this.outputGainNode.gain.setValueAtTime(this._speakerVolume, ctx.currentTime);
     this.reviewSourceNode.connect(this.outputGainNode);
 
     this.reviewStartTimeCtx = ctx.currentTime;

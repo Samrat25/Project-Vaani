@@ -14,11 +14,14 @@ class ServerConfig(BaseModel):
     port: int = int(os.getenv("VAANI_PORT", "8000"))
     reload: bool = os.getenv("VAANI_RELOAD", "false").lower() == "true"
 
-    # Model resolution
-    model_name: str = "dpdfnet8_48khz_hr"
-    model_filename: str = "dpdfnet8_48khz_hr.onnx"
+    # Model resolution (DPDFNet-2 is 2.5x faster than DPDFNet-8, providing real-time streaming on cloud CPUs)
+    model_name: str = os.getenv("VAANI_MODEL", "dpdfnet2_48khz_hr")
+    model_filename: str = os.getenv("VAANI_MODEL_FILE", "dpdfnet2_48khz_hr.onnx")
     pretuned_dir: str = os.getenv("VAANI_MODEL_DIR", "models/pretuned/dpdfnet")
-    download_url: str = "https://huggingface.co/Ceva-IP/DPDFNet/resolve/main/onnx/dpdfnet8_48khz_hr.onnx"
+    download_url: str = os.getenv(
+        "VAANI_MODEL_URL",
+        "https://huggingface.co/Ceva-IP/DPDFNet/resolve/main/onnx/dpdfnet2_48khz_hr.onnx",
+    )
     
     # Audio specifications
     model_sample_rate: int = 48000

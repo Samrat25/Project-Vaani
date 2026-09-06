@@ -12,9 +12,9 @@ from typing import Optional, List
 
 logger = logging.getLogger("vaani.downloader")
 
-MODEL_FILENAME = "dpdfnet8_48khz_hr.onnx"
-DEFAULT_HF_URL = "https://huggingface.co/Ceva-IP/DPDFNet/resolve/main/onnx/dpdfnet8_48khz_hr.onnx"
-MIN_FILE_SIZE = 10_000_000  # ~14.8 MB expected, at least 10MB to be valid
+MODEL_FILENAME = "dpdfnet2_48khz_hr.onnx"
+DEFAULT_HF_URL = "https://huggingface.co/Ceva-IP/DPDFNet/resolve/main/onnx/dpdfnet2_48khz_hr.onnx"
+MIN_FILE_SIZE = 8_000_000  # ~10.4 MB for DPDFNet-2, ~14.8 MB for DPDFNet-8
 
 # Search paths in order of preference
 CANDIDATE_DIRS = [

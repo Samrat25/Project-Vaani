@@ -186,17 +186,22 @@ export default function AudioDemo(): React.JSX.Element {
               <span>{state.isMicMuted ? "Mic Muted" : "Mute Mic"}</span>
             </button>
 
-            {/* Mute Speaker Button */}
+            {/* Live Audio Monitor Toggle */}
             <button
               onClick={toggleMuteSpeaker}
-              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 border transition-colors ${
+              title={
                 state.isSpeakerMuted
-                  ? "bg-rose-500/20 border-rose-500/60 text-rose-400"
-                  : "bg-[#1b202c] border-white/10 text-neutral-300 hover:border-white/25 hover:text-white"
+                  ? "Enable live audio monitoring through speakers (wear headphones to prevent acoustic echo feedback)"
+                  : "Mute live speaker monitor (prevents delayed acoustic echo while recording)"
+              }
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 border transition-colors ${
+                !state.isSpeakerMuted
+                  ? "bg-emerald-500/20 border-emerald-500/60 text-emerald-400"
+                  : "bg-[#1b202c] border-white/10 text-neutral-400 hover:border-white/25 hover:text-white"
               }`}
             >
-              <span>🔊</span>
-              <span>{state.isSpeakerMuted ? "Speaker Muted" : "Mute Speaker"}</span>
+              <span>{!state.isSpeakerMuted ? "🎧" : "🔇"}</span>
+              <span>{!state.isSpeakerMuted ? "Live Monitor: ON (Headphones)" : "Live Monitor: OFF"}</span>
             </button>
 
             {/* Speaker Volume Slider */}
@@ -251,7 +256,7 @@ export default function AudioDemo(): React.JSX.Element {
           {/* TRACK 2: ENHANCED SAMPLE WAVEFORM */}
           <AudacityWaveformTrack
             trackType="proc"
-            title="Enhanced Sample (DPDFNet-8)"
+            title={`Enhanced Sample (${state.activeModelName})`}
             badgeDotClass="bg-teal-500"
             strokeColor="#0d9488"
             fillColor="rgba(13, 148, 136, 0.22)"
