@@ -1,0 +1,19 @@
+# Dependencies and cache
+node_modules
+.next
+__pycache__
+*.py[cod]
+*.tsbuildinfo
+
+# Datasets and heavy data
+dataset/
+noise/
+scratch/
+.git/
+.github/
+
+# Environment files
+.env*.local
+
+# Logs
+*.log

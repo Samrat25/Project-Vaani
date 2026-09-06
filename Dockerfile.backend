@@ -24,7 +24,6 @@ RUN pip install --no-cache-dir -r ./server/requirements.txt
 # Copy source code and pretuned models
 COPY server ./server
 COPY models ./models
-COPY scripts ./scripts
 
 # Expose FastAPI port
 EXPOSE 8000
