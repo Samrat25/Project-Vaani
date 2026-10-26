@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Project Vaani — Intelligence Designed To Evolve",
@@ -83,7 +84,10 @@ export default function RootLayout({
 
         {/* Main Content Layer */}
         <div className="relative z-10 w-full min-h-screen">
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            {children}
+            <Analytics />
+          </ThemeProvider>
         </div>
       </body>
     </html>
