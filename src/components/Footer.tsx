@@ -4,17 +4,21 @@ import React from "react";
 
 export default function Footer(): React.JSX.Element {
   return (
-    <footer className="w-full py-8 bg-vaani-bg text-vaani-text border-t border-vaani-border font-mono transition-colors duration-200">
-      <div className="max-w-7xl mx-auto px-5 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-        <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-vaani-accent" />
-          <span className="font-extrabold uppercase tracking-wider">
-            VAANI — ADAPTIVE ON-DEVICE VOICE ISOLATION
+    <footer className="w-full py-10 border-t border-white/10 bg-black/70 backdrop-blur-xl text-neutral-400 font-sans relative z-10">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs">
+        <div className="flex items-center gap-3">
+          <img
+            src="/assets/logo.png"
+            alt="Vaani Logo"
+            className="w-7 h-7 object-contain rounded-full shadow-[0_0_12px_rgba(0,255,200,0.4)]"
+          />
+          <span className="font-bold uppercase tracking-wider text-white">
+            VAANI — NEURAL VOICE ISOLATION PLATFORM
           </span>
         </div>
 
-        <div className="text-vaani-text-dim text-[0.7rem] uppercase tracking-widest text-center sm:text-right">
-          ALL PROCESSING LOCAL / ZERO RF EXFILTRATION
+        <div className="text-neutral-400 text-xs tracking-wider text-center sm:text-right font-mono">
+          AIR-GAPPED EMBEDDED DSP &bull; ZERO RF EXFILTRATION &bull; MIL-STD-810
         </div>
       </div>
     </footer>

@@ -1,0 +1,70 @@
+/* Project Vaani — Clean White Audacity Theme */
+
+:root {
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #334155;
+}
+
+/* Crisp Canvas Rendering */
+canvas {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  display: block;
+}
+
+/* Subtle button transitions */
+button {
+  transition: all 0.15s ease-in-out;
+}
+
+/* Active Muted Button States */
+.btn-muted {
+  background-color: #fef2f2 !important;
+  border-color: #fecdd3 !important;
+  color: #b91c1c !important;
+}
+
+.btn-muted svg {
+  color: #dc2626 !important;
+}
+
+/* Active Bypass Filter Button State */
+.btn-bypass-active {
+  background-color: #fffbeb !important;
+  border-color: #fde68a !important;
+  color: #b45309 !important;
+}
+
+.btn-bypass-active svg {
+  color: #d97706 !important;
+}
+
+/* Minimal Range Slider */
+input[type=range] {
+  appearance: none;
+  -webkit-appearance: none;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #475569;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+  background: #1e293b;
+}

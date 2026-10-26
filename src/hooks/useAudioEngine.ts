@@ -1,145 +1,242 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { EngineState, AudioSample, ViewMode } from '@/lib/types';
-import { VaaniAudioEngine } from '@/lib/audioEngine';
-import { AUDIO_SAMPLES } from '@/lib/audioSamples';
+import { useState, useEffect, useRef, useCallback } from "react";
+import {
+  EngineState,
+  ConnectionStatus,
+  TelemetryData,
+  AudioDevice,
+  ReviewTrack,
+} from "@/lib/types";
+import { VaaniAudioEngine } from "@/lib/audioEngine";
 
 export function useAudioEngine() {
   const [state, setState] = useState<EngineState>({
-    isPlaying: false,
-    isIsolationOn: false,
-    currentTime: 0,
-    duration: 0,
-    currentSampleId: null,
-    viewMode: 'waveform',
-    telemetry: { signalLevel: 0, noiseFloor: -90, snrGain: 0, frameLatency: 0 },
-    isLoading: false,
+    isStreaming: false,
+    isBypassActive: false,
+    isMicMuted: false,
+    isSpeakerMuted: true, // Default muted to prevent acoustic feedback loop / delayed self-echo
+    speakerVolume: 100,
+    availableMics: [],
+    selectedMicId: "",
+    connectionStatus: "idle",
+    errorMessage: null,
+    activeModelName: "DPDFNet-2 (48kHz Real-Time)",
+    telemetry: {
+      signalLevel: 0,
+      rawLevel: -100,
+      suppressionGain: 0,
+      frameLatency: 0,
+      rawSnr: 0,
+      enhancedSnr: 0,
+      pesq: 2.5,
+      stoi: 0.85,
+    },
+    isReviewPlaying: false,
+    activeReviewTrack: null,
+    hasRecordedAudio: false,
   });
 
   const engineRef = useRef<VaaniAudioEngine | null>(null);
-  const animFrameRef = useRef<number>(0);
 
   useEffect(() => {
-    engineRef.current = new VaaniAudioEngine();
+    const engine = new VaaniAudioEngine({
+      onStatusChange: (status: ConnectionStatus) => {
+        setState((prev) => ({
+          ...prev,
+          connectionStatus: status,
+          isStreaming: status === "connected",
+        }));
+      },
+      onError: (errMsg: string) => {
+        setState((prev) => ({
+          ...prev,
+          errorMessage: errMsg,
+          connectionStatus: "error",
+          isStreaming: false,
+        }));
+      },
+      onHandshake: (handshake) => {
+        setState((prev) => ({
+          ...prev,
+          activeModelName: handshake.model || prev.activeModelName,
+        }));
+      },
+      onTelemetry: (telemetry: TelemetryData) => {
+        setState((prev) => ({
+          ...prev,
+          telemetry,
+        }));
+      },
+      onReviewPlaybackStarted: (track: ReviewTrack) => {
+        setState((prev) => ({
+          ...prev,
+          isReviewPlaying: true,
+          activeReviewTrack: track,
+        }));
+      },
+      onReviewPlaybackEnded: () => {
+        setState((prev) => ({
+          ...prev,
+          isReviewPlaying: false,
+          activeReviewTrack: null,
+        }));
+      },
+    });
+
+    engineRef.current = engine;
+
+    // Enumerate microphones
+    engine.enumerateMics().then((mics: AudioDevice[]) => {
+      setState((prev) => ({
+        ...prev,
+        availableMics: mics,
+        selectedMicId: mics.length > 0 ? mics[0].deviceId : "",
+      }));
+    });
+
     return () => {
-      engineRef.current?.destroy();
-      cancelAnimationFrame(animFrameRef.current);
+      engine.destroy();
     };
   }, []);
 
-  const updateState = useCallback(() => {
+  const selectMic = useCallback(async (deviceId: string) => {
     if (!engineRef.current) return;
-    
-    const isPlaying = engineRef.current.getIsPlaying();
-    const currentTime = engineRef.current.getCurrentTime();
-    const duration = engineRef.current.getDuration();
-    
-    if (isPlaying && currentTime >= duration && duration > 0) {
-      engineRef.current.stop();
-    }
+    engineRef.current.setDeviceId(deviceId);
+    setState((prev) => ({ ...prev, selectedMicId: deviceId }));
 
-    setState(prev => ({
-      ...prev,
-      isPlaying: engineRef.current!.getIsPlaying(),
-      currentTime: engineRef.current!.getCurrentTime(),
-      duration: engineRef.current!.getDuration(),
-      telemetry: engineRef.current!.getTelemetry(),
-    }));
-
-    if (engineRef.current.getIsPlaying()) {
-      animFrameRef.current = requestAnimationFrame(updateState);
+    // If currently streaming, restart audio stream with new mic
+    if (engineRef.current.getIsStreaming()) {
+      engineRef.current.stopStream();
+      await engineRef.current.startStream();
     }
   }, []);
 
-  const loadSample = async (sample: AudioSample) => {
+  const startStream = useCallback(async () => {
     if (!engineRef.current) return;
-    
-    setState(prev => ({ ...prev, isLoading: true, currentSampleId: sample.id }));
-    
+    setState((prev) => ({
+      ...prev,
+      errorMessage: null,
+      connectionStatus: "connecting",
+    }));
+
     try {
-      await engineRef.current.loadSample(sample);
-      setState(prev => ({
+      await engineRef.current.startStream();
+      setState((prev) => ({
         ...prev,
-        isLoading: false,
-        duration: engineRef.current!.getDuration(),
-        currentTime: 0,
+        isStreaming: true,
+        connectionStatus: "connected",
+        hasRecordedAudio: false,
+        isReviewPlaying: false,
+        activeReviewTrack: null,
       }));
-    } catch (error) {
-      console.error('Failed to load sample:', error);
-      setState(prev => ({ ...prev, isLoading: false }));
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error ? err.message : "Failed to connect to streaming server";
+      setState((prev) => ({
+        ...prev,
+        errorMessage: message,
+        connectionStatus: "error",
+        isStreaming: false,
+      }));
     }
-  };
+  }, []);
 
-  const play = () => {
+  const stopStream = useCallback(async () => {
     if (!engineRef.current) return;
-    engineRef.current.play();
-    updateState();
-  };
+    await engineRef.current.stopStream();
+    const hasRaw = Boolean(
+      engineRef.current.frozenRawAudio && engineRef.current.frozenRawAudio.length > 0
+    );
+    const hasProc = Boolean(
+      engineRef.current.frozenProcAudio && engineRef.current.frozenProcAudio.length > 0
+    );
+    setState((prev) => ({
+      ...prev,
+      isStreaming: false,
+      connectionStatus: "idle",
+      hasRecordedAudio: hasRaw || hasProc,
+    }));
+  }, []);
 
-  const pause = () => {
-    if (!engineRef.current) return;
-    engineRef.current.pause();
-    cancelAnimationFrame(animFrameRef.current);
-    updateState();
-  };
-
-  const stop = () => {
-    if (!engineRef.current) return;
-    engineRef.current.stop();
-    cancelAnimationFrame(animFrameRef.current);
-    updateState();
-  };
-
-  const seek = (fraction: number) => {
-    if (!engineRef.current) return;
-    engineRef.current.seek(fraction);
-    updateState();
-  };
-
-  const toggleIsolation = (on: boolean) => {
-    if (!engineRef.current) return;
-    engineRef.current.toggleIsolation(on);
-    setState(prev => ({ ...prev, isIsolationOn: on }));
-  };
-
-  const setViewMode = (mode: ViewMode) => {
-    setState(prev => ({ ...prev, viewMode: mode }));
-  };
-
-  const nextTrack = () => {
-    if (!state.currentSampleId) return;
-    const idx = AUDIO_SAMPLES.findIndex(s => s.id === state.currentSampleId);
-    if (idx >= 0) {
-      const nextIdx = (idx + 1) % AUDIO_SAMPLES.length;
-      loadSample(AUDIO_SAMPLES[nextIdx]);
+  const toggleStream = useCallback(() => {
+    if (state.isStreaming) {
+      stopStream();
+    } else {
+      startStream();
     }
-  };
+  }, [state.isStreaming, startStream, stopStream]);
 
-  const prevTrack = () => {
-    if (!state.currentSampleId) return;
-    const idx = AUDIO_SAMPLES.findIndex(s => s.id === state.currentSampleId);
-    if (idx >= 0) {
-      const prevIdx = (idx - 1 + AUDIO_SAMPLES.length) % AUDIO_SAMPLES.length;
-      loadSample(AUDIO_SAMPLES[prevIdx]);
-    }
-  };
+  const toggleBypass = useCallback(() => {
+    if (!engineRef.current) return;
+    const nextBypass = engineRef.current.toggleBypass();
+    setState((prev) => ({ ...prev, isBypassActive: nextBypass }));
+  }, []);
 
-  const getRawData = () => engineRef.current?.getRawAnalyserData();
-  const getProcData = () => engineRef.current?.getProcessedAnalyserData();
+  const toggleMuteMic = useCallback(() => {
+    if (!engineRef.current) return;
+    const nextMuted = engineRef.current.toggleMuteMic();
+    setState((prev) => ({ ...prev, isMicMuted: nextMuted }));
+  }, []);
+
+  const toggleMuteSpeaker = useCallback(() => {
+    if (!engineRef.current) return;
+    const nextMuted = engineRef.current.toggleMuteSpeaker();
+    setState((prev) => ({ ...prev, isSpeakerMuted: nextMuted }));
+  }, []);
+
+  const setVolume = useCallback((volumePercent: number) => {
+    if (!engineRef.current) return;
+    engineRef.current.setVolume(volumePercent / 100.0);
+    setState((prev) => ({ ...prev, speakerVolume: volumePercent }));
+  }, []);
+
+  const toggleReviewPlayback = useCallback(async (trackType: "raw" | "proc") => {
+    if (!engineRef.current) return;
+    await engineRef.current.toggleReviewPlayback(trackType);
+    setState((prev) => ({
+      ...prev,
+      isReviewPlaying: engineRef.current?.getIsReviewPlaying() || false,
+      activeReviewTrack: engineRef.current?.getActiveReviewTrack() || null,
+    }));
+  }, []);
+
+  const startReviewPlaybackAt = useCallback(async (trackType: "raw" | "proc", fraction: number) => {
+    if (!engineRef.current) return;
+    await engineRef.current.startReviewPlayback(trackType, fraction);
+    setState((prev) => ({
+      ...prev,
+      isReviewPlaying: engineRef.current?.getIsReviewPlaying() || false,
+      activeReviewTrack: engineRef.current?.getActiveReviewTrack() || null,
+    }));
+  }, []);
+
+  const stopReviewPlayback = useCallback(() => {
+    if (!engineRef.current) return;
+    engineRef.current.stopReviewPlayback();
+    setState((prev) => ({
+      ...prev,
+      isReviewPlaying: false,
+      activeReviewTrack: null,
+    }));
+  }, []);
+
+  const clearError = useCallback(() => {
+    setState((prev) => ({ ...prev, errorMessage: null }));
+  }, []);
 
   return {
     state,
-    loadSample,
-    play,
-    pause,
-    stop,
-    seek,
-    toggleIsolation,
-    setViewMode,
-    nextTrack,
-    prevTrack,
-    getRawData,
-    getProcData
+    engineRef,
+    selectMic,
+    toggleStream,
+    toggleBypass,
+    toggleMuteMic,
+    toggleMuteSpeaker,
+    setVolume,
+    toggleReviewPlayback,
+    startReviewPlaybackAt,
+    stopReviewPlayback,
+    clearError,
   };
 }

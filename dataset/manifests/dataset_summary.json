@@ -1,0 +1,21 @@
+{
+  "dataset_name": "Project_Vaani_Tactical_Defence_Corpus_10K",
+  "clean_speech_samples": 10000,
+  "clean_speech_train": 8473,
+  "clean_speech_val": 1527,
+  "artillery_samples": 10000,
+  "total_noise_bank_samples": 17032,
+  "noisy_speech_low_samples": 10000,
+  "noisy_speech_high_samples": 10000,
+  "sample_rate_hz": 16000,
+  "chunk_duration_sec": 3.0,
+  "audio_format": "16-bit PCM WAV Mono",
+  "directory_structure": {
+    "speech_root": "dataset/speech",
+    "clean_speech": "dataset/speech/clean_speech",
+    "noisy_speech_low": "dataset/speech/noisy_speech_low",
+    "noisy_speech_high": "dataset/speech/noisy_speech_high",
+    "noise_root": "dataset/noise",
+    "manifests_root": "dataset/manifests"
+  }
+}
