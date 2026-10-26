@@ -10,16 +10,15 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { name: "Home", href: "/#hero" },
   { name: "Audio Demo", href: "/#player" },
-  { name: "Live Mic Suite", href: "/demo" },
   { name: "Architecture", href: "/#about" },
   { name: "Targets", href: "/#targets" },
   { name: "Specs", href: "/#specs" },
+  { name: "Security", href: "/#security" },
 ];
 
 export default function Navbar(): React.JSX.Element {
-  const [activeSection, setActiveSection] = useState<string>("Home");
+  const [activeSection, setActiveSection] = useState<string>("Audio Demo");
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
 
   // Sync active section based on scroll position
@@ -30,7 +29,6 @@ export default function Navbar(): React.JSX.Element {
         const item = NAV_ITEMS[i];
         if (!item.href.includes("#")) continue;
         const hash = item.href.substring(item.href.indexOf("#"));
-        if (hash === "#hero") continue;
 
         try {
           const el = document.querySelector(hash);
@@ -45,7 +43,7 @@ export default function Navbar(): React.JSX.Element {
           // ignore selector errors safely
         }
       }
-      setActiveSection("Home");
+      setActiveSection("Audio Demo");
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -58,12 +56,12 @@ export default function Navbar(): React.JSX.Element {
         <div className="w-full max-w-[850px] flex items-center justify-between sm:justify-center gap-3 sm:gap-6 pointer-events-auto">
           {/* Logo Button */}
           <a
-            href="#hero"
+            href="#player"
             aria-label="Home"
             className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white shadow-[0_4px_14px_rgba(0,0,0,0.22)] flex items-center justify-center hover:scale-105 transition-transform flex-shrink-0"
           >
             <img
-              src="/assets/logo.webp"
+              src="/assets/logo.png"
               alt="Logo"
               className="w-7 h-7 object-contain"
             />
@@ -98,13 +96,13 @@ export default function Navbar(): React.JSX.Element {
             })}
           </nav>
 
-          {/* Desktop Sign In Button */}
-          <Link
-            href="/demo"
+          {/* Desktop Audition Button */}
+          <a
+            href="#player"
             className="bg-[#28282a] hover:bg-[#323234] text-[#c8c8c8] hover:text-white h-11 sm:h-12 px-5 sm:px-6 rounded-full font-medium text-xs sm:text-sm tracking-tight hidden sm:inline-flex items-center justify-center shadow-[0_4px_14px_rgba(0,0,0,0.22)] transition-all flex-shrink-0"
           >
-            Live Mic Suite &rarr;
-          </Link>
+            Audition Audio &rarr;
+          </a>
 
           {/* Mobile Burger Button */}
           <button
@@ -158,13 +156,13 @@ export default function Navbar(): React.JSX.Element {
                 {item.name}
               </Link>
             ))}
-            <Link
-              href="/demo"
+            <a
+              href="#player"
               onClick={() => setMobileOpen(false)}
               className="mt-3 w-full h-11 rounded-full bg-[#28282a] text-[#c8c8c8] hover:text-white font-medium text-xs flex items-center justify-center transition-colors"
             >
-              Live Mic Suite &rarr;
-            </Link>
+              Audition Audio &rarr;
+            </a>
           </div>
         </div>
       )}
